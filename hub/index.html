@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Núcleo Gravitas — Banco de Ofertas Lowticket</title>
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <div class="logo">
+      <img class="logo__icon" src="assets/logo.png" alt="Núcleo Gravitas">
+      <span class="logo__text">Núcleo <strong>Gravitas</strong></span>
+    </div>
+    <span class="header__badge">Hub de Ofertas</span>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="hero__logo" src="assets/logo.png" alt="Núcleo Gravitas">
+  <span class="eyebrow">Uso interno · Mentorados</span>
+  <h1>Hub <span class="grad">Núcleo Gravitas</span></h1>
+  <p>O ouro das operações de infoproduto lowticket escaladas</p>
+</section>
+
+<div class="layout">
+  <nav class="sidenav" id="sidenav">
+    <div class="sidenav__group">
+      <span class="sidenav__label">Ofertas</span>
+      <button class="sidenav__link active" data-section="ofertas">Banco de Ofertas</button>
+      <button class="sidenav__link" data-section="gerador">Gerador de Ofertas</button>
+      <button class="sidenav__link" data-section="copie-modelo">Copie o Modelo</button>
+      <button class="sidenav__link" data-section="radar">Radar de Oportunidades</button>
+      <button class="sidenav__link" data-section="saturadas">Ofertas Saturadas</button>
+    </div>
+    <div class="sidenav__group">
+      <span class="sidenav__label">Copy & Criativos</span>
+      <button class="sidenav__link" data-section="mecanismos">Banco de Mecanismos</button>
+      <button class="sidenav__link" data-section="headlines">Banco de Headlines</button>
+      <button class="sidenav__link" data-section="hooks">Biblioteca de Hooks</button>
+      <button class="sidenav__link" data-section="swipe">Swipe File de Criativos</button>
+      <button class="sidenav__link" data-section="estruturas">Estrutura de Página</button>
+    </div>
+    <div class="sidenav__group">
+      <span class="sidenav__label">Monetização</span>
+      <button class="sidenav__link" data-section="bumps">Order Bumps & Upsells</button>
+      <button class="sidenav__link" data-section="calculadora">Calculadora de Esteira</button>
+      <button class="sidenav__link" data-section="esteiras">Mapa de Esteiras</button>
+      <button class="sidenav__link" data-section="bonus">Banco de Bônus</button>
+    </div>
+    <div class="sidenav__group">
+      <span class="sidenav__label">Execução</span>
+      <button class="sidenav__link" data-section="prompts">Promptoteca de IA</button>
+      <button class="sidenav__link" data-section="checklists">Checklists</button>
+      <button class="sidenav__link" data-section="ferramentas">Ferramentas</button>
+    </div>
+  </nav>
+
+  <main class="content">
+
+    <!-- ============ BANCO DE OFERTAS ============ -->
+    <section class="panel" id="panel-ofertas">
+      <div class="stats">
+        <div class="stats__item"><div class="stats__num" id="stat-total">0</div><div class="stats__label">Ofertas</div></div>
+        <div class="stats__item"><div class="stats__num" id="stat-ativas">0</div><div class="stats__label">Ativas</div></div>
+      </div>
+      <div class="controls">
+        <div class="search">
+          <span class="search__icon">⌕</span>
+          <input id="search-input" type="text" placeholder="Buscar por título, nicho ou público...">
+        </div>
+        <div class="filters" id="filters"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- ============ GERADOR DE OFERTAS ============ -->
+    <section class="panel" id="panel-gerador" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Gerador de Novas Ofertas</h2>
+        <p class="panel__subtitle">Monte novas ofertas combinando a fórmula Nicho + Dor + Mecanismo + Resultado + Público específico. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ COPIE O MODELO, NÃO A OFERTA ============ -->
+    <section class="panel" id="panel-copie-modelo" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Copie o Modelo, Não a Oferta</h2>
+        <p class="panel__subtitle">Os mesmos mecanismos vencedores aparecem repetidos em nichos diferentes. Modele o padrão, não o produto exato de outra pessoa. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ RADAR DE OPORTUNIDADES ============ -->
+    <section class="panel" id="panel-radar" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Radar de Oportunidades</h2>
+        <p class="panel__subtitle">Nichos que aparecem com mais força e recorrência nas minerações — sinal de demanda estrutural, não modismo. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ OFERTAS SATURADAS ============ -->
+    <section class="panel" id="panel-saturadas" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Ofertas Saturadas / Evitar</h2>
+        <p class="panel__subtitle">Onde já tem gente demais competindo agora — não é sobre o que fazer, é sobre onde não perder tempo. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ BANCO DE MECANISMOS ============ -->
+    <section class="panel" id="panel-mecanismos" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Banco de Mecanismos Únicos</h2>
+        <p class="panel__subtitle">Mecanismos reutilizáveis extraídos das ofertas validadas — adapte para o seu nicho. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ BANCO DE HEADLINES ============ -->
+    <section class="panel" id="panel-headlines" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Banco de Headlines</h2>
+        <p class="panel__subtitle">Templates prontos, separados por gatilho psicológico. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ BIBLIOTECA DE HOOKS ============ -->
+    <section class="panel" id="panel-hooks" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Biblioteca de Hooks para Anúncios</h2>
+        <p class="panel__subtitle">O que falar nos primeiros 3 segundos do criativo. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ SWIPE FILE ============ -->
+    <section class="panel" id="panel-swipe" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Swipe File de Criativos</h2>
+        <p class="panel__subtitle">Padrões de criativo organizados por formato. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ ESTRUTURA DE PÁGINA ============ -->
+    <section class="panel" id="panel-estruturas" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Estruturas de Página de Vendas</h2>
+        <p class="panel__subtitle">Template de blocos que aparece nas LPs mais completas mineradas. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ BUMPS & UPSELLS ============ -->
+    <section class="panel" id="panel-bumps" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Order Bumps & Upsells</h2>
+        <p class="panel__subtitle">Qual bump e upsell combina com cada tipo de produto, e a esteira real principal → bump → upsell. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ CALCULADORA DE ESTEIRA ============ -->
+    <section class="panel" id="panel-calculadora" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Calculadora de Esteira</h2>
+        <p class="panel__subtitle">Estime o ticket médio (AOV) da sua esteira de produto + bump + upsell. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ MAPA DE ESTEIRAS ============ -->
+    <section class="panel" id="panel-esteiras" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Mapa de Esteiras Prontas</h2>
+        <p class="panel__subtitle">Funis reutilizáveis identificados nas ofertas mineradas. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ BANCO DE BÔNUS ============ -->
+    <section class="panel" id="panel-bonus" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Banco de Bônus</h2>
+        <p class="panel__subtitle">Bônus que aumentam valor percebido sem exigir criar outro curso inteiro. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ PROMPTOTECA ============ -->
+    <section class="panel" id="panel-prompts" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Promptoteca de IA</h2>
+        <p class="panel__subtitle">Prompts prontos por etapa do processo — copie e adapte. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ CHECKLISTS ============ -->
+    <section class="panel" id="panel-checklists" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Checklists</h2>
+        <p class="panel__subtitle">"Eu lançaria essa oferta?" antes de lançar, e o checklist de lançamento em 24h. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+    <!-- ============ FERRAMENTAS ============ -->
+    <section class="panel" id="panel-ferramentas" hidden>
+      <div class="coming-soon">
+        <span class="coming-soon__badge">Em breve</span>
+        <h2 class="panel__title">Ferramentas Recomendadas</h2>
+        <p class="panel__subtitle">Ferramentas de pesquisa, IA, criação, página, checkout e organização recomendadas. Essa ferramenta já está estruturada e entra no ar em breve.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  Núcleo Gravitas · Hub interno de ofertas
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
