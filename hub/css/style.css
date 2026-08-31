@@ -173,6 +173,7 @@ h1,h2,h3{font-family:'Sora','Inter',sans-serif;}
 .link-alert--inativo{background:rgba(255,93,108,0.12);border-color:rgba(255,93,108,0.3);color:var(--red);}
 .link-alert--mudou{background:rgba(232,183,61,0.12);border-color:rgba(232,183,61,0.3);color:#e8b73d;}
 .link-alert--nao_verificavel{background:rgba(166,152,175,0.12);border-color:rgba(166,152,175,0.25);color:var(--muted);}
+.link-alert__hint{display:block;margin-top:6px;color:var(--muted);font-weight:400;opacity:0.9;}
 
 .card__row{display:flex;flex-direction:column;gap:3px;}
 .card__label{font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted-2);}

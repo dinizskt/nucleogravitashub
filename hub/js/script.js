@@ -66,7 +66,7 @@ function cardHTML(o) {
         <span class="status status--${o.status}"><span class="status__dot"></span>${STATUS_LABEL[o.status] || o.status}</span>
       </div>
       <h3 class="card__title">${o.titulo}</h3>
-      ${o.linkCheck && o.linkCheck.status !== "ok" ? `<div class="link-alert link-alert--${o.linkCheck.status}">${o.linkCheck.status === "inativo" ? "⚠ Link fora do ar" : o.linkCheck.status === "mudou" ? "⚠ Página mudou de conteúdo" : "◌ Link não verificável"} — ${o.linkCheck.nota}</div>` : ""}
+      ${o.linkCheck && o.linkCheck.status !== "ok" ? `<div class="link-alert link-alert--${o.linkCheck.status}"><strong>${o.linkCheck.status === "inativo" ? "⚠ Link fora do ar" : o.linkCheck.status === "mudou" ? "⚠ Página mudou de conteúdo" : "◌ Link não verificável"}</strong> — ${o.linkCheck.nota}<span class="link-alert__hint">Isso não invalida a oferta: a concepção, o mecanismo e a promessa abaixo continuam podendo ser modelados normalmente. O anunciante pode ter pausado por orçamento, sazonalidade ou trocado de link — não necessariamente porque parou de vender.</span></div>` : ""}
       <div class="card__row">
         <span class="card__label">Produto</span>
         <span class="card__value">${o.produto}</span>
