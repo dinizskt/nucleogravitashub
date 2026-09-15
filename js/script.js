@@ -16,14 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Proof carousel (infinite auto-scroll, pause on touch so it stays readable on mobile)
-  const carousel = document.getElementById('carousel');
-  if (carousel) {
+  // Proof carousels (infinite auto-scroll, pause on touch so it stays readable on mobile)
+  document.querySelectorAll('.carousel').forEach(carousel => {
     carousel.addEventListener('touchstart', () => carousel.classList.add('is-touched'), { passive: true });
     carousel.addEventListener('touchend', () => {
       setTimeout(() => carousel.classList.remove('is-touched'), 2500);
     }, { passive: true });
-  }
+  });
 
   // FAQ accordion
   document.querySelectorAll('.faq-item__q').forEach(btn => {
