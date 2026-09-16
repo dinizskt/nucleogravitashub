@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Arial, sans-serif">
+  <rect width="1600" height="900" fill="#060107"/>
+  <circle cx="1560" cy="40" r="140" fill="#6c1fc4" opacity="0.18"/>
+  
+    
+    <text x="60" y="55" fill="#8a3bdb" font-size="17" font-weight="700" letter-spacing="1.5">DIAGNÓSTICO E CORREÇÃO</text>
+    <text x="58" y="112" fill="#f3eef6" font-size="52" font-weight="800">7 ERROS QUE TRAVAM O LOW TICKET</text>
+    <text x="60" y="150" fill="#a698af" font-size="19">O problema, a consequência e a solução prática.</text>
+    <line x1="60" y1="176" x2="1540" y2="176" stroke="#1c0d22" stroke-width="2"/>
+  
+    
+    <g transform="translate(1500,55)">
+      <path d="M -46 0 L 0 -46 L 46 0 L 0 46 Z" fill="#17111f" stroke="#8a3bdb" stroke-width="2"/>
+      <text x="0" y="-3" fill="#f3eef6" font-size="11" font-weight="800" text-anchor="middle">NÚCLEO</text>
+      <text x="0" y="11" fill="#8a3bdb" font-size="11" font-weight="800" text-anchor="middle">GRAVITAS</text>
+    </g>
+  
+    
+        <rect x="60" y="205" width="490" height="555" rx="18" fill="#100c17" stroke="#2a1533"/>
+        <rect x="60" y="205" width="490" height="4" rx="2" fill="#6c1fc4"/>
+        <circle cx="105" cy="250" r="24" fill="#6c1fc4"/>
+        <text x="105" y="258" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">1</text>
+        <text x="146" y="245" fill="#f3eef6" font-size="24" font-weight="800">OFERTA</text>
+        <text x="146" y="266" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="0.5">PROMESSA, PREÇO E PLANOS</text>
+      <text x="90" y="301" fill="#ff5d6c" font-size="11" font-weight="800" letter-spacing="1">ERRO</text><text x="90" y="321" fill="#f3eef6" font-size="16.5" font-weight="700">Produto amplo demais</text><text x="90" y="342" fill="#a698af" font-size="13.5">A pessoa não entende qual dor será resolvida.</text><rect x="90" y="350" width="430" height="60" rx="8" fill="#17111f" stroke="#260850"/><text x="104" y="366" fill="#8a3bdb" font-size="10.5" font-weight="700" letter-spacing="1">SOLUÇÃO</text><text x="104" y="386" fill="#f3eef6" font-size="13.5" font-weight="600">Uma dor + uma promessa + um resultado</text><text x="104" y="404" fill="#f3eef6" font-size="13.5" font-weight="600">específico.</text><text x="90" y="444" fill="#ff5d6c" font-size="11" font-weight="800" letter-spacing="1">ERRO</text><text x="90" y="464" fill="#f3eef6" font-size="16.5" font-weight="700">Preço sem validação</text><text x="90" y="485" fill="#a698af" font-size="13.5">Cobrar alto sem prova aumenta resistência e CPA.</text><rect x="90" y="493" width="430" height="60" rx="8" fill="#17111f" stroke="#260850"/><text x="104" y="509" fill="#8a3bdb" font-size="10.5" font-weight="700" letter-spacing="1">SOLUÇÃO</text><text x="104" y="529" fill="#f3eef6" font-size="13.5" font-weight="600">Comece com baixa fricção, valide e teste</text><text x="104" y="547" fill="#f3eef6" font-size="13.5" font-weight="600">aumentos.</text><text x="90" y="587" fill="#ff5d6c" font-size="11" font-weight="800" letter-spacing="1">ERRO</text><text x="90" y="607" fill="#f3eef6" font-size="16.5" font-weight="700">Oferecer só um plano</text><text x="90" y="628" fill="#a698af" font-size="13.5">Sem comparação, o ticket médio fica limitado.</text><rect x="90" y="636" width="430" height="42" rx="8" fill="#17111f" stroke="#260850"/><text x="104" y="652" fill="#8a3bdb" font-size="10.5" font-weight="700" letter-spacing="1">SOLUÇÃO</text><text x="104" y="672" fill="#f3eef6" font-size="13.5" font-weight="600">Plano básico + completo com vantagem clara.</text>
+
+        <rect x="555" y="205" width="490" height="555" rx="18" fill="#100c17" stroke="#2a1533"/>
+        <rect x="555" y="205" width="490" height="4" rx="2" fill="#6c1fc4"/>
+        <circle cx="600" cy="250" r="24" fill="#6c1fc4"/>
+        <text x="600" y="258" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">2</text>
+        <text x="641" y="245" fill="#f3eef6" font-size="24" font-weight="800">CONVERSÃO</text>
+        <text x="641" y="266" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="0.5">PÁGINA, CHECKOUT E FUNIL</text>
+      <text x="585" y="301" fill="#ff5d6c" font-size="11" font-weight="800" letter-spacing="1">ERRO</text><text x="585" y="321" fill="#f3eef6" font-size="16.5" font-weight="700">Página complexa e lenta</text><text x="585" y="342" fill="#a698af" font-size="13.5">Excesso de informação dispersa e derruba</text><text x="585" y="360" fill="#a698af" font-size="13.5">conversão.</text><rect x="585" y="368" width="430" height="60" rx="8" fill="#17111f" stroke="#260850"/><text x="599" y="384" fill="#8a3bdb" font-size="10.5" font-weight="700" letter-spacing="1">SOLUÇÃO</text><text x="599" y="404" fill="#f3eef6" font-size="13.5" font-weight="600">Headline, mockup, demonstração, prova, planos</text><text x="599" y="422" fill="#f3eef6" font-size="13.5" font-weight="600">e CTA.</text><text x="585" y="462" fill="#ff5d6c" font-size="11" font-weight="800" letter-spacing="1">ERRO</text><text x="585" y="482" fill="#f3eef6" font-size="16.5" font-weight="700">Vender sem funil</text><text x="585" y="503" fill="#a698af" font-size="13.5">Depender só da entrada limita lucro e escala.</text><rect x="585" y="511" width="430" height="42" rx="8" fill="#17111f" stroke="#260850"/><text x="599" y="527" fill="#8a3bdb" font-size="10.5" font-weight="700" letter-spacing="1">SOLUÇÃO</text><text x="599" y="547" fill="#f3eef6" font-size="13.5" font-weight="600">Oferta → order bump → upsell → nova oferta.</text><rect x="585" y="674" width="430" height="66" rx="8" fill="#17111f" stroke="#260850"/><text x="599" y="696" fill="#8a3bdb" font-size="10.5" font-weight="700" letter-spacing="1">UPSELL IDEAL</text><text x="599" y="718" fill="#f3eef6" font-size="14.5" font-weight="700">Resolve outro problema ou acelera o</text><text x="599" y="738" fill="#f3eef6" font-size="14.5" font-weight="700">resultado.</text>
+
+        <rect x="1050" y="205" width="490" height="555" rx="18" fill="#100c17" stroke="#2a1533"/>
+        <rect x="1050" y="205" width="490" height="4" rx="2" fill="#6c1fc4"/>
+        <circle cx="1095" cy="250" r="24" fill="#6c1fc4"/>
+        <text x="1095" y="258" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">3</text>
+        <text x="1136" y="245" fill="#f3eef6" font-size="24" font-weight="800">TRÁFEGO</text>
+        <text x="1136" y="266" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="0.5">CRIATIVOS E OTIMIZAÇÃO</text>
+      <text x="1080" y="301" fill="#ff5d6c" font-size="11" font-weight="800" letter-spacing="1">ERRO</text><text x="1080" y="321" fill="#f3eef6" font-size="16.5" font-weight="700">Poucos criativos iguais</text><text x="1080" y="342" fill="#a698af" font-size="13.5">Mesmo formato e ângulo não são testes</text><text x="1080" y="360" fill="#a698af" font-size="13.5">diferentes.</text><rect x="1080" y="368" width="430" height="60" rx="8" fill="#17111f" stroke="#260850"/><text x="1094" y="384" fill="#8a3bdb" font-size="10.5" font-weight="700" letter-spacing="1">SOLUÇÃO</text><text x="1094" y="404" fill="#f3eef6" font-size="13.5" font-weight="600">Varie dor, desejo, prova, preço, imagem,</text><text x="1094" y="422" fill="#f3eef6" font-size="13.5" font-weight="600">vídeo, POV e UGC.</text><text x="1080" y="462" fill="#ff5d6c" font-size="11" font-weight="800" letter-spacing="1">ERRO</text><text x="1080" y="482" fill="#f3eef6" font-size="16.5" font-weight="700">Não otimizar diariamente</text><text x="1080" y="503" fill="#a698af" font-size="13.5">Perdas consomem verba e vencedores saturam.</text><rect x="1080" y="511" width="430" height="60" rx="8" fill="#17111f" stroke="#260850"/><text x="1094" y="527" fill="#8a3bdb" font-size="10.5" font-weight="700" letter-spacing="1">SOLUÇÃO</text><text x="1094" y="547" fill="#f3eef6" font-size="13.5" font-weight="600">Monitorar CPA/ROAS, pausar perdas e renovar</text><text x="1094" y="565" fill="#f3eef6" font-size="13.5" font-weight="600">criativos.</text><rect x="1080" y="694" width="430" height="46" rx="8" fill="#17111f" stroke="#260850"/><text x="1094" y="716" fill="#8a3bdb" font-size="10.5" font-weight="700" letter-spacing="1">PROCESSO</text><text x="1094" y="738" fill="#f3eef6" font-size="14.5" font-weight="700">Teste → valide → crie variações → renove.</text>
+    <rect x="60" y="800" width="1480" height="70" rx="14" fill="#100c17" stroke="#260850"/>
+    <rect x="60" y="800" width="5" height="70" rx="2" fill="#6c1fc4"/>
+    <text x="90" y="842" fill="#f3eef6" font-size="17.5" font-weight="800">Oferta específica → 2 planos → página simples → funil completo → criativos variados → otimização diária.</text>
+    <text x="1530" y="842" fill="#a698af" font-size="14" text-anchor="end"></text>
+  
+</svg>

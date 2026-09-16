@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Arial, sans-serif">
+  <rect width="1600" height="900" fill="#060107"/>
+  <circle cx="1560" cy="40" r="140" fill="#6c1fc4" opacity="0.18"/>
+  
+    
+    <text x="60" y="55" fill="#8a3bdb" font-size="17" font-weight="700" letter-spacing="1.5">CHECKLIST ESTRATÉGICO</text>
+    <text x="58" y="112" fill="#f3eef6" font-size="52" font-weight="800">ARQUITETURA DA OFERTA</text>
+    <text x="60" y="150" fill="#a698af" font-size="19">21 elementos que conectam estratégia, comunicação e entrega.</text>
+    <line x1="60" y1="176" x2="1540" y2="176" stroke="#1c0d22" stroke-width="2"/>
+  
+    
+    <g transform="translate(1500,55)">
+      <path d="M -46 0 L 0 -46 L 46 0 L 0 46 Z" fill="#17111f" stroke="#8a3bdb" stroke-width="2"/>
+      <text x="0" y="-3" fill="#f3eef6" font-size="11" font-weight="800" text-anchor="middle">NÚCLEO</text>
+      <text x="0" y="11" fill="#8a3bdb" font-size="11" font-weight="800" text-anchor="middle">GRAVITAS</text>
+    </g>
+  
+    
+        <rect x="60" y="205" width="490" height="555" rx="18" fill="#100c17" stroke="#2a1533"/>
+        <rect x="60" y="205" width="490" height="4" rx="2" fill="#6c1fc4"/>
+        <circle cx="105" cy="250" r="24" fill="#6c1fc4"/>
+        <text x="105" y="258" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">1</text>
+        <text x="146" y="245" fill="#f3eef6" font-size="24" font-weight="800">CONCEPÇÃO DE OFERTA</text>
+        <text x="146" y="266" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="0.5">BASE ESTRATÉGICA</text>
+      <rect x="90" y="301" width="430" height="26" rx="6" fill="#260850" opacity="0.5"/>
+        <text x="102" y="319" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">09 ELEMENTOS</text><circle cx="94" cy="352" r="3" fill="#8a3bdb"/><text x="106" y="357" fill="#f3eef6" font-size="15.5">Nicho</text><circle cx="94" cy="380" r="3" fill="#8a3bdb"/><text x="106" y="385" fill="#f3eef6" font-size="15.5">Subnicho</text><circle cx="94" cy="408" r="3" fill="#8a3bdb"/><text x="106" y="413" fill="#f3eef6" font-size="15.5">Persona</text><circle cx="94" cy="436" r="3" fill="#8a3bdb"/><text x="106" y="441" fill="#f3eef6" font-size="15.5">Dor</text><circle cx="94" cy="464" r="3" fill="#8a3bdb"/><text x="106" y="469" fill="#f3eef6" font-size="15.5">Desejo</text><circle cx="94" cy="492" r="3" fill="#8a3bdb"/><text x="106" y="497" fill="#f3eef6" font-size="15.5">Pensamento interno</text><circle cx="94" cy="520" r="3" fill="#8a3bdb"/><text x="106" y="525" fill="#f3eef6" font-size="15.5">Resultado final</text><circle cx="94" cy="548" r="3" fill="#8a3bdb"/><text x="106" y="553" fill="#f3eef6" font-size="15.5">Mecanismo da solução</text><circle cx="94" cy="576" r="3" fill="#8a3bdb"/><text x="106" y="581" fill="#f3eef6" font-size="15.5">Formato</text><rect x="90" y="650" width="430" height="84" rx="10" fill="#17111f" stroke="#260850"/><text x="110" y="676" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">VALIDAÇÃO</text><text x="110" y="700" fill="#f3eef6" font-size="15" font-weight="700">O mercado reconhece o problema</text><text x="110" y="722" fill="#f3eef6" font-size="15" font-weight="700">e deseja essa transformação?</text>
+
+        <rect x="555" y="205" width="490" height="555" rx="18" fill="#100c17" stroke="#2a1533"/>
+        <rect x="555" y="205" width="490" height="4" rx="2" fill="#6c1fc4"/>
+        <circle cx="600" cy="250" r="24" fill="#6c1fc4"/>
+        <text x="600" y="258" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">2</text>
+        <text x="641" y="245" fill="#f3eef6" font-size="24" font-weight="800">OFERTA</text>
+        <text x="641" y="266" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="0.5">PERCEPÇÃO DE VALOR</text>
+      <rect x="585" y="301" width="430" height="26" rx="6" fill="#260850" opacity="0.5"/>
+        <text x="597" y="319" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">08 ELEMENTOS</text><circle cx="589" cy="352" r="3" fill="#8a3bdb"/><text x="601" y="357" fill="#f3eef6" font-size="15.5">Promessa</text><circle cx="589" cy="380" r="3" fill="#8a3bdb"/><text x="601" y="385" fill="#f3eef6" font-size="15.5">Nome do produto</text><circle cx="589" cy="408" r="3" fill="#8a3bdb"/><text x="601" y="413" fill="#f3eef6" font-size="15.5">Composição do produto</text><circle cx="589" cy="436" r="3" fill="#8a3bdb"/><text x="601" y="441" fill="#f3eef6" font-size="15.5">Vantagens</text><circle cx="589" cy="464" r="3" fill="#8a3bdb"/><text x="601" y="469" fill="#f3eef6" font-size="15.5">Bônus</text><circle cx="589" cy="492" r="3" fill="#8a3bdb"/><text x="601" y="497" fill="#f3eef6" font-size="15.5">Valor de venda</text><circle cx="589" cy="520" r="3" fill="#8a3bdb"/><text x="601" y="525" fill="#f3eef6" font-size="15.5">Benefícios</text><circle cx="589" cy="548" r="3" fill="#8a3bdb"/><text x="601" y="553" fill="#f3eef6" font-size="15.5">Copy e comunicação</text><rect x="585" y="650" width="430" height="84" rx="10" fill="#17111f" stroke="#260850"/><text x="605" y="676" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">VALIDAÇÃO</text><text x="605" y="700" fill="#f3eef6" font-size="15" font-weight="700">A proposta comunica valor,</text><text x="605" y="722" fill="#f3eef6" font-size="15" font-weight="700">gera desejo e facilita a decisão?</text>
+
+        <rect x="1050" y="205" width="490" height="555" rx="18" fill="#100c17" stroke="#2a1533"/>
+        <rect x="1050" y="205" width="490" height="4" rx="2" fill="#6c1fc4"/>
+        <circle cx="1095" cy="250" r="24" fill="#6c1fc4"/>
+        <text x="1095" y="258" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">3</text>
+        <text x="1136" y="245" fill="#f3eef6" font-size="24" font-weight="800">PRODUTO</text>
+        <text x="1136" y="266" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="0.5">TRANSFORMAÇÃO REAL</text>
+      <rect x="1080" y="301" width="430" height="26" rx="6" fill="#260850" opacity="0.5"/>
+        <text x="1092" y="319" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">04 ELEMENTOS</text><circle cx="1084" cy="352" r="3" fill="#8a3bdb"/><text x="1096" y="357" fill="#f3eef6" font-size="15.5">Conteúdo</text><circle cx="1084" cy="380" r="3" fill="#8a3bdb"/><text x="1096" y="385" fill="#f3eef6" font-size="15.5">Visual</text><circle cx="1084" cy="408" r="3" fill="#8a3bdb"/><text x="1096" y="413" fill="#f3eef6" font-size="15.5">Experiência de consumo</text><circle cx="1084" cy="436" r="3" fill="#8a3bdb"/><text x="1096" y="441" fill="#f3eef6" font-size="15.5">Entrega</text><rect x="1080" y="650" width="430" height="66" rx="10" fill="#17111f" stroke="#260850"/><text x="1100" y="676" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">REGRA DE OURO</text><text x="1100" y="700" fill="#f3eef6" font-size="15" font-weight="700">Prometer, entregar e superar.</text>
+    <rect x="60" y="800" width="1480" height="70" rx="14" fill="#100c17" stroke="#260850"/>
+    <rect x="60" y="800" width="5" height="70" rx="2" fill="#6c1fc4"/>
+    <text x="90" y="842" fill="#f3eef6" font-size="20" font-weight="800">Antes de escalar, valide cada camada.</text>
+    <text x="1530" y="842" fill="#a698af" font-size="15" text-anchor="end">Uma falha na concepção enfraquece a oferta e compromete o produto.</text>
+  
+</svg>

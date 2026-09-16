@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Arial, sans-serif">
+  <rect width="1600" height="900" fill="#060107"/>
+  <circle cx="1560" cy="40" r="140" fill="#6c1fc4" opacity="0.18"/>
+  
+    
+    <text x="60" y="55" fill="#8a3bdb" font-size="17" font-weight="700" letter-spacing="1.5">CONVERSÃO DIRETA</text>
+    <text x="58" y="112" fill="#f3eef6" font-size="52" font-weight="800">PÁGINA DE VENDAS LOW TICKET</text>
+    <text x="60" y="150" fill="#a698af" font-size="19">Comunicação objetiva, estrutura lógica e visual que torna o produto tangível.</text>
+    <line x1="60" y1="176" x2="1540" y2="176" stroke="#1c0d22" stroke-width="2"/>
+  
+    
+    <g transform="translate(1500,55)">
+      <path d="M -46 0 L 0 -46 L 46 0 L 0 46 Z" fill="#17111f" stroke="#8a3bdb" stroke-width="2"/>
+      <text x="0" y="-3" fill="#f3eef6" font-size="11" font-weight="800" text-anchor="middle">NÚCLEO</text>
+      <text x="0" y="11" fill="#8a3bdb" font-size="11" font-weight="800" text-anchor="middle">GRAVITAS</text>
+    </g>
+  
+    
+        <rect x="60" y="205" width="490" height="555" rx="18" fill="#100c17" stroke="#2a1533"/>
+        <rect x="60" y="205" width="490" height="4" rx="2" fill="#6c1fc4"/>
+        <circle cx="105" cy="250" r="24" fill="#6c1fc4"/>
+        <text x="105" y="258" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">1</text>
+        <text x="146" y="245" fill="#f3eef6" font-size="24" font-weight="800">COMUNICAÇÃO</text>
+        <text x="146" y="266" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="0.5">CLAREZA QUE CONVERTE</text>
+      <rect x="90" y="301" width="430" height="26" rx="6" fill="#260850" opacity="0.5"/>
+        <text x="102" y="319" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">07 ELEMENTOS</text><circle cx="94" cy="352" r="3" fill="#8a3bdb"/><text x="106" y="357" fill="#f3eef6" font-size="15.5">Headline direta e ligada ao benefício</text><circle cx="94" cy="380" r="3" fill="#8a3bdb"/><text x="106" y="385" fill="#f3eef6" font-size="15.5">Texto claro, específico e sem jargões</text><circle cx="94" cy="408" r="3" fill="#8a3bdb"/><text x="106" y="413" fill="#f3eef6" font-size="15.5">Frases curtas e escaneáveis</text><circle cx="94" cy="436" r="3" fill="#8a3bdb"/><text x="106" y="441" fill="#f3eef6" font-size="15.5">Promessa conectada ao produto e à persona</text><circle cx="94" cy="464" r="3" fill="#8a3bdb"/><text x="106" y="469" fill="#f3eef6" font-size="15.5">Cada bloco responde a uma dor ou desejo</text><circle cx="94" cy="492" r="3" fill="#8a3bdb"/><text x="106" y="497" fill="#f3eef6" font-size="15.5">Tom de voz adequado ao público</text><circle cx="94" cy="520" r="3" fill="#8a3bdb"/><text x="106" y="525" fill="#f3eef6" font-size="15.5">Objeções antecipadas no texto</text><rect x="90" y="650" width="430" height="84" rx="10" fill="#17111f" stroke="#260850"/><text x="110" y="676" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">OBJETIVO</text><text x="110" y="700" fill="#f3eef6" font-size="15" font-weight="700">Fazer a pessoa pensar: isso foi</text><text x="110" y="722" fill="#f3eef6" font-size="15" font-weight="700">feito para mim.</text>
+
+        <rect x="555" y="205" width="490" height="555" rx="18" fill="#100c17" stroke="#2a1533"/>
+        <rect x="555" y="205" width="490" height="4" rx="2" fill="#6c1fc4"/>
+        <circle cx="600" cy="250" r="24" fill="#6c1fc4"/>
+        <text x="600" y="258" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">2</text>
+        <text x="641" y="245" fill="#f3eef6" font-size="24" font-weight="800">ESTRUTURA</text>
+        <text x="641" y="266" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="0.5">ORDEM QUE CONDUZ</text>
+      <rect x="585" y="301" width="430" height="26" rx="6" fill="#260850" opacity="0.5"/>
+        <text x="597" y="319" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">08 ELEMENTOS</text><circle cx="589" cy="352" r="3" fill="#8a3bdb"/><text x="601" y="357" fill="#f3eef6" font-size="15.5">Sequência lógica de blocos</text><circle cx="589" cy="380" r="3" fill="#8a3bdb"/><text x="601" y="385" fill="#f3eef6" font-size="15.5">Conexão fluida, sem saltos</text><circle cx="589" cy="408" r="3" fill="#8a3bdb"/><text x="601" y="413" fill="#f3eef6" font-size="15.5">Produto reforçado em pontos estratégicos</text><circle cx="589" cy="436" r="3" fill="#8a3bdb"/><text x="601" y="441" fill="#f3eef6" font-size="15.5">Blocos adequados à consciência da persona</text><circle cx="589" cy="464" r="3" fill="#8a3bdb"/><text x="601" y="469" fill="#f3eef6" font-size="15.5">CTA no início, no meio e no fim</text><circle cx="589" cy="492" r="3" fill="#8a3bdb"/><text x="601" y="497" fill="#f3eef6" font-size="15.5">Equilíbrio entre emoção e razão</text><circle cx="589" cy="520" r="3" fill="#8a3bdb"/><text x="601" y="525" fill="#f3eef6" font-size="15.5">Contraste claro entre planos</text><circle cx="589" cy="548" r="3" fill="#8a3bdb"/><text x="601" y="553" fill="#f3eef6" font-size="15.5">Rodapé com garantia e suporte</text><rect x="585" y="650" width="430" height="84" rx="10" fill="#17111f" stroke="#260850"/><text x="605" y="676" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">OBJETIVO</text><text x="605" y="700" fill="#f3eef6" font-size="15" font-weight="700">Conduzir da dor até a decisão</text><text x="605" y="722" fill="#f3eef6" font-size="15" font-weight="700">de compra.</text>
+
+        <rect x="1050" y="205" width="490" height="555" rx="18" fill="#100c17" stroke="#2a1533"/>
+        <rect x="1050" y="205" width="490" height="4" rx="2" fill="#6c1fc4"/>
+        <circle cx="1095" cy="250" r="24" fill="#6c1fc4"/>
+        <text x="1095" y="258" fill="#fff" font-size="20" font-weight="800" text-anchor="middle">3</text>
+        <text x="1136" y="245" fill="#f3eef6" font-size="24" font-weight="800">VISUAL</text>
+        <text x="1136" y="266" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="0.5">FORMA QUE TANGIBILIZA</text>
+      <rect x="1080" y="301" width="430" height="26" rx="6" fill="#260850" opacity="0.5"/>
+        <text x="1092" y="319" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">09 ELEMENTOS</text><circle cx="1084" cy="352" r="3" fill="#8a3bdb"/><text x="1096" y="357" fill="#f3eef6" font-size="15.5">Mockups e prévias do produto</text><circle cx="1084" cy="380" r="3" fill="#8a3bdb"/><text x="1096" y="385" fill="#f3eef6" font-size="15.5">Botões com contraste</text><circle cx="1084" cy="408" r="3" fill="#8a3bdb"/><text x="1096" y="413" fill="#f3eef6" font-size="15.5">Espaçamento entre seções</text><circle cx="1084" cy="436" r="3" fill="#8a3bdb"/><text x="1096" y="441" fill="#f3eef6" font-size="15.5">Hierarquia de tamanhos e pesos</text><circle cx="1084" cy="464" r="3" fill="#8a3bdb"/><text x="1096" y="469" fill="#f3eef6" font-size="15.5">Ícones e setas que orientam</text><circle cx="1084" cy="492" r="3" fill="#8a3bdb"/><text x="1096" y="497" fill="#f3eef6" font-size="15.5">Amostras e prints da entrega</text><circle cx="1084" cy="520" r="3" fill="#8a3bdb"/><text x="1096" y="525" fill="#f3eef6" font-size="15.5">Layout limpo e organizado</text><circle cx="1084" cy="548" r="3" fill="#8a3bdb"/><text x="1096" y="553" fill="#f3eef6" font-size="15.5">Aparência profissional</text><circle cx="1084" cy="576" r="3" fill="#8a3bdb"/><text x="1096" y="581" fill="#f3eef6" font-size="15.5">Urgência sem poluição visual</text><rect x="1080" y="650" width="430" height="84" rx="10" fill="#17111f" stroke="#260850"/><text x="1100" y="676" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="1">OBJETIVO</text><text x="1100" y="700" fill="#f3eef6" font-size="15" font-weight="700">Tornar o valor visível e aumentar</text><text x="1100" y="722" fill="#f3eef6" font-size="15" font-weight="700">a credibilidade.</text>
+    <rect x="60" y="800" width="1480" height="70" rx="14" fill="#100c17" stroke="#260850"/>
+    <rect x="60" y="800" width="5" height="70" rx="2" fill="#6c1fc4"/>
+    <text x="90" y="842" fill="#f3eef6" font-size="20" font-weight="800">A copy atrai. A estrutura conduz. O visual torna a promessa concreta.</text>
+    <text x="1530" y="842" fill="#a698af" font-size="15" text-anchor="end">Clareza, sequência e percepção de valor antes da escala.</text>
+  
+</svg>
