@@ -1610,45 +1610,38 @@ const SATURADAS = [
    ========================================================================== */
 const FRAMEWORKS = [
   {
-    titulo: "Metodologia Aplicada",
-    categoria: "Visão Geral",
-    descricao: "Estratégia • Oferta • Conversão • Tráfego — da concepção à análise de resultados.",
-    imagem: "/hub/assets/frameworks/01-metodologia-aplicada.svg",
-    arquivo: "/hub/assets/frameworks/01-metodologia-aplicada.svg",
-  },
-  {
     titulo: "Estrutura de Oferta",
     categoria: "Oferta",
     descricao: "Concepção → Oferta → Produto: da clareza estratégica à entrega que gera transformação.",
     imagem: "/hub/assets/frameworks/02-estrutura-de-oferta.svg",
-    arquivo: "/hub/assets/frameworks/02-estrutura-de-oferta.svg",
+    arquivo: "/hub/assets/frameworks/02-estrutura-de-oferta.pdf",
   },
   {
     titulo: "Arquitetura da Oferta",
     categoria: "Oferta",
     descricao: "Checklist estratégico com 21 elementos que conectam estratégia, comunicação e entrega.",
     imagem: "/hub/assets/frameworks/03-arquitetura-da-oferta.svg",
-    arquivo: "/hub/assets/frameworks/03-arquitetura-da-oferta.svg",
+    arquivo: "/hub/assets/frameworks/03-arquitetura-da-oferta.pdf",
   },
   {
     titulo: "Página de Vendas Low Ticket",
     categoria: "Conversão",
     descricao: "Comunicação, estrutura e visual — o que torna uma página de vendas low ticket tangível e persuasiva.",
     imagem: "/hub/assets/frameworks/04-pagina-de-vendas-low-ticket.svg",
-    arquivo: "/hub/assets/frameworks/04-pagina-de-vendas-low-ticket.svg",
+    arquivo: "/hub/assets/frameworks/04-pagina-de-vendas-low-ticket.pdf",
   },
   {
     titulo: "Métricas da Utmify",
     categoria: "Tráfego",
     descricao: "12 siglas essenciais para analisar do anúncio ao lucro: CPM, CTR, CPC, CVR, CPA, ROAS, ROI e mais.",
     imagem: "/hub/assets/frameworks/05-metricas-da-utmify.svg",
-    arquivo: "/hub/assets/frameworks/05-metricas-da-utmify.svg",
+    arquivo: "/hub/assets/frameworks/05-metricas-da-utmify.pdf",
   },
   {
     titulo: "7 Erros que Travam o Low Ticket",
     categoria: "Diagnóstico",
     descricao: "O problema, a consequência e a solução prática para oferta, conversão e tráfego.",
     imagem: "/hub/assets/frameworks/06-7-erros-que-travam-o-low-ticket.svg",
-    arquivo: "/hub/assets/frameworks/06-7-erros-que-travam-o-low-ticket.svg",
+    arquivo: "/hub/assets/frameworks/06-7-erros-que-travam-o-low-ticket.pdf",
   },
 ];
