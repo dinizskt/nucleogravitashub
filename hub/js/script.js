@@ -173,3 +173,31 @@ searchInput.addEventListener("input", (e) => {
 renderFiltros();
 renderStats();
 renderOfertas();
+
+/* ============================== FRAMEWORKS ============================== */
+function frameworkCardHTML(f) {
+  return `
+    <article class="framework-card">
+      <div class="framework-card__thumb">
+        <img src="${f.imagem}" alt="${f.titulo}" loading="lazy">
+      </div>
+      <div class="framework-card__body">
+        ${f.categoria ? `<span class="card__niche">${f.categoria}</span>` : ""}
+        <h3 class="framework-card__title">${f.titulo}</h3>
+        ${f.descricao ? `<p class="framework-card__desc">${f.descricao}</p>` : ""}
+        <a class="btn btn--primary btn--sm" href="${f.arquivo || f.imagem}" download>Baixar framework <span class="arrow">→</span></a>
+      </div>
+    </article>
+  `;
+}
+
+function renderFrameworks() {
+  const grid = document.getElementById("frameworks-grid");
+  if (!grid) return;
+  if (!FRAMEWORKS.length) {
+    grid.innerHTML = `<div class="empty"><strong>Nenhum framework publicado ainda</strong>Assim que os frameworks forem adicionados, eles aparecem aqui automaticamente.</div>`;
+    return;
+  }
+  grid.innerHTML = FRAMEWORKS.map(frameworkCardHTML).join("");
+}
+renderFrameworks();

@@ -1598,3 +1598,23 @@ const SATURADAS = [
   { nicho: "Concursos de alta visibilidade (CGU, PC-PR, Tribunais)", motivo: "15 a 89 anunciantes distintos competindo assim que o edital é publicado — inviável para quem está começando.", saida: "Buscar concursos com demanda comprovada mas zero infoproduto (ex: agências reguladoras federais menos populares)." },
   { nicho: "Elite dos Laços / cursos com ticket acima de R$47", motivo: "Preço de entrada fora da faixa de compra por impulso, exige mais convencimento e maior CAC.", saida: "Fatiar o produto em uma versão de entrada mais barata, com upsell para o pacote completo." },
 ];
+
+/* ==========================================================================
+   BANCO DE FRAMEWORKS
+   Cada framework é uma imagem/arquivo em formato 16:9 hospedado em
+   hub/assets/frameworks/. Para adicionar um novo framework:
+   1. Coloque o arquivo de imagem (ex: .png ou .jpg, 16:9) em hub/assets/frameworks/
+   2. Copie um objeto abaixo e edite os campos — "imagem" é o que aparece na
+      miniatura, "arquivo" é o que baixa (pode ser o mesmo arquivo, ou uma
+      versão em maior resolução / PDF).
+   ========================================================================== */
+const FRAMEWORKS = [
+  // Exemplo (remover ou editar quando os frameworks reais forem enviados):
+  // {
+  //   titulo: "Fórmula da Oferta",
+  //   categoria: "Oferta",
+  //   descricao: "Nicho + Dor + Mecanismo + Resultado + Público específico.",
+  //   imagem: "assets/frameworks/formula-da-oferta.png",
+  //   arquivo: "assets/frameworks/formula-da-oferta.png",
+  // },
+];
