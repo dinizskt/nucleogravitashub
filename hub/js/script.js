@@ -175,9 +175,9 @@ renderStats();
 renderOfertas();
 
 /* ============================== FRAMEWORKS ============================== */
-function frameworkCardHTML(f) {
+function frameworkCardHTML(f, i) {
   return `
-    <article class="framework-card">
+    <article class="framework-card" data-index="${i}">
       <div class="framework-card__thumb">
         <img src="${f.imagem}" alt="${f.titulo}" loading="lazy">
       </div>
@@ -201,3 +201,48 @@ function renderFrameworks() {
   grid.innerHTML = FRAMEWORKS.map(frameworkCardHTML).join("");
 }
 renderFrameworks();
+
+/* ---- Modal de visualização (estilo galeria) ---- */
+const fwModal = document.getElementById("fw-modal");
+const fwModalImg = document.getElementById("fw-modal-img");
+const fwModalTitle = document.getElementById("fw-modal-title");
+const fwModalCategoria = document.getElementById("fw-modal-categoria");
+const fwModalDesc = document.getElementById("fw-modal-desc");
+const fwModalDownload = document.getElementById("fw-modal-download");
+
+function openFrameworkModal(f) {
+  fwModalImg.src = f.imagem;
+  fwModalImg.alt = f.titulo;
+  fwModalTitle.textContent = f.titulo;
+  fwModalCategoria.textContent = f.categoria || "";
+  fwModalDesc.textContent = f.descricao || "";
+  fwModalDownload.href = f.arquivo || f.imagem;
+  fwModal.hidden = false;
+  document.body.classList.add("no-scroll");
+}
+
+function closeFrameworkModal() {
+  fwModal.hidden = true;
+  fwModalImg.src = "";
+  document.body.classList.remove("no-scroll");
+}
+
+const frameworksGrid = document.getElementById("frameworks-grid");
+if (frameworksGrid) {
+  frameworksGrid.addEventListener("click", (e) => {
+    if (e.target.closest("a")) return;
+    const card = e.target.closest(".framework-card");
+    if (!card) return;
+    const f = FRAMEWORKS[Number(card.dataset.index)];
+    if (f) openFrameworkModal(f);
+  });
+}
+
+if (fwModal) {
+  fwModal.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close]")) closeFrameworkModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !fwModal.hidden) closeFrameworkModal();
+  });
+}

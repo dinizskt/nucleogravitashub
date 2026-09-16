@@ -241,6 +241,24 @@
   Núcleo Gravitas · Hub interno de ofertas
 </footer>
 
+<div class="fw-modal" id="fw-modal" hidden>
+  <div class="fw-modal__backdrop" data-close></div>
+  <div class="fw-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="fw-modal-title">
+    <button class="fw-modal__close" type="button" data-close aria-label="Fechar">&times;</button>
+    <div class="fw-modal__media">
+      <img id="fw-modal-img" src="" alt="">
+    </div>
+    <div class="fw-modal__footer">
+      <div class="fw-modal__info">
+        <span class="card__niche" id="fw-modal-categoria"></span>
+        <h3 id="fw-modal-title"></h3>
+        <p id="fw-modal-desc"></p>
+      </div>
+      <a class="btn btn--primary" id="fw-modal-download" href="#" download>Baixar framework <span class="arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
 <script src="/hub/js/data.js"></script>
 <script src="/hub/js/script.js"></script>
 </body>
