@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Arial, sans-serif">
+
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="accentV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="divider" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#260850" stop-opacity="0.9"/><stop offset="1" stop-color="#260850" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#6c1fc4" stop-opacity="0.4"/><stop offset="100%" stop-color="#6c1fc4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#8a3bdb" stop-opacity="0.22"/><stop offset="100%" stop-color="#8a3bdb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#8a3bdb" flood-opacity="0.55"/>
+    </filter>
+    <linearGradient id="cardFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141020"/><stop offset="1" stop-color="#0d0913"/>
+    </linearGradient>
+    <linearGradient id="calloutFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d1428"/><stop offset="1" stop-color="#150f1d"/>
+    </linearGradient>
+  </defs>
+
+
+    <rect width="1600" height="900" fill="#060107"/>
+    <circle cx="1620" cy="-40" r="280" fill="url(#blob1)"/>
+    <circle cx="-60" cy="960" r="260" fill="url(#blob2)"/>
+  
+
+    <rect x="60" y="26" width="358.2" height="28" rx="14" fill="#17111f" stroke="#260850"/>
+    <text x="239.1" y="45" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">TESTE DE CRIATIVO E ESCALA · SEÇÃO 25</text>
+  <text x="58" y="118" fill="#f3eef6" font-size="54" font-weight="800">Mapa de Decisões na Escala</text><text x="60" y="156" fill="#a698af" font-size="18">Decisão sempre baseada em desempenho — tempo mínimo de 2h de análise.</text><rect x="60" y="180" width="1480" height="2" fill="url(#divider)"/>
+    <g transform="translate(1500,52)" filter="url(#softGlow)">
+      <rect x="-46" y="-46" width="92" height="92" rx="20" fill="#17111f" stroke="url(#accent)" stroke-width="2"/>
+      <g transform="rotate(45)">
+        <rect x="-24" y="-24" width="48" height="48" rx="8" fill="none" stroke="url(#accent)" stroke-width="2"/>
+      </g>
+      <text x="0" y="-3" fill="#f3eef6" font-size="11" font-weight="800" text-anchor="middle">NÚCLEO</text>
+      <text x="0" y="12" fill="#8a3bdb" font-size="11" font-weight="800" text-anchor="middle">GRAVITAS</text>
+    </g>
+  <rect x="60" y="214" width="1480" height="260" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="60" y="214" width="1480" height="44" rx="20" fill="#17111f"/><rect x="60" y="236" width="1480" height="22" fill="#17111f"/><text x="90" y="242" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1">CENÁRIO</text><text x="340" y="242" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1">LUCRO</text><text x="950" y="242" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1">AÇÃO</text><rect x="90" y="277" width="160" height="34" rx="17" fill="#3ddc84" opacity="0.2" stroke="#3ddc84" stroke-width="1.2"/><text x="170" y="300" fill="#3ddc84" font-size="15" font-weight="800" text-anchor="middle">POSITIVO</text><text x="340" y="300" fill="#a698af" font-size="15">Aumentou consideravelmente</text><text x="950" y="300" fill="#f3eef6" font-size="15" font-weight="600">Avança conforme o framework de escala.</text><line x1="60" y1="330" x2="1540" y2="330" stroke="#1c0d22"/><rect x="90" y="349" width="160" height="34" rx="17" fill="#e8b73d" opacity="0.2" stroke="#e8b73d" stroke-width="1.2"/><text x="170" y="372" fill="#e8b73d" font-size="15" font-weight="800" text-anchor="middle">MÉDIO</text><text x="340" y="362" fill="#a698af" font-size="15">Permaneceu ou caiu pouco (até</text><text x="340" y="382" fill="#a698af" font-size="15">2 tickets)</text><text x="950" y="372" fill="#f3eef6" font-size="15" font-weight="600">Não avança — mantém o orçamento.</text><line x1="60" y1="402" x2="1540" y2="402" stroke="#1c0d22"/><rect x="90" y="421" width="160" height="34" rx="17" fill="#ff5d6c" opacity="0.2" stroke="#ff5d6c" stroke-width="1.2"/><text x="170" y="444" fill="#ff5d6c" font-size="15" font-weight="800" text-anchor="middle">NEGATIVO</text><text x="340" y="434" fill="#a698af" font-size="15">Caiu drasticamente (+2</text><text x="340" y="454" fill="#a698af" font-size="15">tickets)</text><text x="950" y="434" fill="#f3eef6" font-size="15" font-weight="600">Uma das 3 opções: volta 1 passo · reduz</text><text x="950" y="454" fill="#f3eef6" font-size="15" font-weight="600">drástico · desativa.</text><rect x="60" y="498" width="728" height="268" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="60" y="498" width="728" height="5" rx="2.5" fill="url(#accent)"/><text x="90" y="536" fill="#f3eef6" font-size="19" font-weight="800">SUPERLUCRATIVO</text><text x="90" y="558" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="0.5">VÁRIOS CONJUNTOS COM ROAS &gt; 2.0</text><text x="90" y="590" fill="#a698af" font-size="15">1º: +50% no orçamento. Funcionou &gt; 2º: +100%. Seguindo bem: aumentos de 50 a</text><text x="90" y="612" fill="#a698af" font-size="15">300%.</text><rect x="812" y="498" width="728" height="268" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="812" y="498" width="728" height="5" rx="2.5" fill="url(#accent)"/><text x="842" y="536" fill="#f3eef6" font-size="19" font-weight="800">LUCRATIVO</text><text x="842" y="558" fill="#8a3bdb" font-size="12" font-weight="700" letter-spacing="0.5">1 A 3 CONJUNTOS COM ROAS &gt; 1.8</text><text x="842" y="590" fill="#a698af" font-size="15">1º: +50% e espera dois dias. Funcionou &gt; 2º: +50%. Seguindo bem: aumentos de</text><text x="842" y="612" fill="#a698af" font-size="15">30 a 100%.</text>
+</svg>

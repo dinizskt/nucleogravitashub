@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Arial, sans-serif">
+
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="accentV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="divider" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#260850" stop-opacity="0.9"/><stop offset="1" stop-color="#260850" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#6c1fc4" stop-opacity="0.4"/><stop offset="100%" stop-color="#6c1fc4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#8a3bdb" stop-opacity="0.22"/><stop offset="100%" stop-color="#8a3bdb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#8a3bdb" flood-opacity="0.55"/>
+    </filter>
+    <linearGradient id="cardFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141020"/><stop offset="1" stop-color="#0d0913"/>
+    </linearGradient>
+    <linearGradient id="calloutFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d1428"/><stop offset="1" stop-color="#150f1d"/>
+    </linearGradient>
+  </defs>
+
+
+    <rect width="1600" height="900" fill="#060107"/>
+    <circle cx="1620" cy="-40" r="280" fill="url(#blob1)"/>
+    <circle cx="-60" cy="960" r="260" fill="url(#blob2)"/>
+  
+
+    <rect x="60" y="26" width="237.79999999999998" height="28" rx="14" fill="#17111f" stroke="#260850"/>
+    <text x="178.89999999999998" y="45" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">TRÁFEGO PAGO · SEÇÃO 22</text>
+  <text x="58" y="118" fill="#f3eef6" font-size="54" font-weight="800">Padrão Básico de Métricas para Low Ticket</text><text x="60" y="156" fill="#a698af" font-size="18">Bom, médio e ruim, por métrica, tendo o ticket médio (TM) como referência.</text><rect x="60" y="180" width="1480" height="2" fill="url(#divider)"/>
+    <g transform="translate(1500,52)" filter="url(#softGlow)">
+      <rect x="-46" y="-46" width="92" height="92" rx="20" fill="#17111f" stroke="url(#accent)" stroke-width="2"/>
+      <g transform="rotate(45)">
+        <rect x="-24" y="-24" width="48" height="48" rx="8" fill="none" stroke="url(#accent)" stroke-width="2"/>
+      </g>
+      <text x="0" y="-3" fill="#f3eef6" font-size="11" font-weight="800" text-anchor="middle">NÚCLEO</text>
+      <text x="0" y="12" fill="#8a3bdb" font-size="11" font-weight="800" text-anchor="middle">GRAVITAS</text>
+    </g>
+  <rect x="60" y="214" width="1480" height="552" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="60" y="214" width="1480" height="46" rx="20" fill="#17111f"/><rect x="60" y="237" width="1480" height="23" fill="#17111f"/><text x="90" y="243" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1">MÉTRICA</text><text x="530" y="243" fill="#3ddc84" font-size="13" font-weight="700" letter-spacing="1">BOM</text><text x="877" y="243" fill="#e8b73d" font-size="13" font-weight="700" letter-spacing="1">MÉDIO</text><text x="1224" y="243" fill="#ff5d6c" font-size="13" font-weight="700" letter-spacing="1">RUIM</text><text x="90" y="294.1111111111111" fill="#f3eef6" font-size="18" font-weight="800">CPM</text><text x="530" y="294.1111111111111" fill="#3ddc84" font-size="16" font-weight="700">&lt; R$25</text><text x="877" y="294.1111111111111" fill="#e8b73d" font-size="16" font-weight="700">R$25–50</text><text x="1224" y="294.1111111111111" fill="#ff5d6c" font-size="16" font-weight="700">&gt; R$50</text><line x1="60" y1="316.22222222222223" x2="1540" y2="316.22222222222223" stroke="#1c0d22"/><text x="90" y="350.3333333333333" fill="#f3eef6" font-size="18" font-weight="800">CPV</text><text x="530" y="350.3333333333333" fill="#3ddc84" font-size="16" font-weight="700">&lt; 5% TM</text><text x="877" y="350.3333333333333" fill="#e8b73d" font-size="16" font-weight="700">5–8% TM</text><text x="1224" y="350.3333333333333" fill="#ff5d6c" font-size="16" font-weight="700">&gt; 8% TM</text><line x1="60" y1="372.44444444444446" x2="1540" y2="372.44444444444446" stroke="#1c0d22"/><text x="90" y="406.55555555555554" fill="#f3eef6" font-size="18" font-weight="800">Connect Rate</text><text x="530" y="406.55555555555554" fill="#3ddc84" font-size="16" font-weight="700">&gt; 90%</text><text x="877" y="406.55555555555554" fill="#e8b73d" font-size="16" font-weight="700">80–90%</text><text x="1224" y="406.55555555555554" fill="#ff5d6c" font-size="16" font-weight="700">&lt; 80%</text><line x1="60" y1="428.6666666666667" x2="1540" y2="428.6666666666667" stroke="#1c0d22"/><text x="90" y="462.77777777777777" fill="#f3eef6" font-size="18" font-weight="800">Custo / Checkout</text><text x="530" y="462.77777777777777" fill="#3ddc84" font-size="16" font-weight="700">&lt; 25% TM</text><text x="877" y="462.77777777777777" fill="#e8b73d" font-size="16" font-weight="700">25–35% TM</text><text x="1224" y="462.77777777777777" fill="#ff5d6c" font-size="16" font-weight="700">&gt; 35% TM</text><line x1="60" y1="484.8888888888889" x2="1540" y2="484.8888888888889" stroke="#1c0d22"/><text x="90" y="519" fill="#f3eef6" font-size="18" font-weight="800">PV › Checkout</text><text x="530" y="519" fill="#3ddc84" font-size="16" font-weight="700">&gt; 20%</text><text x="877" y="519" fill="#e8b73d" font-size="16" font-weight="700">8–20%</text><text x="1224" y="519" fill="#ff5d6c" font-size="16" font-weight="700">&lt; 8%</text><line x1="60" y1="541.1111111111111" x2="1540" y2="541.1111111111111" stroke="#1c0d22"/><text x="90" y="575.2222222222222" fill="#f3eef6" font-size="18" font-weight="800">PV › Compras</text><text x="530" y="575.2222222222222" fill="#3ddc84" font-size="16" font-weight="700">&gt; 10%</text><text x="877" y="575.2222222222222" fill="#e8b73d" font-size="16" font-weight="700">3–10%</text><text x="1224" y="575.2222222222222" fill="#ff5d6c" font-size="16" font-weight="700">&lt; 3%</text><line x1="60" y1="597.3333333333333" x2="1540" y2="597.3333333333333" stroke="#1c0d22"/><text x="90" y="631.4444444444443" fill="#f3eef6" font-size="18" font-weight="800">CV Checkout</text><text x="530" y="631.4444444444443" fill="#3ddc84" font-size="16" font-weight="700">&gt; 35%</text><text x="877" y="631.4444444444443" fill="#e8b73d" font-size="16" font-weight="700">10–35%</text><text x="1224" y="631.4444444444443" fill="#ff5d6c" font-size="16" font-weight="700">&lt; 10%</text><line x1="60" y1="653.5555555555554" x2="1540" y2="653.5555555555554" stroke="#1c0d22"/><text x="90" y="687.6666666666665" fill="#f3eef6" font-size="18" font-weight="800">CV Order Bump</text><text x="530" y="687.6666666666665" fill="#3ddc84" font-size="16" font-weight="700">&gt; 20%</text><text x="877" y="687.6666666666665" fill="#e8b73d" font-size="16" font-weight="700">10–20%</text><text x="1224" y="687.6666666666665" fill="#ff5d6c" font-size="16" font-weight="700">&lt; 10%</text><line x1="60" y1="709.7777777777776" x2="1540" y2="709.7777777777776" stroke="#1c0d22"/><text x="90" y="743.8888888888887" fill="#f3eef6" font-size="18" font-weight="800">ROAS</text><text x="530" y="743.8888888888887" fill="#3ddc84" font-size="16" font-weight="700">&gt; 1.8</text><text x="877" y="743.8888888888887" fill="#e8b73d" font-size="16" font-weight="700">1.4–1.8</text><text x="1224" y="743.8888888888887" fill="#ff5d6c" font-size="16" font-weight="700">&lt; 1.2</text><rect x="60" y="786" width="1480" height="66" rx="14" fill="url(#calloutFill)" stroke="#260850" stroke-width="1.5"/><rect x="60" y="786" width="6" height="66" rx="3" fill="#8a3bdb"/><text x="90" y="814" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1.2">TM = TICKET MÉDIO</text><text x="90" y="838" fill="#f3eef6" font-size="17" font-weight="600">Cada métrica quebrada aponta para um ajuste específico — veja o Mapa dos Ajustes 5×.</text>
+</svg>

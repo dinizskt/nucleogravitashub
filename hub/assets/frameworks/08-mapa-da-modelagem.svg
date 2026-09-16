@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Arial, sans-serif">
+
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="accentV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="divider" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#260850" stop-opacity="0.9"/><stop offset="1" stop-color="#260850" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#6c1fc4" stop-opacity="0.4"/><stop offset="100%" stop-color="#6c1fc4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#8a3bdb" stop-opacity="0.22"/><stop offset="100%" stop-color="#8a3bdb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#8a3bdb" flood-opacity="0.55"/>
+    </filter>
+    <linearGradient id="cardFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141020"/><stop offset="1" stop-color="#0d0913"/>
+    </linearGradient>
+    <linearGradient id="calloutFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d1428"/><stop offset="1" stop-color="#150f1d"/>
+    </linearGradient>
+  </defs>
+
+
+    <rect width="1600" height="900" fill="#060107"/>
+    <circle cx="1620" cy="-40" r="280" fill="url(#blob1)"/>
+    <circle cx="-60" cy="960" r="260" fill="url(#blob2)"/>
+  
+
+    <rect x="60" y="26" width="306.59999999999997" height="28" rx="14" fill="#17111f" stroke="#260850"/>
+    <text x="213.29999999999998" y="45" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">MODELAGEM E VANTAGEM · SEÇÃO 03</text>
+  <text x="58" y="118" fill="#f3eef6" font-size="54" font-weight="800">Mapa da Modelagem no Low Ticket</text><text x="60" y="156" fill="#a698af" font-size="18">Identifique uma concepção ativa e vendendo, use como base e crie a sua versão — não é copiar, é reconstruir com originalidade.</text><rect x="60" y="180" width="1480" height="2" fill="url(#divider)"/>
+    <g transform="translate(1500,52)" filter="url(#softGlow)">
+      <rect x="-46" y="-46" width="92" height="92" rx="20" fill="#17111f" stroke="url(#accent)" stroke-width="2"/>
+      <g transform="rotate(45)">
+        <rect x="-24" y="-24" width="48" height="48" rx="8" fill="none" stroke="url(#accent)" stroke-width="2"/>
+      </g>
+      <text x="0" y="-3" fill="#f3eef6" font-size="11" font-weight="800" text-anchor="middle">NÚCLEO</text>
+      <text x="0" y="12" fill="#8a3bdb" font-size="11" font-weight="800" text-anchor="middle">GRAVITAS</text>
+    </g>
+  <rect x="60" y="214" width="728" height="264" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="60" y="214" width="728" height="5" rx="2.5" fill="url(#accent)"/>
+    <circle cx="104" cy="258" r="21" fill="url(#accent)" filter="url(#softGlow)"/>
+    <text x="104" y="265.56" fill="#fff" font-size="19.95" font-weight="800" text-anchor="middle">A</text>
+  <text x="140" y="266" fill="#f3eef6" font-size="23" font-weight="800">COMUNICAÇÃO</text><text x="94" y="310" fill="#a698af" font-size="16">Muda persona, dor ou desejo. "Dieta Low Carb para</text><text x="94" y="334" fill="#a698af" font-size="16">Mulheres" &gt; "para Homens acima dos 40". Busque personas</text><text x="94" y="358" fill="#a698af" font-size="16">que também querem a solução.</text><rect x="812" y="214" width="728" height="264" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="812" y="214" width="728" height="5" rx="2.5" fill="url(#accent)"/>
+    <circle cx="856" cy="258" r="21" fill="url(#accent)" filter="url(#softGlow)"/>
+    <text x="856" y="265.56" fill="#fff" font-size="19.95" font-weight="800" text-anchor="middle">B</text>
+  <text x="892" y="266" fill="#f3eef6" font-size="23" font-weight="800">MECANISMO</text><text x="846" y="310" fill="#a698af" font-size="16">Muda como resolve. "Rotina com devocionais" &gt; "Desafio de</text><text x="846" y="334" fill="#a698af" font-size="16">7 dias gamificado". Mais atrativo, rápido e prático.</text><rect x="60" y="502" width="728" height="264" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="60" y="502" width="728" height="5" rx="2.5" fill="url(#accent)"/>
+    <circle cx="104" cy="546" r="21" fill="url(#accent)" filter="url(#softGlow)"/>
+    <text x="104" y="553.56" fill="#fff" font-size="19.95" font-weight="800" text-anchor="middle">C</text>
+  <text x="140" y="554" fill="#f3eef6" font-size="23" font-weight="800">FORMATO DE ENTREGA</text><text x="94" y="598" fill="#a698af" font-size="16">Muda como entrega. "Ebook de 50 receitas detox" &gt;</text><text x="94" y="622" fill="#a698af" font-size="16">"Planilha interativa + lista de compras". Só se a persona</text><text x="94" y="646" fill="#a698af" font-size="16">usar o formato.</text><rect x="812" y="502" width="728" height="264" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="812" y="502" width="728" height="5" rx="2.5" fill="url(#accent)"/>
+    <circle cx="856" cy="546" r="21" fill="url(#accent)" filter="url(#softGlow)"/>
+    <text x="856" y="553.56" fill="#fff" font-size="19.95" font-weight="800" text-anchor="middle">D</text>
+  <text x="892" y="554" fill="#f3eef6" font-size="23" font-weight="800">NICHO &amp; SUBNICHO</text><text x="846" y="598" fill="#a698af" font-size="16">Muda o mercado. "Receitas lucrativas de pães" &gt; "de pipoca</text><text x="846" y="622" fill="#a698af" font-size="16">gourmet". Menos concorrência, oceano azul.</text><rect x="60" y="786" width="1480" height="66" rx="14" fill="url(#calloutFill)" stroke="#260850" stroke-width="1.5"/><rect x="60" y="786" width="6" height="66" rx="3" fill="#8a3bdb"/><text x="90" y="814" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1.2">REGRA DE OURO</text><text x="90" y="838" fill="#f3eef6" font-size="17" font-weight="600">Na modelagem, você modifica pelo menos um dos elementos.</text>
+</svg>

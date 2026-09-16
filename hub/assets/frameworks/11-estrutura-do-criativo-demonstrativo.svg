@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Arial, sans-serif">
+
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="accentV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="divider" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#260850" stop-opacity="0.9"/><stop offset="1" stop-color="#260850" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#6c1fc4" stop-opacity="0.4"/><stop offset="100%" stop-color="#6c1fc4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#8a3bdb" stop-opacity="0.22"/><stop offset="100%" stop-color="#8a3bdb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#8a3bdb" flood-opacity="0.55"/>
+    </filter>
+    <linearGradient id="cardFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141020"/><stop offset="1" stop-color="#0d0913"/>
+    </linearGradient>
+    <linearGradient id="calloutFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d1428"/><stop offset="1" stop-color="#150f1d"/>
+    </linearGradient>
+  </defs>
+
+
+    <rect width="1600" height="900" fill="#060107"/>
+    <circle cx="1620" cy="-40" r="280" fill="url(#blob1)"/>
+    <circle cx="-60" cy="960" r="260" fill="url(#blob2)"/>
+  
+
+    <rect x="60" y="26" width="212" height="28" rx="14" fill="#17111f" stroke="#260850"/>
+    <text x="166" y="45" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">CRIATIVOS · SEÇÃO 18</text>
+  <text x="58" y="118" fill="#f3eef6" font-size="54" font-weight="800">Estrutura do Criativo Demonstrativo</text><text x="60" y="156" fill="#a698af" font-size="18">Comunicação, visual, narração e edição — a fórmula do anúncio que converte.</text><rect x="60" y="180" width="1480" height="2" fill="url(#divider)"/>
+    <g transform="translate(1500,52)" filter="url(#softGlow)">
+      <rect x="-46" y="-46" width="92" height="92" rx="20" fill="#17111f" stroke="url(#accent)" stroke-width="2"/>
+      <g transform="rotate(45)">
+        <rect x="-24" y="-24" width="48" height="48" rx="8" fill="none" stroke="url(#accent)" stroke-width="2"/>
+      </g>
+      <text x="0" y="-3" fill="#f3eef6" font-size="11" font-weight="800" text-anchor="middle">NÚCLEO</text>
+      <text x="0" y="12" fill="#8a3bdb" font-size="11" font-weight="800" text-anchor="middle">GRAVITAS</text>
+    </g>
+  <rect x="60" y="214" width="355" height="552" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="60" y="214" width="355" height="5" rx="2.5" fill="url(#accent)"/><text x="86" y="256" fill="#8a3bdb" font-size="17" font-weight="800">1 · COMUNICAÇÃO</text><circle cx="90" cy="291" r="3" fill="#8a3bdb"/><text x="102" y="296" fill="#f3eef6" font-size="14">Fala a língua da persona</text><circle cx="90" cy="366.3333333333333" r="3" fill="#8a3bdb"/><text x="102" y="371.3333333333333" fill="#f3eef6" font-size="14">Mostra dor clara ou situação</text><text x="102" y="389.3333333333333" fill="#f3eef6" font-size="14">real</text><circle cx="90" cy="441.66666666666663" r="3" fill="#8a3bdb"/><text x="102" y="446.66666666666663" fill="#f3eef6" font-size="14">Deixa claro o que é o produto</text><circle cx="90" cy="517" r="3" fill="#8a3bdb"/><text x="102" y="522" fill="#f3eef6" font-size="14">Promessa simples e específica</text><circle cx="90" cy="592.3333333333333" r="3" fill="#8a3bdb"/><text x="102" y="597.3333333333333" fill="#f3eef6" font-size="14">Não depende de curiosidade</text><circle cx="90" cy="667.6666666666666" r="3" fill="#8a3bdb"/><text x="102" y="672.6666666666666" fill="#f3eef6" font-size="14">Entendido em poucos segundos</text><rect x="435" y="214" width="355" height="552" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="435" y="214" width="355" height="5" rx="2.5" fill="url(#accent)"/><text x="461" y="256" fill="#8a3bdb" font-size="17" font-weight="800">2 · VISUAL</text><circle cx="465" cy="291" r="3" fill="#8a3bdb"/><text x="477" y="296" fill="#f3eef6" font-size="14">Material impresso, tela</text><text x="477" y="314" fill="#f3eef6" font-size="14">aberta, takes do resultado</text><circle cx="465" cy="366.3333333333333" r="3" fill="#8a3bdb"/><text x="477" y="371.3333333333333" fill="#f3eef6" font-size="14">Mostra o produto por dentro</text><circle cx="465" cy="441.66666666666663" r="3" fill="#8a3bdb"/><text x="477" y="446.66666666666663" fill="#f3eef6" font-size="14">Mostra como usa</text><circle cx="465" cy="517" r="3" fill="#8a3bdb"/><text x="477" y="522" fill="#f3eef6" font-size="14">Imagens nítidas e organizadas</text><circle cx="465" cy="592.3333333333333" r="3" fill="#8a3bdb"/><text x="477" y="597.3333333333333" fill="#f3eef6" font-size="14">Nada de banco de imagem sem</text><text x="477" y="615.3333333333333" fill="#f3eef6" font-size="14">contexto</text><circle cx="465" cy="667.6666666666666" r="3" fill="#8a3bdb"/><text x="477" y="672.6666666666666" fill="#f3eef6" font-size="14">Sequência lógica</text><rect x="810" y="214" width="355" height="552" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="810" y="214" width="355" height="5" rx="2.5" fill="url(#accent)"/><text x="836" y="256" fill="#8a3bdb" font-size="17" font-weight="800">3 · NARRAÇÃO</text><circle cx="840" cy="291" r="3" fill="#8a3bdb"/><text x="852" y="296" fill="#f3eef6" font-size="14">ElevenLabs ou voz própria</text><circle cx="840" cy="381.4" r="3" fill="#8a3bdb"/><text x="852" y="386.4" fill="#f3eef6" font-size="14">Áudio limpo</text><circle cx="840" cy="471.8" r="3" fill="#8a3bdb"/><text x="852" y="476.8" fill="#f3eef6" font-size="14">Acompanha o que é mostrado</text><circle cx="840" cy="562.2" r="3" fill="#8a3bdb"/><text x="852" y="567.2" fill="#f3eef6" font-size="14">Ritmo dinâmico, tom natural</text><circle cx="840" cy="652.6" r="3" fill="#8a3bdb"/><text x="852" y="657.6" fill="#f3eef6" font-size="14">Reforça os pontos principais</text><rect x="1185" y="214" width="355" height="552" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="1185" y="214" width="355" height="5" rx="2.5" fill="url(#accent)"/><text x="1211" y="256" fill="#8a3bdb" font-size="17" font-weight="800">4 · EDIÇÃO</text><circle cx="1215" cy="291" r="3" fill="#8a3bdb"/><text x="1227" y="296" fill="#f3eef6" font-size="14">CapCut</text><circle cx="1215" cy="381.4" r="3" fill="#8a3bdb"/><text x="1227" y="386.4" fill="#f3eef6" font-size="14">Texto na tela quando fizer</text><text x="1227" y="404.4" fill="#f3eef6" font-size="14">sentido</text><circle cx="1215" cy="471.8" r="3" fill="#8a3bdb"/><text x="1227" y="476.8" fill="#f3eef6" font-size="14">Cortes rápidos, sem partes</text><text x="1227" y="494.8" fill="#f3eef6" font-size="14">mortas</text><circle cx="1215" cy="562.2" r="3" fill="#8a3bdb"/><text x="1227" y="567.2" fill="#f3eef6" font-size="14">Zoom, setas, marcações,</text><text x="1227" y="585.2" fill="#f3eef6" font-size="14">legendas</text><circle cx="1215" cy="652.6" r="3" fill="#8a3bdb"/><text x="1227" y="657.6" fill="#f3eef6" font-size="14">Começa forte (2–3s iniciais)</text><rect x="60" y="786" width="1480" height="78" rx="14" fill="url(#calloutFill)" stroke="#260850" stroke-width="1.5"/><rect x="60" y="786" width="6" height="78" rx="3" fill="#8a3bdb"/><text x="90" y="814" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1.2">ESTRUTURA AIDA DO ANÚNCIO</text><text x="90" y="838" fill="#f3eef6" font-size="17" font-weight="600">Atenção (gancho) &gt; Interesse (corpo 1) &gt; Desejo (corpo 2) &gt; Ação (CTA). Regra de ouro: se a pessoa precisa imaginar o produto, o criativo está errado.</text>
+</svg>

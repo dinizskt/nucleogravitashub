@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Arial, sans-serif">
+
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="accentV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a3bdb"/><stop offset="1" stop-color="#5a17a8"/>
+    </linearGradient>
+    <linearGradient id="divider" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#260850" stop-opacity="0.9"/><stop offset="1" stop-color="#260850" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#6c1fc4" stop-opacity="0.4"/><stop offset="100%" stop-color="#6c1fc4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#8a3bdb" stop-opacity="0.22"/><stop offset="100%" stop-color="#8a3bdb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#8a3bdb" flood-opacity="0.55"/>
+    </filter>
+    <linearGradient id="cardFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141020"/><stop offset="1" stop-color="#0d0913"/>
+    </linearGradient>
+    <linearGradient id="calloutFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d1428"/><stop offset="1" stop-color="#150f1d"/>
+    </linearGradient>
+  </defs>
+
+
+    <rect width="1600" height="900" fill="#060107"/>
+    <circle cx="1620" cy="-40" r="280" fill="url(#blob1)"/>
+    <circle cx="-60" cy="960" r="260" fill="url(#blob2)"/>
+  
+
+    <rect x="60" y="26" width="246.39999999999998" height="28" rx="14" fill="#17111f" stroke="#260850"/>
+    <text x="183.2" y="45" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1.2" text-anchor="middle">ORDER BUMP · SEÇÃO 32-33</text>
+  <text x="58" y="118" fill="#f3eef6" font-size="54" font-weight="800">Order Bump Gravitas</text><text x="60" y="156" fill="#a698af" font-size="18">Um extra estratégico que aumenta o valor do pedido na hora da compra, sem fricção.</text><rect x="60" y="180" width="1480" height="2" fill="url(#divider)"/>
+    <g transform="translate(1500,52)" filter="url(#softGlow)">
+      <rect x="-46" y="-46" width="92" height="92" rx="20" fill="#17111f" stroke="url(#accent)" stroke-width="2"/>
+      <g transform="rotate(45)">
+        <rect x="-24" y="-24" width="48" height="48" rx="8" fill="none" stroke="url(#accent)" stroke-width="2"/>
+      </g>
+      <text x="0" y="-3" fill="#f3eef6" font-size="11" font-weight="800" text-anchor="middle">NÚCLEO</text>
+      <text x="0" y="12" fill="#8a3bdb" font-size="11" font-weight="800" text-anchor="middle">GRAVITAS</text>
+    </g>
+  <rect x="60" y="214" width="728" height="309" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="60" y="214" width="728" height="5" rx="2.5" fill="url(#accent)"/><text x="90" y="258" fill="#3ddc84" font-size="21" font-weight="800">✓ O QUE FAZER</text><circle cx="94" cy="301" r="4" fill="#3ddc84"/><text x="108" y="306" fill="#f3eef6" font-size="17">Ser complementar</text><circle cx="94" cy="340.8" r="4" fill="#3ddc84"/><text x="108" y="345.8" fill="#f3eef6" font-size="17">Ser simples</text><circle cx="94" cy="380.6" r="4" fill="#3ddc84"/><text x="108" y="385.6" fill="#f3eef6" font-size="17">Rápido de consumir</text><circle cx="94" cy="420.40000000000003" r="4" fill="#3ddc84"/><text x="108" y="425.40000000000003" fill="#f3eef6" font-size="17">Baixo preço</text><circle cx="94" cy="460.20000000000005" r="4" fill="#3ddc84"/><text x="108" y="465.20000000000005" fill="#f3eef6" font-size="17">Ajudar na execução</text><rect x="812" y="214" width="728" height="309" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><rect x="812" y="214" width="728" height="5" rx="2.5" fill="url(#accent)"/><rect x="812" y="214" width="728" height="5" rx="2.5" fill="#ff5d6c"/><text x="842" y="258" fill="#ff5d6c" font-size="21" font-weight="800">✕ O QUE NÃO FAZER</text><circle cx="846" cy="301" r="4" fill="#ff5d6c"/><text x="860" y="306" fill="#f3eef6" font-size="17">Algo complexo</text><circle cx="846" cy="334.1666666666667" r="4" fill="#ff5d6c"/><text x="860" y="339.1666666666667" fill="#f3eef6" font-size="17">Nome difícil</text><circle cx="846" cy="367.33333333333337" r="4" fill="#ff5d6c"/><text x="860" y="372.33333333333337" fill="#f3eef6" font-size="17">Descrição longa</text><circle cx="846" cy="400.50000000000006" r="4" fill="#ff5d6c"/><text x="860" y="405.50000000000006" fill="#f3eef6" font-size="17">Algo caro</text><circle cx="846" cy="433.66666666666674" r="4" fill="#ff5d6c"/><text x="860" y="438.66666666666674" fill="#f3eef6" font-size="17">Algo desconectado</text><circle cx="846" cy="466.8333333333334" r="4" fill="#ff5d6c"/><text x="860" y="471.8333333333334" fill="#f3eef6" font-size="17">Distração no checkout</text><rect x="60" y="547" width="477.3333333333333" height="219" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><text x="86" y="583" fill="#8a3bdb" font-size="16" font-weight="800" letter-spacing="0.4">MAIS DO MESMO</text><text x="86" y="615" fill="#f3eef6" font-size="15">Mais quantidade do que já comprou. Para</text><text x="86" y="637" fill="#f3eef6" font-size="15">quem quer ir mais fundo na mesma solução.</text><rect x="561.3333333333333" y="547" width="477.3333333333333" height="219" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><text x="587.3333333333333" y="583" fill="#8a3bdb" font-size="16" font-weight="800" letter-spacing="0.4">ATUALIZAÇÃO / VITALÍCIO</text><text x="587.3333333333333" y="615" fill="#f3eef6" font-size="15">Continuidade e segurança no acesso. Remove</text><text x="587.3333333333333" y="637" fill="#f3eef6" font-size="15">o "vai ficar desatualizado?".</text><rect x="1062.6666666666665" y="547" width="477.3333333333333" height="219" rx="20" fill="url(#cardFill)" stroke="#2a1533" stroke-width="1.5" filter="url(#cardShadow)"/><text x="1088.6666666666665" y="583" fill="#8a3bdb" font-size="16" font-weight="800" letter-spacing="0.4">COMPLEMENTAR</text><text x="1088.6666666666665" y="615" fill="#f3eef6" font-size="15">Ajuda a executar melhor o principal.</text><text x="1088.6666666666665" y="637" fill="#f3eef6" font-size="15">Acelera o resultado — geralmente o mais</text><text x="1088.6666666666665" y="659" fill="#f3eef6" font-size="15">forte.</text><rect x="60" y="786" width="1480" height="78" rx="14" fill="url(#calloutFill)" stroke="#260850" stroke-width="1.5"/><rect x="60" y="786" width="6" height="78" rx="3" fill="#8a3bdb"/><text x="90" y="814" fill="#8a3bdb" font-size="13" font-weight="700" letter-spacing="1.2">PREÇOS DE REFERÊNCIA</text><text x="90" y="838" fill="#f3eef6" font-size="17" font-weight="600">Entre 3 e 5 bumps por checkout · R$7,90 · R$9,90 · R$12,90 · conversão média de 10 a 30%.</text>
+</svg>
