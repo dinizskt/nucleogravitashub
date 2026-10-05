@@ -11,67 +11,74 @@
 </head>
 <body>
 
-<header class="header">
-  <div class="header__inner">
-    <div class="logo">
-      <img class="logo__icon" src="/hub/assets/logo.png" alt="Núcleo Gravitas">
-      <span class="logo__text">Núcleo <strong>Gravitas</strong></span>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img class="sidebar__logo" src="/hub/assets/logo.png" alt="Núcleo Gravitas">
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">Núcleo <strong>Gravitas</strong></span>
+        <span class="sidebar__brand-sub">Hub interno</span>
+      </div>
     </div>
-    <span class="header__badge">Hub de Ofertas</span>
-  </div>
-</header>
 
-<section class="hero">
-  <img class="hero__logo" src="/hub/assets/logo.png" alt="Núcleo Gravitas">
-  <span class="eyebrow">Uso interno · Mentorados</span>
-  <h1>Hub <span class="grad">Núcleo Gravitas</span></h1>
-  <p>O ouro das operações de infoproduto lowticket escaladas</p>
-</section>
+    <nav class="sidenav" id="sidenav">
+      <div class="sidenav__group">
+        <span class="sidenav__label">Frameworks</span>
+        <button class="sidenav__link" data-section="frameworks"><span class="sidenav__title">Frameworks</span><span class="sidenav__sub">Metodologia em 16:9</span></button>
+      </div>
+      <div class="sidenav__group">
+        <span class="sidenav__label">Ofertas</span>
+        <button class="sidenav__link active" data-section="ofertas"><span class="sidenav__title">Banco de Ofertas</span><span class="sidenav__sub">Ofertas validadas e mineradas</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="gerador"><span class="sidenav__title">Gerador de Ofertas</span><span class="sidenav__sub">Monte novas combinações</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="copie-modelo"><span class="sidenav__title">Copie o Modelo</span><span class="sidenav__sub">Modele o padrão, não o produto</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="radar"><span class="sidenav__title">Radar de Oportunidades</span><span class="sidenav__sub">Nichos em alta</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="saturadas"><span class="sidenav__title">Ofertas Saturadas</span><span class="sidenav__sub">Onde não competir</span></button>
+      </div>
+      <div class="sidenav__group">
+        <span class="sidenav__label">Copy & Criativos</span>
+        <button class="sidenav__link sidenav__link--soon" data-section="mecanismos"><span class="sidenav__title">Banco de Mecanismos</span><span class="sidenav__sub">Mecanismos reutilizáveis</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="headlines"><span class="sidenav__title">Banco de Headlines</span><span class="sidenav__sub">Templates por gatilho</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="hooks"><span class="sidenav__title">Biblioteca de Hooks</span><span class="sidenav__sub">Os primeiros 3 segundos</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="swipe"><span class="sidenav__title">Swipe File de Criativos</span><span class="sidenav__sub">Padrões por formato</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="estruturas"><span class="sidenav__title">Estrutura de Página</span><span class="sidenav__sub">Blocos da página de vendas</span></button>
+      </div>
+      <div class="sidenav__group">
+        <span class="sidenav__label">Monetização</span>
+        <button class="sidenav__link sidenav__link--soon" data-section="bumps"><span class="sidenav__title">Order Bumps & Upsells</span><span class="sidenav__sub">Bump e upsell por produto</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="calculadora"><span class="sidenav__title">Calculadora de Esteira</span><span class="sidenav__sub">Estime o ticket médio</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="esteiras"><span class="sidenav__title">Mapa de Esteiras</span><span class="sidenav__sub">Funis prontos</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="bonus"><span class="sidenav__title">Banco de Bônus</span><span class="sidenav__sub">Mais valor percebido</span></button>
+      </div>
+      <div class="sidenav__group">
+        <span class="sidenav__label">Execução</span>
+        <button class="sidenav__link sidenav__link--soon" data-section="prompts"><span class="sidenav__title">Promptoteca de IA</span><span class="sidenav__sub">Prompts por etapa</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="checklists"><span class="sidenav__title">Checklists</span><span class="sidenav__sub">Antes de lançar</span></button>
+        <button class="sidenav__link sidenav__link--soon" data-section="ferramentas"><span class="sidenav__title">Ferramentas</span><span class="sidenav__sub">Stack recomendada</span></button>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
-<div class="layout">
-  <nav class="sidenav" id="sidenav">
-    <div class="sidenav__group">
-      <span class="sidenav__label">Frameworks</span>
-      <button class="sidenav__link" data-section="frameworks">Frameworks</button>
-    </div>
-    <div class="sidenav__group">
-      <span class="sidenav__label">Ofertas</span>
-      <button class="sidenav__link active" data-section="ofertas">Banco de Ofertas</button>
-      <button class="sidenav__link" data-section="gerador">Gerador de Ofertas</button>
-      <button class="sidenav__link" data-section="copie-modelo">Copie o Modelo</button>
-      <button class="sidenav__link" data-section="radar">Radar de Oportunidades</button>
-      <button class="sidenav__link" data-section="saturadas">Ofertas Saturadas</button>
-    </div>
-    <div class="sidenav__group">
-      <span class="sidenav__label">Copy & Criativos</span>
-      <button class="sidenav__link" data-section="mecanismos">Banco de Mecanismos</button>
-      <button class="sidenav__link" data-section="headlines">Banco de Headlines</button>
-      <button class="sidenav__link" data-section="hooks">Biblioteca de Hooks</button>
-      <button class="sidenav__link" data-section="swipe">Swipe File de Criativos</button>
-      <button class="sidenav__link" data-section="estruturas">Estrutura de Página</button>
-    </div>
-    <div class="sidenav__group">
-      <span class="sidenav__label">Monetização</span>
-      <button class="sidenav__link" data-section="bumps">Order Bumps & Upsells</button>
-      <button class="sidenav__link" data-section="calculadora">Calculadora de Esteira</button>
-      <button class="sidenav__link" data-section="esteiras">Mapa de Esteiras</button>
-      <button class="sidenav__link" data-section="bonus">Banco de Bônus</button>
-    </div>
-    <div class="sidenav__group">
-      <span class="sidenav__label">Execução</span>
-      <button class="sidenav__link" data-section="prompts">Promptoteca de IA</button>
-      <button class="sidenav__link" data-section="checklists">Checklists</button>
-      <button class="sidenav__link" data-section="ferramentas">Ferramentas</button>
-    </div>
-  </nav>
+  <div class="main">
+    <header class="topbar">
+      <button class="topbar__toggle" id="sidebar-toggle" type="button" aria-label="Abrir ou recolher o menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></svg>
+      </button>
+      <span class="topbar__badge">Uso interno · Mentorados</span>
+    </header>
 
   <main class="content">
 
     <!-- ============ BANCO DE OFERTAS ============ -->
     <section class="panel" id="panel-ofertas">
-      <div class="stats">
-        <div class="stats__item"><div class="stats__num" id="stat-total">0</div><div class="stats__label">Ofertas</div></div>
-        <div class="stats__item"><div class="stats__num" id="stat-ativas">0</div><div class="stats__label">Ativas</div></div>
+      <div class="page-head">
+        <span class="pill">Hub Núcleo Gravitas</span>
+        <h1 class="page-head__title">Banco de <span>Ofertas</span></h1>
+        <p class="page-head__sub">O ouro das operações de infoproduto lowticket escaladas</p>
+        <div class="stats">
+          <div class="stats__item"><span class="stats__num" id="stat-total">0</span><span class="stats__label">ofertas</span></div>
+          <div class="stats__item"><span class="stats__num" id="stat-ativas">0</span><span class="stats__label">ativas</span></div>
+        </div>
       </div>
       <div class="controls">
         <div class="search">
@@ -85,8 +92,11 @@
 
     <!-- ============ FRAMEWORKS ============ -->
     <section class="panel" id="panel-frameworks" hidden>
-      <h2 class="panel__title">Frameworks</h2>
-      <p class="panel__subtitle">Frameworks prontos em formato 16:9, disponíveis para baixar e usar.</p>
+      <div class="page-head">
+        <span class="pill">Metodologia</span>
+        <h1 class="page-head__title">Frameworks <span>Gravitas</span></h1>
+        <p class="page-head__sub">Frameworks prontos em formato 16:9, disponíveis para baixar e usar.</p>
+      </div>
       <div class="framework-grid" id="frameworks-grid"></div>
     </section>
 
@@ -235,11 +245,8 @@
     </section>
 
   </main>
+  </div>
 </div>
-
-<footer class="footer">
-  Núcleo Gravitas · Hub interno de ofertas
-</footer>
 
 <div class="fw-modal" id="fw-modal" hidden>
   <div class="fw-modal__backdrop" data-close></div>

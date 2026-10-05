@@ -18,10 +18,20 @@ function showSection(name) {
   window.scrollTo({ top: 0, behavior: "instant" });
 }
 
+const mobileMq = window.matchMedia("(max-width: 900px)");
+
+function toggleSidebar() {
+  document.body.classList.toggle(mobileMq.matches ? "nav-open" : "nav-collapsed");
+}
+
+document.getElementById("sidebar-toggle").addEventListener("click", toggleSidebar);
+document.getElementById("sidebar-backdrop").addEventListener("click", () => document.body.classList.remove("nav-open"));
+
 links.forEach((l) =>
   l.addEventListener("click", () => {
     showSection(l.dataset.section);
     history.replaceState(null, "", `#${l.dataset.section}`);
+    document.body.classList.remove("nav-open");
   })
 );
 
