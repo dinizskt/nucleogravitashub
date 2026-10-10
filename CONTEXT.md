@@ -37,7 +37,7 @@ prints site digao/                     ← pasta raiz (NÃO é repo git; cada su
 - Repo git: `HUB NUCLEO GRAVITAS/` é a raiz do git, remote `https://github.com/dinizskt/nucleogravitashub.git`, branch `main`.
 - **Deploy:** Vercel conectado a esse repo/branch, auto-deploy a cada push (o usuário já tinha essa conexão configurada antes; nenhuma ação manual na Vercel é necessária, só `git push`).
 - **Domínio:** `nucleogravitas.com.br` → raiz do repo (site institucional, ainda incompleto) → redirecionada pra `/hub` (ver seção 5).
-- Commits sempre com `-c user.name="Cassio Diniz" -c user.email="c4ssio180@gmail.com"` (sem config git global na máquina) e footer `Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>`.
+- Commits sempre com `-c user.name="Cassio Diniz" -c user.email="c4ssio180@gmail.com"` (sem config git global na máquina) e footer `Co-Authored-By` com o modelo em uso (a linha exata vem no lembrete de atribuição da sessão).
 
 ---
 
@@ -47,7 +47,9 @@ prints site digao/                     ← pasta raiz (NÃO é repo git; cada su
 - `hub/serve.js` só serve arquivos estáticos localmente (dev). Preview local via `.claude/launch.json`, entrada `"hub-nucleo-gravitas"`, porta 8099.
 - **Fontes:** Inter (corpo) + Sora (títulos), mesma identidade do site institucional.
 - **Design da UI do app:** propositalmente **flat/chapado** — sem gradiente, sem glow, sem hover-lift, sem "textura ou movimento especial". Isso foi um pedido explícito do usuário só pra interface do Hub em si (nav, cards de oferta, botões etc). **Não confundir com os gráficos dos frameworks** (seção 6), que são ilustrações baixáveis e usam gradiente/sombra livremente — regras diferentes pra coisas diferentes.
+- **Layout "clean" (10/10/2026)**, a pedido do usuário com um print de referência de outra plataforma (laranja, serifada): menu lateral fixo em tela cheia (`.sidebar`, itens com título + subtítulo), barra superior (`.topbar`) com botão que recolhe o menu (`body.nav-collapsed` no desktop, drawer `body.nav-open` no mobile ≤900px), cabeçalho de página centralizado (`.pill` + `.page-head__title` + subtítulo) no lugar do hero com logo gigante, sem rodapé. Mantida a identidade roxa e as fontes Inter/Sora (só a estrutura da referência foi adotada). Seções "Em breve" aparecem atenuadas no menu, sem selo por item. Cada seção nova precisa de um `<button class="sidenav__link" data-section="x">` com `sidenav__title` e `sidenav__sub`.
 - Scrollbar customizada fina, sem outras firulas visuais.
+- Clicar num card de framework abre um modal de visualização (galeria) com botões de baixar e fechar (`#fw-modal`).
 
 ---
 
@@ -55,13 +57,15 @@ prints site digao/                     ← pasta raiz (NÃO é repo git; cada su
 
 Tudo é dado estático em arrays/objetos JS, renderizado pelo `script.js`. **Pra adicionar conteúdo, editar só este arquivo** (mais o `script.js` se for um tipo de dado novo).
 
-### `OFERTAS` (54 entradas, linhas ~7–1592)
+### `OFERTAS` (46 entradas em 10/10/2026, ~20 com `linkCheck`)
 Cada oferta: `titulo, nicho, produto, publico, promessa, mecanismo, preco, plataforma, link, status, dificuldade, escala, dataMineracao, nota:{demanda,producao,anunciar,concorrencia,potencial,pesquisaWeb}, porQueVende:{dor,desejo,mecanismo,angulo,agora}, diferenciacao, linkCheck:{status,nota,verificadoEm}`.
 
-- 44 ofertas originais + 10 do relatório "mineração 30-08".
-- `nota.pesquisaWeb` = validação real feita com pesquisa na web (demanda/concorrência), não é só heurística.
-- `linkCheck` só existe nas 44 originais — foi verificado **de verdade** navegando no Meta Ads Library (via Browser tool) e não só com fetch, porque fetch simples dava resultado inconclusivo. Quando `linkCheck.status !== "ok"`, o card mostra um aviso visível explicando que o anúncio ter saído do ar **não invalida a oferta**: a concepção/mecanismo/promessa continuam podendo ser modelados (pode ter sido corte de orçamento, sazonalidade, troca de link — não necessariamente fim de vendas).
-- Se novos relatórios de mineração chegarem, seguir o mesmo padrão de objeto e adicionar ao array (sem `linkCheck` a menos que se vá verificar de verdade).
+- O banco cresce com relatórios de mineração em PDF que o usuário manda (30-08, 01-10, 04-10, 10-10). Extrair o texto com `pdftotext` (Poppler, ver seção 6) e **cruzar com o banco antes de inserir**: várias ofertas dos relatórios novos já estavam no hub (mesmo domínio ou mesmo anúncio). Nesse caso **atualizar a entrada existente** em vez de duplicar. Campos que o relatório não traz (notas, dificuldade, escala) são estimativas minhas a partir dos números do relatório.
+- `nota.pesquisaWeb` = contexto de concorrência/validação (pesquisa na web ou dado da própria mineração), não é só heurística.
+- **Regra do usuário: o que caiu sai do banco.** Oferta cujo anúncio/página não funciona mais é removida (o usuário pediu explicitamente: "as que não funcionam mais você tira"). Ficam no histórico do git se precisar restaurar.
+- **Como checar se uma oferta caiu** (feito em 10/10/2026): link `facebook.com/ads/library/?id=X` no Browser tool redireciona para a página do anunciante; ler `~N resultados` e as datas de "Veiculação iniciada" com `javascript_tool` (esperar ~9s). Oferta com link de página de venda: buscar na Biblioteca (`q=...&search_type=keyword_exact_phrase`, `active_status=active`) pelo domínio **e** pelo nome da marca. A busca só por domínio dá **falso negativo** (Menina Arteira e Pedreiro Residencial pareciam mortas e estavam ativas): só considerar caída se domínio e nome retornarem zero. `Nenhum anúncio corresponde` = sem anúncio ativo. Também conferir a página com HTTP (200 + título). Navegador real, não só fetch.
+- `linkCheck.status` `ok` mostra nada no card. Se algum dia for `inativo`/`mudou`/`nao_verificavel`, o card exibe um aviso dizendo que isso **não invalida a oferta** (a concepção ainda pode ser modelada). Hoje não há nenhuma assim, porque as inativas foram removidas.
+- Ofertas de relatório não aprofundadas (sem LP localizada) entram como "ficha parcial" com `Não verificado` nos campos que faltam e o link do anúncio na Biblioteca. A "ATFS Soluções — 200 Conteúdos Prontos" do relatório de 10/10 não foi adicionada porque o anúncio não foi localizado na Biblioteca.
 
 ### Bancos de conteúdo **dormentes** (dados existem, UI desativada — "Em breve")
 `MECANISMOS, HEADLINES, HOOKS, SWIPES, ESTRUTURA_PAGINA, BUMPS, UPSELLS, ESTEIRAS, BONUS, PROMPTS, CHECKLIST_VALIDACAO, CHECKLIST_24H, FERRAMENTAS, SATURADAS`.
@@ -93,7 +97,7 @@ Lista atual (nessa ordem):
 
 ## 5. `panel-*` no `hub/index.html` e o redirect da raiz
 
-- Sidenav do Hub: grupo **Frameworks** (topo) → **Ofertas** (só `panel-ofertas` é funcional) → **Copy & Criativos** / **Monetização** / **Execução** (todos "Em breve", dados dormentes conforme seção 4).
+- Menu lateral do Hub: grupo **Frameworks** (topo) → **Ofertas** (só `panel-ofertas` é funcional; as outras 4 do grupo são "Em breve") → **Copy & Criativos** / **Monetização** / **Execução** (todos "Em breve", dados dormentes conforme seção 4). Itens "Em breve" levam a classe `sidenav__link--soon`.
 - `hub/js/script.js` só tem lógica de renderização pra `panel-ofertas` (busca/filtro/agrupamento por nicho/cards com barra de `nota`, `<details>` de `porQueVende`/`diferenciacao`, badge de `linkCheck`) e `panel-frameworks` (`renderFrameworks()` / `frameworkCardHTML()`).
 - `vercel.json` na raiz do repo:
   ```json
