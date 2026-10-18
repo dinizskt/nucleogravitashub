@@ -509,6 +509,12 @@ h1{
   .mobile-fab{
     display:inline-flex;position:fixed;right:16px;bottom:16px;z-index:60;
     box-shadow:0 10px 26px -6px rgba(0,0,0,0.55),0 6px 18px -8px rgba(108,31,196,0.5);
+    opacity:0;visibility:hidden;pointer-events:none;transform:translateY(16px);
+    transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+  }
+  .mobile-fab.is-visible{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+    transition:opacity .25s ease, transform .25s ease, visibility 0s;
   }
   .nav{display:none;}
   .nav-toggle{display:flex;}
@@ -591,4 +597,51 @@ h1{
     background:linear-gradient(135deg,var(--purple-glow),var(--purple-2));
     color:#fff;font-weight:600;
   }
+}
+
+/* ---------- TESTE: hero direcional em duas colunas (backup em _BACKUP_ANTES_TESTE_HERO_DIRECIONAL) ---------- */
+.hs{position:relative;overflow:hidden;background:var(--bg);padding:48px 0 64px;}
+.hs__grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center;gap:32px;}
+.hs__content{position:relative;z-index:2;text-align:left;}
+.hs__title{font-size:clamp(2.2rem, 3.4vw, 3rem);line-height:1.12;letter-spacing:-0.02em;margin:0;max-width:600px;text-wrap:balance;}
+.hs__sub{color:var(--muted);font-size:1.08rem;line-height:1.6;margin:18px 0 30px;max-width:470px;}
+.hs__cta{display:inline-flex;}
+.hs__proof{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:24px;font-size:0.88rem;color:var(--muted);}
+.hs__proof span{display:block;line-height:1.5;}
+.hs__proof span::before{content:"\2713";color:var(--purple-glow);font-weight:700;margin-right:8px;}
+.hs__proof strong{color:#fff;font-weight:700;white-space:nowrap;}
+/* desktop: The Question como adesivo clicável */
+.hs__visual{
+  position:relative;display:block;width:108%;margin-left:-2%;
+  transform:rotate(-2.5deg);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), filter .35s ease;
+  filter:drop-shadow(0 18px 26px rgba(0,0,0,0.55)) drop-shadow(0 0 22px rgba(108,31,196,0.28));
+}
+.hs__visual:hover,.hs__visual:focus-visible{
+  transform:rotate(0deg) translateY(-6px) scale(1.03);
+  filter:drop-shadow(0 26px 34px rgba(0,0,0,0.6)) drop-shadow(0 0 34px rgba(138,59,219,0.45));
+}
+.hs__visual:focus-visible{outline:none;}
+.hs__img{display:block;width:100%;height:auto;}
+.hs__tint{display:none;}
+
+/* mobile: hero estilo lowticket (headline, mockup, botão, provas) */
+@media (max-width: 900px){
+  .hs{padding:32px 0 44px;}
+  .hs__grid{display:flex;flex-direction:column;gap:0;}
+  .hs__content{display:contents;text-align:center;}
+  .hs__title{order:1;font-size:1.9rem;line-height:1.16;margin:0 auto;text-align:center;}
+  .hs__sub{order:2;font-size:0.95rem;margin:14px auto 6px;text-align:center;}
+  .hs__visual{
+    order:3;width:calc(100% + 16px);max-width:540px;margin:18px -8px 26px;align-self:center;
+    transform:rotate(-2deg);transition:none;
+    filter:drop-shadow(0 14px 20px rgba(0,0,0,0.55));
+  }
+  .hs__visual::before{
+    content:"";position:absolute;inset:-8% -4%;z-index:-1;pointer-events:none;
+    background:radial-gradient(closest-side, rgba(138,59,219,0.6), rgba(108,31,196,0.22) 55%, transparent 100%);
+  }
+  .hs__visual:hover,.hs__visual:focus-visible{transform:rotate(-2deg);filter:drop-shadow(0 14px 20px rgba(0,0,0,0.55));}
+  .hs__cta{order:4;display:flex;width:100%;justify-content:center;}
+  .hs__proof{order:5;align-items:center;gap:6px;font-size:0.84rem;text-align:center;margin-left:auto;margin-right:auto;}
 }

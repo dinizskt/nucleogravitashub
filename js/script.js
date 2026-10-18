@@ -34,6 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Floating mobile CTA only appears once the hero CTA has scrolled out of view
+  const fab = document.querySelector('.mobile-fab');
+  const heroCta = document.querySelector('.hs__cta');
+  if (fab && heroCta) {
+    const updateFab = () => fab.classList.toggle('is-visible', heroCta.getBoundingClientRect().bottom < 0);
+    window.addEventListener('scroll', updateFab, { passive: true });
+    updateFab();
+  }
+
   // Header background intensifies on scroll
   const header = document.getElementById('header');
   if (header) {
