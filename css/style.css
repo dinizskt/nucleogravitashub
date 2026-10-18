@@ -645,3 +645,13 @@ h1{
   .hs__cta{order:4;display:flex;width:100%;justify-content:center;}
   .hs__proof{order:5;align-items:center;gap:6px;font-size:0.84rem;text-align:center;margin-left:auto;margin-right:auto;}
 }
+
+/* ---------- Telas largas: amplia o site proporcionalmente (enquadramento de ~1380px úteis, igual ao print aprovado) ---------- */
+@media (min-width: 1500px){ html{zoom:1.08;} }
+@media (min-width: 1650px){ html{zoom:1.18;} }
+@media (min-width: 1800px){ html{zoom:1.3;} }
+@media (min-width: 1880px){ html{zoom:1.38;} }
+@media (min-width: 2100px){ html{zoom:1.5;} }
+@media (min-width: 2400px){ html{zoom:1.7;} }
+@media (min-width: 2800px){ html{zoom:2;} }
+@media (min-width: 3400px){ html{zoom:2.4;} }
