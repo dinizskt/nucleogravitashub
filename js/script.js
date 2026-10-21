@@ -29,19 +29,50 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
       const wasActive = item.classList.contains('active');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-      if (!wasActive) item.classList.add('active');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.faq-item__q').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasActive) {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
-  // Floating mobile CTA only appears once the hero CTA has scrolled out of view
+  // Floating mobile CTA: appears after the hero CTA scrolls away, steps aside while another
+  // checkout button is already on screen or the menu is open
   const fab = document.querySelector('.mobile-fab');
   const heroCta = document.querySelector('.hs__cta');
+  const inlineCtas = document.querySelectorAll('main a[data-cta]:not(.hs__cta)');
   if (fab && heroCta) {
-    const updateFab = () => fab.classList.toggle('is-visible', heroCta.getBoundingClientRect().bottom < 0);
+    const onScreen = el => {
+      const r = el.getBoundingClientRect();
+      return r.top < window.innerHeight && r.bottom > 0;
+    };
+    const updateFab = () => {
+      const show = heroCta.getBoundingClientRect().bottom < 0
+        && ![...inlineCtas].some(onScreen)
+        && !(nav && nav.classList.contains('nav--open'));
+      fab.classList.toggle('is-visible', show);
+    };
     window.addEventListener('scroll', updateFab, { passive: true });
+    window.addEventListener('resize', updateFab, { passive: true });
+    if (navToggle) navToggle.addEventListener('click', updateFab);
     updateFab();
   }
+
+  // Measurement: every checkout button has data-cta with its location. Events go to whichever
+  // analytics tool is installed on the page (Google Tag Manager/GA4, Meta Pixel, Vercel Analytics)
+  document.querySelectorAll('a[data-cta]').forEach(link => {
+    link.addEventListener('click', () => {
+      const location = link.dataset.cta;
+      (window.dataLayer = window.dataLayer || []).push({ event: 'checkout_click', cta_location: location, link_url: link.href });
+      if (typeof window.gtag === 'function') window.gtag('event', 'begin_checkout', { cta_location: location });
+      if (typeof window.fbq === 'function') window.fbq('track', 'InitiateCheckout', { content_name: location });
+      if (typeof window.va === 'function') window.va('event', { name: 'checkout_click', data: { cta_location: location } });
+    });
+  });
 
   // Header background intensifies on scroll
   const header = document.getElementById('header');
