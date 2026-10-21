@@ -673,7 +673,7 @@ h1{
 }
 .members .container{position:relative;}
 .members__window{
-  margin:44px auto 0;max-width:1080px;border-radius:24px;border:1px solid var(--line);
+  margin:44px auto 0;max-width:1140px;border-radius:24px;border:1px solid var(--line);
   background:linear-gradient(180deg,#1a1320 0%,#121014 100%);
   box-shadow:0 40px 80px -40px rgba(0,0,0,0.85),0 0 0 1px rgba(138,59,219,0.08),0 0 60px -20px rgba(108,31,196,0.45);
   overflow:hidden;
@@ -695,7 +695,7 @@ h1{
 }
 .members__pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(61,220,132,0.6);animation:members-pulse 2s infinite;}
 @keyframes members-pulse{70%{box-shadow:0 0 0 7px rgba(61,220,132,0);}100%{box-shadow:0 0 0 0 rgba(61,220,132,0);}}
-.members__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;padding:26px 26px 30px;}
+.members__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;padding:26px 26px 30px;}
 .mcard{margin:0;}
 .mcard__cover{
   position:relative;border-radius:12px;overflow:hidden;aspect-ratio:318/449;background:#0b0710;
