@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BANCO DE OFERTAS VALIDADAS — Núcleo Gravitas
+   BANCO DE OFERTAS VALIDADAS — Gravitas Hub
    Fonte: 5 relatórios de mineração (Meta Ads Library, Brasil)
    Este arquivo só contém dados. A lógica de render está em script.js.
    ========================================================================== */
