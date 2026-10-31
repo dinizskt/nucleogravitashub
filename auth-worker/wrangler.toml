@@ -10,12 +10,12 @@ routes = [
 
 [vars]
 # Client ID do Google (não é segredo). O Client Secret e o SESSION_SECRET entram por `wrangler secret put`.
-GOOGLE_CLIENT_ID = ""
+GOOGLE_CLIENT_ID = "722512242045-7livt3qlpge9gnagi2nae94oho9vm6uo.apps.googleusercontent.com"
 # E-mails que sempre entram, separados por vírgula (ex.: o seu), mesmo fora da lista de alunos.
-ADMIN_EMAILS = ""
+ADMIN_EMAILS = "c4ssio180@gmail.com"
 
 # Lista de alunos liberados (chave = e-mail normalizado, valor = "1").
 # Criar com: npx wrangler kv namespace create ALLOW  -> cole o id aqui.
 [[kv_namespaces]]
 binding = "ALLOW"
-id = "COLE_AQUI_O_ID_DO_KV"
+id = "8d379cb2e4bd49f9bf38b98ebb4a2453"
