@@ -4,3 +4,5 @@ node_modules
 # nunca versionar dados de alunos
 *.csv
 allowlist*.json
+convite*.json
+membros*.json

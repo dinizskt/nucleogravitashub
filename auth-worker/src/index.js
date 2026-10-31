@@ -82,16 +82,50 @@ async function readSession(request, env) {
 /* ---------- páginas ---------- */
 const MENSAGENS = {
   negado: (email) =>
-    `O e-mail <strong>${esc(email || "")}</strong> não está liberado para o Gravitas Hub. Entre com o mesmo e-mail usado na compra da mentoria ou fale com o suporte.`,
+    `O e-mail <strong>${esc(email || "")}</strong> ainda não está liberado para o Gravitas Hub. Se você é aluno, abra o link de convite do grupo da mentoria para se cadastrar (é só uma vez) ou fale com o suporte.`,
+  convite: () => "Este convite expirou ou atingiu o limite de cadastros. Peça um link novo no grupo da mentoria.",
   sessao: () => "Sua tentativa de login expirou. Tente novamente.",
   google: () => "Não foi possível validar sua conta com o Google. Tente novamente.",
   cancelado: () => "Login cancelado. Quando quiser, é só tentar de novo.",
 };
 
-function loginPage(url) {
+// Convites são códigos aleatórios guardados no KV como "convite:<codigo>" = {exp, max, count}.
+const CODIGO_OK = /^[A-Za-z0-9_-]{16,64}$/;
+
+async function readInvite(env, code) {
+  if (!code || !CODIGO_OK.test(code)) return null;
+  const raw = await env.ALLOW.get(`convite:${code}`);
+  if (!raw) return null;
+  try {
+    const inv = JSON.parse(raw);
+    if (inv.exp && inv.exp < nowSec()) return null;
+    if (inv.count >= inv.max) return null;
+    return inv;
+  } catch {
+    return null;
+  }
+}
+
+// Cadastra o e-mail como aluno usando um convite válido. Contagem em KV é "melhor esforço" (pode passar do limite por poucos).
+async function registerWithInvite(env, code, email) {
+  const inv = await readInvite(env, code);
+  if (!inv) return false;
+  const meta = { via: "convite", c: code.slice(0, 6), t: new Date().toISOString() };
+  await env.ALLOW.put(normalizeEmail(email), JSON.stringify(meta), { metadata: meta });
+  await env.ALLOW.put(`convite:${code}`, JSON.stringify({ ...inv, count: inv.count + 1 }), inv.exp ? { expiration: inv.exp } : undefined);
+  return true;
+}
+
+async function loginPage(url, env) {
   const erro = url.searchParams.get("erro");
-  const msg = MENSAGENS[erro] ? MENSAGENS[erro](url.searchParams.get("email")) : "";
+  let msg = MENSAGENS[erro] ? MENSAGENS[erro](url.searchParams.get("email")) : "";
   const next = safeNext(url.searchParams.get("next"));
+  const conviteParam = url.searchParams.get("convite");
+  let convite = "";
+  if (conviteParam && !erro) {
+    if (await readInvite(env, conviteParam)) convite = conviteParam;
+    else msg = MENSAGENS.convite();
+  }
   const html = `<!DOCTYPE html>
 <html lang="pt-BR"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,9 +150,9 @@ small{display:block;margin-top:22px;color:#716a82;font-size:.76rem}
 <main class="card">
 <img src="/hub/assets/logo.png" alt="Gravitas Hub">
 <h1>Gravitas <span>Hub</span></h1>
-<p>Área exclusiva para alunos do Núcleo Gravitas. Entre com a conta Google do e-mail da sua matrícula.</p>
+<p>${convite ? "Você recebeu um convite para o Gravitas Hub. Entre com a conta Google que quiser usar daqui para frente: o cadastro é feito só nessa primeira vez." : "Área exclusiva para alunos do Núcleo Gravitas. Entre com a conta Google que você cadastrou."}</p>
 ${msg ? `<div class="erro">${msg}</div>` : ""}
-<a class="btn" href="/hub/login?next=${encodeURIComponent(next)}">
+<a class="btn" href="/hub/login?next=${encodeURIComponent(next)}${convite ? `&convite=${encodeURIComponent(convite)}` : ""}">
 <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.5l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.6 5.9c4.4-4.1 7-10.1 7-17.6z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C.9 16.400 0 20.100 0 24s.9 7.600 2.600 10.800l7.900-6.100z"/><path fill="#34A853" d="M24 48c6.500 0 12-2.100 16-5.800l-7.600-5.900c-2.100 1.400-4.900 2.300-8.400 2.300-6.300 0-11.600-4.100-13.500-9.800l-7.900 6.100C6.500 42.600 14.600 48 24 48z"/></svg>
 Entrar com Google</a>
 <small>Sem acesso? Fale com o suporte da mentoria.</small>
@@ -139,7 +173,11 @@ async function startLogin(url, env) {
   const verifier = randomToken(32);
   const challenge = b64url(await crypto.subtle.digest("SHA-256", enc.encode(verifier)));
   const next = safeNext(url.searchParams.get("next"));
-  const oauth = await sign({ s: state, v: verifier, n: next, exp: nowSec() + OAUTH_TTL }, env.SESSION_SECRET);
+  const convite = url.searchParams.get("convite");
+  const oauth = await sign(
+    { s: state, v: verifier, n: next, c: CODIGO_OK.test(convite || "") ? convite : "", exp: nowSec() + OAUTH_TTL },
+    env.SESSION_SECRET
+  );
   const auth = new URL("https://accounts.google.com/o/oauth2/v2/auth");
   auth.search = new URLSearchParams({
     client_id: env.GOOGLE_CLIENT_ID,
@@ -192,7 +230,9 @@ async function handleCallback(request, url, env) {
   }
 
   if (!(await isAllowed(env, claims.email))) {
-    return falha("negado", `&email=${encodeURIComponent(claims.email)}`);
+    // Quem ainda não é aluno cadastrado só entra com um convite válido (e fica cadastrado para as próximas vezes).
+    if (!oauth.c) return falha("negado", `&email=${encodeURIComponent(claims.email)}`);
+    if (!(await registerWithInvite(env, oauth.c, claims.email))) return falha("convite");
   }
 
   const session = await sign({ e: claims.email, n: claims.name || "", exp: nowSec() + SESSION_TTL }, env.SESSION_SECRET);
@@ -213,7 +253,7 @@ export default {
     }
 
     try {
-      if (path === "/hub/entrar") return loginPage(url);
+      if (path === "/hub/entrar") return await loginPage(url, env);
       if (path === "/hub/login") return startLogin(url, env);
       if (path === "/hub/auth/callback") return await handleCallback(request, url, env);
       if (path === "/hub/sair") return redirect("/hub/entrar", [cookie(SESSION_COOKIE, "", 0)]);

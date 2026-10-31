@@ -7,16 +7,27 @@ const ORIGIN = "https://www.nucleogravitas.com.br";
 const CLIENT_ID = "client-123.apps.googleusercontent.com";
 
 function makeEnv(allowed = []) {
-  const set = new Set(allowed.map(normalizeEmail));
+  const kv = new Map(allowed.map((e) => [normalizeEmail(e), "1"]));
   return {
     GOOGLE_CLIENT_ID: CLIENT_ID,
     GOOGLE_CLIENT_SECRET: "segredo-google",
     SESSION_SECRET: "segredo-de-sessao-com-bastante-entropia",
     ADMIN_EMAILS: "",
-    ALLOW: { get: async (k) => (set.has(k) ? "1" : null) },
-    _set: set,
+    ALLOW: {
+      get: async (k) => (kv.has(k) ? kv.get(k) : null),
+      put: async (k, v) => void kv.set(k, v),
+    },
+    _set: kv,
   };
 }
+
+const CONVITE = "convite-do-grupo-0123456789";
+const nowSec = () => Math.floor(Date.now() / 1000);
+const comConvite = (env, inv = {}) => {
+  env._set.set(`convite:${CONVITE}`, JSON.stringify({ exp: nowSec() + 14 * 86400, max: 600, count: 0, ...inv }));
+  return env;
+};
+const contagem = (env) => JSON.parse(env._set.get(`convite:${CONVITE}`)).count;
 
 const b64 = (o) => Buffer.from(JSON.stringify(o)).toString("base64url");
 const idToken = (claims) => `${b64({ alg: "RS256" })}.${b64(claims)}.assinatura`;
@@ -51,8 +62,9 @@ const cookiesFrom = (resp) => resp.headers.getSetCookie().map((c) => c.split(";"
 const cookieHeader = (resp) => cookiesFrom(resp).filter((c) => !c.endsWith("=")).join("; ");
 
 // percorre login -> google -> callback e devolve a resposta do callback
-async function loginFlow(env, next = "/hub") {
-  const start = await worker.fetch(req(`/hub/login?next=${encodeURIComponent(next)}`), env);
+async function loginFlow(env, next = "/hub", convite = "") {
+  const extra = convite ? `&convite=${encodeURIComponent(convite)}` : "";
+  const start = await worker.fetch(req(`/hub/login?next=${encodeURIComponent(next)}${extra}`), env);
   const auth = new URL(start.headers.get("location"));
   const state = auth.searchParams.get("state");
   const cb = await worker.fetch(req(`/hub/auth/callback?code=abc&state=${state}`, { cookie: cookieHeader(start) }), env);
@@ -186,6 +198,59 @@ test("a tela de login escapa o e-mail recebido na URL", async () => {
   const html = await r.text();
   assert.ok(!html.includes("<script>alert(1)</script>"));
   assert.ok(html.includes("&lt;script&gt;"));
+});
+
+test("convite válido: a tela de login leva o convite até o Google", async () => {
+  const env = comConvite(makeEnv());
+  const html = await (await worker.fetch(req(`/hub/entrar?convite=${CONVITE}`), env)).text();
+  assert.ok(html.includes(`convite=${CONVITE}`));
+  assert.ok(html.includes("Você recebeu um convite"));
+});
+
+test("convite inexistente ou vencido mostra o aviso e não repassa o código", async () => {
+  for (const env of [makeEnv(), comConvite(makeEnv(), { exp: nowSec() - 10 })]) {
+    const html = await (await worker.fetch(req(`/hub/entrar?convite=${CONVITE}`), env)).text();
+    assert.ok(html.includes("Este convite expirou"));
+    assert.ok(!html.includes(`convite=${CONVITE}`));
+  }
+});
+
+test("primeiro login pelo convite cadastra o aluno, e depois ele entra sem convite", async () => {
+  const env = comConvite(makeEnv());
+  tokenResponse.body = { id_token: idToken(googleClaims({ email: "Novo.Aluno@gmail.com" })) };
+  const { cb } = await loginFlow(env, "/hub", CONVITE);
+  assert.equal(cb.headers.get("location"), "/hub");
+  assert.match(cookieHeader(cb), /gh_session=/);
+  const meta = JSON.parse(env._set.get("novoaluno@gmail.com"));
+  assert.equal(meta.via, "convite");
+  assert.ok(meta.t);
+  assert.equal(contagem(env), 1);
+
+  env._set.delete(`convite:${CONVITE}`); // link trocado/apagado: quem já entrou continua
+  const denovo = await loginFlow(env);
+  assert.match(cookieHeader(denovo.cb), /gh_session=/);
+});
+
+test("aluno já cadastrado que abre o convite não gasta vaga", async () => {
+  const env = comConvite(makeEnv(["aluno@gmail.com"]));
+  await loginFlow(env, "/hub", CONVITE);
+  assert.equal(contagem(env), 0);
+});
+
+test("convite lotado ou vencido não cadastra ninguém", async () => {
+  for (const inv of [{ count: 600 }, { exp: nowSec() - 10 }]) {
+    const env = comConvite(makeEnv(), inv);
+    const { cb } = await loginFlow(env, "/hub", CONVITE);
+    assert.equal(cb.headers.get("location"), "/hub/entrar?erro=convite");
+    assert.equal(env._set.get("aluno@gmail.com"), undefined);
+  }
+});
+
+test("código de convite forjado não é aceito", async () => {
+  const env = makeEnv();
+  const { cb } = await loginFlow(env, "/hub", "chute");
+  assert.match(cb.headers.get("location"), /erro=negado/);
+  assert.equal(env._set.get("aluno@gmail.com"), undefined);
 });
 
 test("sair limpa a sessão", async () => {

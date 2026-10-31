@@ -48,7 +48,33 @@ npx wrangler secret put SESSION_SECRET         # cole uma string aleatória long
 npx wrangler deploy
 ```
 
-## 3. Lista de alunos
+## 3. Link de convite (o jeito principal de liberar alunos)
+
+Um link só, para colocar no grupo do WhatsApp. Quem abre faz login com o Google **uma vez** e fica cadastrado;
+depois entra direto em `/hub` com um clique, sem precisar do link de novo.
+
+```bash
+node scripts/convite.mjs              # padrão: vale 14 dias, até 600 cadastros (ex.: node scripts/convite.mjs 7 300)
+npx wrangler kv bulk put convite.bulk.json --binding ALLOW --remote
+```
+
+O script mostra o link (`https://www.nucleogravitas.com.br/hub/entrar?convite=...`) e o comando para cancelá-lo.
+
+- **Trocar o link** (vazou, turma nova, prazo acabou): gere outro e apague o antigo com o comando que o script mostrou.
+  Quem já se cadastrou continua entrando normalmente; o link antigo para de cadastrar gente nova.
+- Depois do prazo o convite some sozinho do KV. Quem abrir um link vencido vê "Este convite expirou".
+- Quem já é cadastrado e abre o convite de novo não gasta vaga.
+- O código tem 24 caracteres aleatórios; não dá para adivinhar. Mesmo assim, trate o link como interno do grupo.
+- O limite é aproximado (o KV não tem contador atômico): com muita gente entrando no mesmo segundo pode passar por poucos.
+
+**Quem entrou e quando:**
+
+```bash
+npx wrangler kv key list --binding ALLOW --remote > membros.json
+node scripts/membros.mjs membros.json       # gera membros.csv (e-mail, origem, data de entrada)
+```
+
+## 4. Lista de alunos (opcional, para liberar sem convite)
 
 Exporte os e-mails dos alunos (CSV ou TXT, qualquer formato em que o e-mail apareça):
 
@@ -61,9 +87,10 @@ npx wrangler kv bulk put allowlist.bulk.json --binding ALLOW --remote
 - Adicionar um aluno: `npx wrangler kv key put "email@dominio.com" 1 --binding ALLOW --remote`
 - Remover: `npx wrangler kv key delete "email@dominio.com" --binding ALLOW --remote`
   (o aluno perde o acesso no próximo carregamento da página).
-- Os arquivos `*.csv` e `allowlist*.json` estão no `.gitignore`. Nunca suba dados de alunos para o GitHub.
+- Os arquivos `*.csv`, `allowlist*.json`, `convite*.json` e `membros*.json` estão no `.gitignore`.
+  Nunca suba dados de alunos para o GitHub.
 
-## 4. Fechar o endereço da Vercel
+## 5. Fechar o endereço da Vercel
 
 O hub também existe em `*.vercel.app`, fora do Worker. Em Vercel > Project > Settings > Deployment Protection,
 ative **Vercel Authentication** (Standard Protection). Os domínios `*.vercel.app` passam a exigir login da Vercel
@@ -81,5 +108,5 @@ e o domínio próprio continua público para a Cloudflare buscar.
 ## Testes
 
 ```bash
-npm test    # 17 testes: fluxo completo, cookie forjado, state adulterado, open redirect, remoção de aluno...
+npm test    # 23 testes: fluxo completo, convite (válido, vencido, lotado, forjado), cookie forjado, open redirect...
 ```
