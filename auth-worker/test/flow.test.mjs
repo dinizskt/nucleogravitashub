@@ -204,7 +204,7 @@ test("convite válido: a tela de login leva o convite até o Google", async () =
   const env = comConvite(makeEnv());
   const html = await (await worker.fetch(req(`/hub/entrar?convite=${CONVITE}`), env)).text();
   assert.ok(html.includes(`convite=${CONVITE}`));
-  assert.ok(html.includes("Você recebeu um convite"));
+  assert.ok(html.includes("Você foi convidado"));
 });
 
 test("convite inexistente ou vencido mostra o aviso e não repassa o código", async () => {
