@@ -82,7 +82,7 @@ async function readSession(request, env) {
 /* ---------- páginas ---------- */
 const MENSAGENS = {
   negado: (email) =>
-    `O e-mail <strong>${esc(email || "")}</strong> ainda não está liberado para o Gravitas Hub. Se você é aluno, abra o link de convite do grupo da mentoria para se cadastrar (é só uma vez) ou fale com o suporte.`,
+    `O e-mail <strong>${esc(email || "")}</strong> ainda não está liberado. Se você é aluno, entre pelo link de convite do grupo da mentoria (é só uma vez).`,
   convite: () => "Este convite expirou ou atingiu o limite de cadastros. Peça um link novo no grupo da mentoria.",
   sessao: () => "Sua tentativa de login expirou. Tente novamente.",
   google: () => "Não foi possível validar sua conta com o Google. Tente novamente.",
@@ -181,8 +181,33 @@ h1 span{color:var(--lilac)}
 .spark svg{display:block;width:100%;height:70px}
 footer{padding:0 32px 26px;display:flex;justify-content:center;gap:10px;font-size:.74rem;color:var(--muted-2)}
 footer a:hover{color:var(--muted)}
-@media (max-width:900px){.wrap{grid-template-columns:1fr;gap:0;padding:12px 20px 40px;max-width:560px}.panel{display:none}.login{max-width:none}.topbar{padding:18px 20px}}
-@media (max-width:520px){.badge{display:none}h1{margin-top:18px}}
+@media (max-width:900px){
+.topbar{padding:18px 20px}
+.wrap{grid-template-columns:1fr;align-items:start;gap:28px;padding:20px 20px 32px;max-width:560px}
+.login{max-width:none}
+.panel{padding:0 2px;border:none;background:none;box-shadow:none}
+.panel__head{margin-bottom:12px}
+.panel__head h2{font-family:Inter,sans-serif;font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+.panel__head span,.item small,.spark{display:none}
+.item{align-items:center;padding:10px 12px;border-radius:14px}
+.item+.item{margin-top:8px}
+.item__icon{width:32px;height:32px;border-radius:10px}
+.item__icon svg{width:16px;height:16px}
+.item b{font-size:.88rem;color:var(--muted)}
+}
+@media (max-width:520px){
+.badge{display:none}
+.wrap{padding-top:28px}
+.chip{font-size:.72rem;padding:6px 12px}
+h1{font-size:2rem;line-height:1.15;margin:16px 0 10px}
+.lead{font-size:.92rem}
+.login{margin-top:24px;padding:18px;border-radius:20px}
+.login__label{margin-bottom:12px}
+.btn{padding:15px 22px;font-size:1rem}
+.login__note{margin-top:12px;font-size:.76rem;text-align:center}
+.erro{font-size:.82rem}
+footer{padding-bottom:22px}
+}
 </style></head><body>
 <header class="topbar">
   <div class="brand"><img src="/hub/assets/logo.png?v=2" alt=""><div class="brand__text"><span class="brand__name">Gravitas <strong>Hub</strong></span><span class="brand__sub">Núcleo Gravitas</span></div></div>
@@ -199,7 +224,7 @@ footer a:hover{color:var(--muted)}
       <a class="btn" href="${loginHref}">
         <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
         Entrar com Google</a>
-      <p class="login__note">${convite ? "Depois do cadastro, é só acessar nucleogravitas.com.br/hub e entrar com um clique." : "Ainda não tem acesso? Use o link de convite do grupo da mentoria ou fale com o suporte."}</p>
+      ${msg ? "" : `<p class="login__note">${convite ? "Depois do cadastro, é só acessar nucleogravitas.com.br/hub e entrar com um clique." : "Ainda não tem acesso? Use o link de convite do grupo da mentoria."}</p>`}
     </div>
   </section>
   <aside class="panel glass" aria-hidden="true">
