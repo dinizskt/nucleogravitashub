@@ -59,6 +59,14 @@
         <button class="sidenav__link sidenav__link--soon" data-section="ferramentas" data-icon="tool" title="Stack recomendada"><span class="sidenav__title">Ferramentas</span></button>
       </div>
     </nav>
+
+    <div class="sidebar__user" id="sidebar-user" hidden>
+      <span class="sidebar__avatar" id="user-avatar"></span>
+      <span class="sidebar__user-text"><span class="sidebar__user-name" id="user-name"></span><span class="sidebar__user-mail" id="user-email"></span></span>
+      <a class="sidebar__logout" href="/hub/sair" title="Sair" aria-label="Sair">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </a>
+    </div>
   </aside>
   <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 

@@ -67,6 +67,19 @@ document.getElementById("sidebar-backdrop").addEventListener("click", () => docu
 
 links.forEach((l) => l.addEventListener("click", () => goTo(l.dataset.section)));
 
+// Com o login ativo (Cloudflare), mostra quem está logado e o botão Sair. Sem login (ex.: localhost), segue oculto.
+fetch("/hub/me", { credentials: "same-origin" })
+  .then((r) => (r.ok ? r.json() : null))
+  .then((u) => {
+    if (!u || !u.email) return;
+    const nome = u.name || u.email.split("@")[0];
+    document.getElementById("user-avatar").textContent = nome.trim()[0].toUpperCase();
+    document.getElementById("user-name").textContent = nome;
+    document.getElementById("user-email").textContent = u.email;
+    document.getElementById("sidebar-user").hidden = false;
+  })
+  .catch(() => {});
+
 /* ============================== BANCO DE OFERTAS ============================== */
 const grid = document.getElementById("grid");
 const searchInput = document.getElementById("search-input");

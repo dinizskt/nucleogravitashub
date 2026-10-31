@@ -1,0 +1,9 @@
+{
+  "name": "gravitas-hub-auth",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/flow.test.mjs",
+    "alunos": "node scripts/allowlist.mjs"
+  }
+}

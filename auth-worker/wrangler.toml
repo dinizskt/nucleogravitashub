@@ -1,0 +1,21 @@
+name = "gravitas-hub-auth"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+# O Worker só roda nas rotas do hub; o resto do site passa direto para a Vercel.
+routes = [
+  { pattern = "nucleogravitas.com.br/hub*", zone_name = "nucleogravitas.com.br" },
+  { pattern = "www.nucleogravitas.com.br/hub*", zone_name = "nucleogravitas.com.br" },
+]
+
+[vars]
+# Client ID do Google (não é segredo). O Client Secret e o SESSION_SECRET entram por `wrangler secret put`.
+GOOGLE_CLIENT_ID = ""
+# E-mails que sempre entram, separados por vírgula (ex.: o seu), mesmo fora da lista de alunos.
+ADMIN_EMAILS = ""
+
+# Lista de alunos liberados (chave = e-mail normalizado, valor = "1").
+# Criar com: npx wrangler kv namespace create ALLOW  -> cole o id aqui.
+[[kv_namespaces]]
+binding = "ALLOW"
+id = "COLE_AQUI_O_ID_DO_KV"

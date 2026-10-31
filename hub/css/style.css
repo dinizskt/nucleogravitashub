@@ -144,6 +144,26 @@ body.nav-collapsed .main{margin-left:0;}
 .sidenav__link--soon{color:var(--muted-2);}
 .sidenav__link--soon:hover,.sidenav__link--soon.active{color:var(--ink);}
 
+/* ---------- Usuário logado (aparece quando o login do Cloudflare está ativo) ---------- */
+.sidebar__user{
+  display:flex;align-items:center;gap:12px;margin:0 14px 14px;padding:12px 12px 12px 14px;border-radius:16px;
+  border:1px solid var(--stroke);background:rgba(255,255,255,0.03);
+}
+.sidebar__user[hidden]{display:none;}
+.sidebar__avatar{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;
+  background:linear-gradient(135deg,#6a2fc0,#9a63e6);font-family:'Sora',sans-serif;font-size:0.85rem;font-weight:500;color:#fff;
+}
+.sidebar__user-text{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3;}
+.sidebar__user-name{font-size:0.84rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sidebar__user-mail{font-size:0.72rem;color:var(--muted-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sidebar__logout{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;color:var(--muted);
+  transition:color .15s ease,background-color .15s ease;
+}
+.sidebar__logout svg{width:17px;height:17px;}
+.sidebar__logout:hover{color:var(--ink);background:rgba(255,255,255,0.06);}
+
 /* ---------- Cabeçalho de página ---------- */
 .page-head{margin:0 0 30px;}
 .page-head--row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
