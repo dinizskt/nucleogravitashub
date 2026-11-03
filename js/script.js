@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (items.length > MAX) {
       const old = items[items.length - 1];
       old.classList.add('is-out');
-      setTimeout(() => old.remove(), 600);
+      setTimeout(() => old.remove(), 950);
     }
   };
   let timer = null;
