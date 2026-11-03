@@ -200,24 +200,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const box = document.querySelector('.lscreen__ntfs');
   if (!box) return;
   const VALUES = ['47,00', '777,00', '87,30', '47,00', '472,00', '47,00', '87,30', '777,00'];
-  const TIMES = ['agora', 'há 1min', 'há 3min', 'há 6min', 'há 11min'];
   const MAX = 4;
   const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"><path d="M6.5 4.5v8a5.5 5.5 0 0 0 11 0v-8"/></svg>';
   let k = 0;
-  const make = () => {
+  // cada notificação guarda a hora em que "chegou"; o rótulo só avança com o tempo, nunca volta
+  const ago = ms => { const m = Math.floor(ms / 60000); return m < 1 ? 'agora' : m < 60 ? `há ${m}min` : `há ${Math.floor(m / 60)}h`; };
+  const make = (age = 0) => {
     const el = document.createElement('div');
     el.className = 'ntf';
+    el.dataset.born = Date.now() - age;
     el.innerHTML = `<span class="ntf__icon">${ICON}</span><span class="ntf__body"><strong>Venda aprovada!</strong><span>Valor: R$ ${VALUES[k++ % VALUES.length]}</span></span><span class="ntf__time"></span>`;
     return el;
   };
   const layout = () => {
     [...box.children].forEach((el, i) => {
       el.style.setProperty('--i', i);
-      el.querySelector('.ntf__time').textContent = TIMES[Math.min(i, TIMES.length - 1)];
+      el.querySelector('.ntf__time').textContent = ago(Date.now() - el.dataset.born);
     });
   };
   // começa com a pilha cheia
-  for (let i = 0; i < MAX - 1; i++) box.appendChild(make());
+  [40e3, 130e3, 290e3].forEach(age => box.appendChild(make(age)));
   layout();
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const push = () => {
