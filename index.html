@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Anton&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261103a">
+<link rel="stylesheet" href="css/style.css?v=20261103j">
 </head>
 <body>
 
@@ -58,20 +58,38 @@
 
   <!-- HERO -->
   <section class="hs">
-    <div class="container hs__grid">
-      <div class="hs__visual" aria-hidden="true">
-        <img src="assets/hero-hermes.webp" alt="" class="hs__img" width="1120" height="950" fetchpriority="high">
+    <div class="container hs__inner">
+      <h1 class="hs__title">O método que transforma Inteligência Artificial em <span class="grad">renda com potencial de escala.</span></h1>
+      <p class="hs__sub">Aprenda do zero a lucrar com infoprodutos low-ticket, tráfego pago e venda de sites. Tudo com passo a passo, ferramentas e acompanhamento próximo.</p>
+    </div>
+
+    <div class="hs__scene" aria-hidden="true">
+      <img class="hs__scene-img" src="assets/hero-notebook.webp" srcset="assets/hero-notebook-900.webp 900w, assets/hero-notebook.webp 1600w" sizes="(max-width: 900px) 136vw, 860px" width="1600" height="853" alt="" fetchpriority="high" decoding="async">
+      <div class="lscreen">
+        <svg class="lscreen__wall" viewBox="0 0 1000 633" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <filter id="wall-glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="22"/></filter>
+            <filter id="wall-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+            <radialGradient id="wall-light" cx="0.25" cy="0.15" r="0.9"><stop offset="0" stop-color="#b9b3c8"/><stop offset="0.55" stop-color="#5c5768"/><stop offset="1" stop-color="#2a2730"/></radialGradient>
+          </defs>
+          <rect width="1000" height="633" fill="#030304"/>
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <g filter="url(#wall-glow)" opacity="0.55"><path d="M-80 86 H660 A82 82 0 0 1 660 250 H300 A132 132 0 0 0 168 382 V720" stroke="url(#wall-light)" stroke-width="132" /><path d="M1080 372 H480 A80 80 0 0 0 480 532 H1080" stroke="url(#wall-light)" stroke-width="132" /><path d="M906 -60 V160 A84 84 0 0 0 990 244 H1080" stroke="url(#wall-light)" stroke-width="132" /></g>
+            <g><path d="M-80 86 H660 A82 82 0 0 1 660 250 H300 A132 132 0 0 0 168 382 V720" stroke="url(#wall-light)" stroke-width="108" /><path d="M1080 372 H480 A80 80 0 0 0 480 532 H1080" stroke="url(#wall-light)" stroke-width="108" /><path d="M906 -60 V160 A84 84 0 0 0 990 244 H1080" stroke="url(#wall-light)" stroke-width="108" /></g>
+            <g filter="url(#wall-soft)" transform="translate(5 7)"><path d="M-80 86 H660 A82 82 0 0 1 660 250 H300 A132 132 0 0 0 168 382 V720" stroke="#040405" stroke-width="102" /><path d="M1080 372 H480 A80 80 0 0 0 480 532 H1080" stroke="#040405" stroke-width="102" /><path d="M906 -60 V160 A84 84 0 0 0 990 244 H1080" stroke="#040405" stroke-width="102" /></g>
+          </g>
+        </svg>
+        <div class="lscreen__ntfs"></div>
       </div>
-      <div class="hs__content">
-        <h1 class="hs__title">Cansado de tentar lucrar na internet <span class="grad">sem saber por onde começar?</span></h1>
-        <p class="hs__sub">No Núcleo Gravitas você aprende a lucrar com Inteligência Artificial em infoprodutos lowticket, tráfego pago e sites, com um caminho claro do zero ao lucro e sem fórmula mágica.</p>
-        <a data-cta="hero" href="https://lastlink.com/p/C3E2D2A76/checkout-payment/" target="_blank" rel="noopener" class="btn btn--primary btn--lg hs__cta">Quero entrar agora <span class="arrow">→</span></a>
-        <ul class="hs__proof">
-          <li><span class="hs__proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><strong>R$ 92.626</strong><span>vendidos por um aluno no orgânico</span></li>
+    </div>
+
+    <div class="container hs__after">
+      <a data-cta="hero" href="https://lastlink.com/p/C3E2D2A76/checkout-payment/" target="_blank" rel="noopener" class="btn btn--primary btn--lg hs__cta">Quero entrar agora <span class="arrow">→</span></a>
+      <ul class="hs__proof">
+          <li><span class="hs__proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><strong>R$ 100.093</strong><span>vendidos por um aluno no orgânico</span></li>
           <li><span class="hs__proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span><strong>7 dias</strong><span>de garantia incondicional</span></li>
           <li><span class="hs__proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span><strong>Do zero ao lucro</strong><span>com acompanhamento</span></li>
         </ul>
-      </div>
     </div>
   </section>
 
@@ -244,16 +262,17 @@
       </div>
 
       <div class="method__visual">
-        <div class="orbit">
-          <div class="saturn">
-            <span class="saturn__band saturn__band--back" aria-hidden="true"><i class="saturn__ring"></i></span>
-            <div class="orbit__core"><img src="assets/logo.png?v=2" alt="Núcleo Gravitas" loading="lazy" decoding="async"></div>
-            <span class="saturn__band saturn__band--front" aria-hidden="true"><i class="saturn__ring"></i></span>
-          </div>
-          <div class="orbit__node orbit__node--1"><span class="orbit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.910-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span><span><small>01</small>Infoprodutos lowticket</span></div>
-          <div class="orbit__node orbit__node--2"><span class="orbit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><span><small>02</small>Tráfego pago</span></div>
-          <div class="orbit__node orbit__node--3"><span class="orbit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span><small>03</small>Sites com IA</span></div>
-          <div class="orbit__node orbit__node--4"><span class="orbit__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 9.5c0-1.38-1.34-2.5-3-2.5s-3 1.12-3 2.5 1.34 2.5 3 2.5 3 1.12 3 2.5-1.34 2.5-3 2.5-3-1.12-3-2.5"/><line x1="12" y1="5.5" x2="12" y2="7"/><line x1="12" y1="17" x2="12" y2="18.5"/></svg></span><span><small>04</small>Monetização com IA</span></div>
+        <div class="hub">
+          <svg class="hub__lines" aria-hidden="true"></svg>
+          <span class="hub__dot hub__dot--t" aria-hidden="true"></span>
+          <span class="hub__dot hub__dot--b" aria-hidden="true"></span>
+          <span class="hub__dot hub__dot--l" aria-hidden="true"></span>
+          <span class="hub__dot hub__dot--r" aria-hidden="true"></span>
+          <div class="hub__core"><img src="assets/logo.png?v=2" alt="Núcleo Gravitas" loading="lazy" decoding="async"></div>
+          <div class="hub__node hub__node--1"><span class="hub__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.910-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span><span class="hub__text"><small>01</small>Infoprodutos lowticket</span></div>
+          <div class="hub__node hub__node--2"><span class="hub__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><span class="hub__text"><small>02</small>Tráfego pago</span></div>
+          <div class="hub__node hub__node--3"><span class="hub__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span class="hub__text"><small>03</small>Sites com IA</span></div>
+          <div class="hub__node hub__node--4"><span class="hub__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M15 9.5c0-1.38-1.34-2.5-3-2.5s-3 1.12-3 2.5 1.34 2.5 3 2.5 3 1.12 3 2.5-1.34 2.5-3 2.5-3-1.12-3-2.5"/><line x1="12" y1="5.5" x2="12" y2="7"/><line x1="12" y1="17" x2="12" y2="18.5"/></svg></span><span class="hub__text"><small>04</small>Monetização com IA</span></div>
         </div>
       </div>
     </div>
@@ -268,10 +287,10 @@
 
       <div class="results">
         <div class="rhero">
-          <span class="rhero__label">aluno top 1 · vendas no orgânico</span>
-          <strong class="rhero__value">R$ 92.626</strong>
-          <div class="rhero__bar" role="img" aria-label="92,6% da meta de R$ 100 mil"><span></span></div>
-          <div class="rhero__scale"><span>R$ 0</span><span><strong>92,6%</strong> da meta de R$ 100 mil</span></div>
+          <span class="rhero__label">aluno MVP · nível Gold · vendas no orgânico</span>
+          <strong class="rhero__value">R$ 100.093</strong>
+          <div class="rhero__bar" role="img" aria-label="Meta de R$ 100 mil batida, próxima meta R$ 500 mil"><span></span><i class="rhero__mark" aria-hidden="true"></i></div>
+          <div class="rhero__scale"><span><strong>R$ 100 mil</strong> batidos ✓</span><span>próxima meta: <strong>R$ 500 mil</strong></span></div>
         </div>
       </div>
     </div>
@@ -279,9 +298,10 @@
     <div class="carousel-wrap">
       <div class="carousel" id="carousel">
         <div class="carousel__track">
-          <figure class="carousel__slide carousel__slide--wide">
-            <img src="assets/carousel-14.jpg" alt="Painel de vendas de um aluno: R$ 92.626 vendidos, próxima conquista R$ 100 mil" loading="lazy" decoding="async">
-            <figcaption>R$ 92.626 vendidos no orgânico pelo aluno top 1 do Núcleo, rumo aos R$ 100 mil</figcaption>
+          <figure class="carousel__slide carousel__slide--mvp">
+            <span class="carousel__badge">★ aluno MVP · R$ 100 mil</span>
+            <img src="assets/carousel-15.jpg" alt="Aluno do Núcleo atinge R$ 100 mil em vendas, nível Gold, e agradece no grupo" loading="lazy" decoding="async">
+            <figcaption>R$ 100.093 vendidos pelo aluno MVP do Núcleo. Nível Gold, agora rumo aos R$ 500 mil</figcaption>
           </figure>
           <figure class="carousel__slide">
             <img src="assets/carousel-1.jpg" alt="Print de comissões diárias" loading="lazy" decoding="async">
@@ -311,9 +331,10 @@
             <img src="assets/carousel-6.jpg" alt="Saldo disponível de um aluno da comunidade" loading="lazy" decoding="async">
             <figcaption>R$ 892,35 em saldo disponível, aluno com acompanhamento individual do fundador</figcaption>
           </figure>
-          <figure class="carousel__slide carousel__slide--wide" aria-hidden="true">
-            <img src="assets/carousel-14.jpg" alt="" loading="lazy" decoding="async">
-            <figcaption>R$ 92.626 vendidos no orgânico pelo aluno top 1 do Núcleo, rumo aos R$ 100 mil</figcaption>
+          <figure class="carousel__slide carousel__slide--mvp" aria-hidden="true">
+            <span class="carousel__badge">★ aluno MVP · R$ 100 mil</span>
+            <img src="assets/carousel-15.jpg" alt="" loading="lazy" decoding="async">
+            <figcaption>R$ 100.093 vendidos pelo aluno MVP do Núcleo. Nível Gold, agora rumo aos R$ 500 mil</figcaption>
           </figure>
           <figure class="carousel__slide" aria-hidden="true">
             <img src="assets/carousel-1.jpg" alt="" loading="lazy" decoding="async">
@@ -724,6 +745,6 @@
   </div>
 </footer>
 
-<script src="js/script.js?v=20261103a"></script>
+<script src="js/script.js?v=20261103j"></script>
 </body>
 </html>
