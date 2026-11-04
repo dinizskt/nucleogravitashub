@@ -147,7 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let links = [];
   const center = el => {
     const h = hub.getBoundingClientRect(), r = el.getBoundingClientRect();
-    return [r.left - h.left + r.width / 2, r.top - h.top + r.height / 2];
+    // telas grandes usam html{zoom}: o rect vem com zoom e o viewBox não, então volta pra escala do layout
+    const s = h.width / hub.offsetWidth || 1;
+    return [(r.left - h.left + r.width / 2) / s, (r.top - h.top + r.height / 2) / s];
   };
   const curve = ([x1, y1], [x2, y2]) => `M${x1.toFixed(1)} ${y1.toFixed(1)} Q${(x1 + (x2 - x1) * 0.6).toFixed(1)} ${(y1 + (y2 - y1) * 0.08).toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
   const build = () => {
