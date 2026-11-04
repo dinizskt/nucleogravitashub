@@ -93,7 +93,7 @@ h1,h2,h3{font-family:'Sora','Inter',sans-serif;}
   background:rgba(6,1,7,0.92);
   border-bottom:1px solid var(--line-soft);
 }
-#por-dentro,#metodo,#resultados,#comunidade,#planos,#sobre,#duvidas{scroll-margin-top:90px;}
+#por-dentro,#metodo,#resultados,#comunidade,#planos,#sobre,#duvidas{scroll-margin-top:124px;}
 .header__inner{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;gap:20px;max-width:1440px;margin:0 auto;}
 .nav{display:flex;gap:30px;flex:1;justify-content:center;}
 .nav a{font-size:0.92rem;font-weight:500;color:var(--muted);}
@@ -460,12 +460,24 @@ h1{
 
 /* ---------- Community: texto + lista numerada | celulares sobrepostos ---------- */
 .community{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.92fr);gap:72px;align-items:center;}
-.value-list{list-style:none;margin-top:30px;border-top:1px solid var(--line);}
-.value-item{display:grid;grid-template-columns:44px 1fr;padding:16px 0;border-bottom:1px solid var(--line);}
-.value-item__num{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--purple-glow);padding-top:3px;}
-.value-item h3{font-size:1rem;font-weight:700;color:#fff;line-height:1.35;letter-spacing:-0.01em;}
-.value-item p{font-size:0.9rem;color:var(--muted);margin-top:4px;line-height:1.55;}
-.community .meta-row{border-top:none;padding-top:0;margin-top:22px;}
+/* Comunidade: lista leve com trilho fino na esquerda; a barra roxa desce com o scroll e acende o item que alcança */
+.vacc{position:relative;display:flex;flex-direction:column;margin-top:28px;padding-left:22px;}
+.vacc__rail{position:absolute;left:0;top:6px;bottom:6px;width:2px;border-radius:2px;background:rgba(255,255,255,0.07);}
+.vacc__rail i{position:absolute;left:0;top:0;width:100%;height:calc(var(--p,0) * 100%);border-radius:2px;background:linear-gradient(180deg,var(--purple-2),var(--purple-glow));box-shadow:0 0 12px rgba(138,59,219,0.8);transition:height .25s ease-out;}
+.vacc__rail i::after{content:"";position:absolute;left:50%;bottom:-4px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(138,59,219,0.35),0 0 14px rgba(138,59,219,0.9);}
+.vacc__item{position:relative;}
+.vacc__head{display:flex;align-items:center;gap:12px;width:100%;padding:11px 0;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer;}
+.vacc__icon{flex-shrink:0;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--muted-2);background:rgba(255,255,255,0.03);transition:color .35s ease,background .35s ease,box-shadow .35s ease;}
+.vacc__icon svg{width:16px;height:16px;}
+.vacc__item.is-on .vacc__icon{color:#e4d4fd;background:rgba(108,31,196,0.3);box-shadow:inset 0 0 0 1px rgba(138,59,219,0.5);}
+.vacc__head h3{flex:1;font-size:0.98rem;font-weight:700;color:rgba(255,255,255,0.45);line-height:1.3;letter-spacing:-0.01em;transition:color .35s ease;}
+.vacc__item.is-on h3{color:rgba(255,255,255,0.8);}
+.vacc__item.is-open h3{color:#fff;}
+.vacc__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.4,0,.2,1);}
+.vacc__body p{overflow:hidden;min-height:0;padding:0 0 0 44px;font-size:0.9rem;color:var(--muted);line-height:1.5;opacity:0;transition:padding .45s cubic-bezier(.4,0,.2,1),opacity .35s ease;}
+.vacc__item.is-open .vacc__body{grid-template-rows:1fr;}
+.vacc__item.is-open .vacc__body p{padding-bottom:10px;opacity:1;}
+@media (prefers-reduced-motion: reduce){.vacc__rail i,.vacc__body,.vacc__body p{transition:none;}}
 .community .section__title{font-size:clamp(2.1rem,3.4vw,3rem);}
 
 .community__visual{display:flex;justify-content:center;}
@@ -734,8 +746,8 @@ h1{
   .section__desc--center{max-width:100%;text-align:left;}
   .pillars-grid,.compare-grid,.plans-grid{gap:16px;margin-top:36px;}
   .community__stage{zoom:0.66;}
-  .value-item{grid-template-columns:34px 1fr;padding:13px 0;}
-  .value-item p{display:none;}
+  .vacc__head h3{font-size:0.92rem;}
+  .vacc__body p{font-size:0.86rem;}
   .pillar-card,.compare-card,.plan-card{padding:24px;}
   .author{gap:36px;}
   .author__visual{max-width:330px;padding:0 14px 14px 0;}
@@ -876,7 +888,7 @@ h1{
 
 /* mobile: headline, subtítulo, botão, notebook sangrando nas bordas, provas */
 @media (max-width: 900px){
-  .hs{padding:36px 0 40px;}
+  .hs{padding:18px 0 40px;}
   .hs::before{background-size:36px 36px;}
   .hs__title{font-size:1.75rem;line-height:1.1;letter-spacing:-0.045em;}
   .hs__sub{font-size:0.9rem;line-height:1.55;margin:12px auto 0;}
@@ -1061,4 +1073,95 @@ h1{
   .eyebrow,.eyebrow.center{text-align:center;}
   .section__title,.section__title--center{text-align:center;margin-left:auto;margin-right:auto;text-wrap:balance;}
   .section__desc,.section__desc--center{text-align:center;margin-left:auto;margin-right:auto;text-wrap:pretty;}
+}
+
+/* ---------- Cupom Black (some sozinho depois de 10/11/2026 via JS) ---------- */
+.promo-bar{
+  display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 16px;
+  background:linear-gradient(90deg,#4d1590,#8a3bdb 50%,#4d1590);background-size:200% 100%;animation:promo-shine 6s linear infinite;
+  color:#fff;font-size:0.86rem;line-height:1.3;text-align:center;
+}
+@keyframes promo-shine{to{background-position:-200% 0;}}
+.promo-bar__tag{flex-shrink:0;padding:2px 7px;border-radius:5px;background:#0b0a0e;font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;}
+.promo-bar__text strong{font-weight:800;}
+.promo-bar__code{font-family:'JetBrains Mono',monospace;font-weight:700;padding:1px 6px;border-radius:5px;border:1px dashed rgba(255,255,255,0.7);white-space:nowrap;}
+.coupon{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px;padding:14px 16px;border-radius:14px;
+  border:1px dashed rgba(185,138,240,0.7);background:radial-gradient(120% 140% at 0% 0%,rgba(138,59,219,0.28),rgba(138,59,219,0.06) 60%);
+}
+.coupon__info{display:flex;flex-direction:column;gap:2px;text-align:left;}
+.coupon__label{font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:600;color:#d7c2fb;text-transform:uppercase;letter-spacing:0.06em;}
+.coupon__title{font-family:'Sora','Inter',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;letter-spacing:-0.02em;}
+.coupon__hint{font-size:0.78rem;color:var(--muted);}
+.coupon__code{
+  flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 12px;border-radius:10px;cursor:pointer;
+  background:#0b0a0e;border:1px solid rgba(138,59,219,0.55);color:#fff;font:inherit;
+}
+.coupon__code span{font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:700;letter-spacing:0.04em;}
+.coupon__code em{display:flex;align-items:center;gap:4px;font-style:normal;font-size:0.7rem;color:#d7c2fb;}
+.coupon__code svg{width:12px;height:12px;}
+.coupon__code:hover{border-color:var(--purple-glow);}
+.coupon__code.is-copied em{color:#3ddc84;}
+@media (max-width: 720px){
+  .promo-bar{font-size:0.76rem;gap:8px;padding:7px 12px;}
+  .promo-bar__tag{display:none;}
+  .coupon{flex-direction:column;align-items:stretch;text-align:center;}
+  .coupon__info{text-align:center;}
+  .coupon__code{flex-direction:row;justify-content:center;gap:10px;}
+}
+@media (prefers-reduced-motion: reduce){.promo-bar{animation:none;}}
+
+/* mobile: sem a linha do logo/menu; fica só a faixa do cupom no topo */
+@media (max-width: 720px){
+  .header{border-bottom:none;background:none;}
+  .header__inner{display:none;}
+  #por-dentro,#metodo,#resultados,#comunidade,#planos,#sobre,#duvidas{scroll-margin-top:44px;}
+}
+
+/* ---------- Plano: card limpo (painel de preço em cima, checklist, rodapé) ---------- */
+.pcard{border-radius:22px;padding:10px 10px 18px;background:linear-gradient(180deg,#0f0b14,#09070c);border:1px solid rgba(255,255,255,0.08);box-shadow:0 30px 80px -40px rgba(108,31,196,0.6);}
+.pcard__top{padding:20px 20px 22px;border-radius:16px;border:1px solid rgba(255,255,255,0.07);background:radial-gradient(120% 80% at 100% 0%,rgba(138,59,219,0.18),transparent 60%),#141019;}
+.pcard__head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.pcard__name{display:flex;align-items:center;gap:8px;font-family:'Sora','Inter',sans-serif;font-size:0.95rem;font-weight:700;color:#fff;}
+.pcard__name img{width:24px;height:24px;object-fit:contain;}
+.pcard__name .verified-badge{width:16px;height:16px;}
+.pcard__pill{flex-shrink:0;padding:4px 10px;border-radius:99px;font-size:0.72rem;font-weight:600;color:#d7c2fb;background:rgba(138,59,219,0.14);border:1px solid rgba(138,59,219,0.45);}
+.pcard__desc{margin-top:14px;font-size:0.88rem;color:var(--muted);}
+.pcard__price{display:flex;align-items:baseline;gap:6px;margin-top:18px;color:#fff;}
+.pcard__x,.pcard__cur{font-size:1rem;font-weight:600;color:var(--muted);}
+.pcard__price strong{font-family:'Sora','Inter',sans-serif;font-size:3.4rem;font-weight:800;letter-spacing:-0.05em;line-height:1;}
+.pcard__cash{margin-top:6px;font-size:0.82rem;color:var(--muted-2);}
+.pcard__coupon{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:18px;padding:10px 12px;border-radius:12px;cursor:pointer;
+  border:1px dashed rgba(185,138,240,0.6);background:rgba(138,59,219,0.1);color:#e9defb;font:inherit;font-size:0.82rem;text-align:left;
+}
+.pcard__coupon b{color:#fff;font-weight:800;}
+.pcard__coupon code{font-family:'JetBrains Mono',monospace;font-weight:700;color:#fff;}
+.pcard__coupon em{flex-shrink:0;display:flex;align-items:center;gap:4px;font-style:normal;font-size:0.74rem;font-weight:600;color:#d7c2fb;}
+.pcard__coupon svg{width:13px;height:13px;}
+.pcard__coupon.is-copied em{color:#3ddc84;}
+.pcard__btn{width:100%;justify-content:center;margin-top:12px;}
+.pcard__list{list-style:none;display:flex;flex-direction:column;gap:13px;padding:22px 16px 6px;}
+.pcard__list li{display:flex;align-items:center;gap:12px;font-size:0.93rem;color:#e6dfee;line-height:1.35;}
+.pcard__check{flex-shrink:0;width:20px;height:20px;color:var(--purple-glow);}
+.pcard__check svg{width:100%;height:100%;display:block;}
+.pcard__tag{padding:2px 8px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:0.66rem;font-weight:600;color:#d7c2fb;background:rgba(138,59,219,0.16);}
+.pcard__sep{display:flex;align-items:center;gap:14px;margin:18px 16px 0;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted-2);}
+.pcard__sep::before,.pcard__sep::after{content:"";flex:1;height:1px;background:rgba(255,255,255,0.08);}
+.pcard__foot{margin:10px 16px 0;font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--muted);line-height:1.6;}
+@media (max-width: 720px){
+  .pcard__top{padding:18px 16px 18px;}
+  .pcard__price strong{font-size:3rem;}
+  .pcard__list{padding:20px 10px 4px;}
+  .pcard__list li{font-size:0.88rem;}
+  .pcard__sep,.pcard__foot{margin-left:10px;margin-right:10px;}
+  .pcard__foot{text-align:center;}
+}
+.pcard__name{white-space:nowrap;}
+.pcard__coupon i{font-style:normal;}
+@media (max-width: 720px){
+  .pcard__name{font-size:0.86rem;gap:6px;}
+  .pcard__name img{width:20px;height:20px;}
+  .pcard__name .verified-badge{width:14px;height:14px;}
+  .pcard__pill{font-size:0.64rem;padding:3px 8px;}
 }

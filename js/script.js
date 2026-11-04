@@ -308,3 +308,51 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', sync, { passive: true });
   sync();
 })();
+
+// Comunidade: barra roxa desce no trilho conforme o scroll; o item que ela alcança abre (toque também abre)
+(() => {
+  const acc = document.querySelector('.vacc');
+  if (!acc) return;
+  const rail = acc.querySelector('.vacc__rail');
+  const items = [...acc.querySelectorAll('.vacc__item')];
+  let cur = -1;
+  const open = n => {
+    if (n === cur) return;
+    cur = n;
+    items.forEach((it, i) => {
+      it.classList.toggle('is-open', i === n);
+      it.querySelector('.vacc__head').setAttribute('aria-expanded', i === n);
+    });
+  };
+  const update = () => {
+    const r = acc.getBoundingClientRect();
+    const vh = window.innerHeight;
+    // começa quando a lista entra (75% da tela) e percorre a altura dela + 30% da tela de scroll
+    const p = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / (r.height + vh * 0.3)));
+    rail.style.setProperty('--p', p.toFixed(3));
+    const y = p * r.height;
+    let n = 0;
+    items.forEach((it, i) => { const on = it.offsetTop + 20 <= y; it.classList.toggle('is-on', on); if (on) n = i; });
+    open(n);
+  };
+  items.forEach((it, i) => it.querySelector('.vacc__head').addEventListener('click', () => open(i)));
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { rail.style.setProperty('--p', 1); items.forEach(it => it.classList.add('is-on')); open(0); return; }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+})();
+
+// Cupom Black: esconde depois do prazo (10/11/2026 23:59, horário de Brasília) e copia o código no toque
+(() => {
+  const els = document.querySelectorAll('[data-promo]');
+  if (Date.now() > new Date('2026-11-10T23:59:59-03:00').getTime()) { els.forEach(el => el.remove()); return; }
+  document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
+    const code = btn.dataset.copy, label = btn.querySelector('i');
+    try { await navigator.clipboard.writeText(code); } catch (e) {
+      const t = document.createElement('textarea'); t.value = code; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); } catch (_) {} t.remove();
+    }
+    btn.classList.add('is-copied'); label.textContent = 'Copiado!';
+    setTimeout(() => { btn.classList.remove('is-copied'); label.textContent = 'Copiar'; }, 2200);
+  }));
+})();
