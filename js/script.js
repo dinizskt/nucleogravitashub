@@ -290,3 +290,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if ('ResizeObserver' in window) new ResizeObserver(fit).observe(scene);
   else window.addEventListener('resize', fit, { passive: true });
 })();
+
+// Por dentro (mobile): card do meio em destaque + bolinhas acompanhando o arraste
+(() => {
+  const grid = document.querySelector('.members__grid');
+  const dots = [...document.querySelectorAll('.members__dots i')];
+  if (!grid || !dots.length) return;
+  const cards = [...grid.querySelectorAll('.mcard')];
+  const sync = () => {
+    const mid = grid.scrollLeft + grid.clientWidth / 2;
+    let best = 0, dist = Infinity;
+    cards.forEach((c, i) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < dist) { dist = d; best = i; } });
+    cards.forEach((c, i) => c.classList.toggle('is-active', i === best));
+    dots.forEach((d, i) => d.classList.toggle('is-on', i === best));
+  };
+  grid.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync, { passive: true });
+  sync();
+})();
