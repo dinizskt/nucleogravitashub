@@ -19,3 +19,9 @@ ADMIN_EMAILS = "c4ssio180@gmail.com"
 [[kv_namespaces]]
 binding = "ALLOW"
 id = "8d379cb2e4bd49f9bf38b98ebb4a2453"
+
+# Ofertas enviadas pelos alunos (estrutura em schema.sql, ver README).
+[[d1_databases]]
+binding = "DB"
+database_name = "gravitas-hub-ofertas"
+database_id = "271f03d2-4043-4d1e-83ff-68f931396e10"

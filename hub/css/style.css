@@ -524,6 +524,47 @@ body.no-scroll{overflow:hidden;}
 .calc-result-box__value{font-size:2.2rem;font-weight:500;font-family:'Sora',sans-serif;}
 .calc-result-box__breakdown{font-size:0.82rem;color:var(--muted-2);margin-top:6px;}
 
+/* ---------- Ofertas enviadas pelos alunos ---------- */
+.btn[hidden],.sidenav__link[hidden],.sidenav__count[hidden]{display:none;}
+.btn:disabled{opacity:0.6;cursor:default;}
+.card,.nicho-group__title,.filter,.row__name,.mini{min-width:0;overflow-wrap:anywhere;}
+.head-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.sidenav__count{
+  margin-left:auto;min-width:22px;padding:1px 7px;border-radius:100px;text-align:center;
+  font-size:0.72rem;font-weight:600;color:#170a26;background:var(--lilac);
+}
+.card__origem{font-size:0.76rem;font-weight:450;color:var(--muted);text-align:right;}
+.card__enviado{font-size:0.8rem;color:var(--muted);line-height:1.55;overflow-wrap:anywhere;}
+.card__enviado .card__label{display:block;margin-bottom:2px;}
+.card__link-pendente{font-size:0.84rem;font-weight:500;color:var(--lilac);width:fit-content;}
+.card__footer .card__acao-menor{flex:0 0 auto;}
+
+.of-dialog{max-width:560px;}
+.of-form,.of-sucesso{padding:30px;display:flex;flex-direction:column;gap:16px;}
+.of-form[hidden],.of-sucesso[hidden]{display:none;}
+.of-form__title{font-size:1.35rem;font-weight:500;padding-right:44px;}
+.of-form__sub{color:var(--muted);font-size:0.9rem;line-height:1.55;margin-top:-8px;}
+.of-campo{display:flex;flex-direction:column;gap:7px;}
+.of-campo span{font-size:0.82rem;font-weight:500;color:var(--ink);}
+.of-campo em{font-style:normal;font-weight:400;color:var(--muted-2);}
+.of-campo input,.of-campo select,.of-campo textarea{
+  width:100%;padding:12px 15px;border-radius:var(--radius-sm);border:1px solid var(--stroke);
+  background:rgba(8,6,12,0.7);color:var(--ink);font-family:inherit;font-size:16px;line-height:1.4;
+  outline:none;transition:border-color .15s ease;color-scheme:dark;
+}
+.of-campo textarea{resize:vertical;min-height:72px;}
+.of-campo input[hidden]{display:none;}
+.of-campo input:focus,.of-campo select:focus,.of-campo textarea:focus{border-color:rgba(168,117,238,0.5);}
+.of-campo input::placeholder,.of-campo textarea::placeholder{color:var(--muted-2);}
+.of-erro{
+  padding:11px 14px;border-radius:var(--radius-sm);font-size:0.85rem;line-height:1.5;
+  color:var(--red);border:1px solid rgba(232,131,143,0.3);background:rgba(232,131,143,0.06);
+}
+.of-erro[hidden]{display:none;}
+.of-form__enviar{justify-content:center;padding:14px 22px;}
+.of-sucesso__botoes{display:flex;gap:10px;flex-wrap:wrap;}
+.of-sucesso__botoes .btn{flex:1;justify-content:center;}
+
 /* ---------- Responsivo ---------- */
 @media (max-width:1180px){
   .dash{
@@ -548,4 +589,7 @@ body.no-scroll{overflow:hidden;}
   .fw-modal__footer .btn{justify-content:center;}
   .home-bar{flex-direction:column;align-items:stretch;}
   .askbar{max-width:none;min-width:0;flex:none;}
+  .head-actions{width:100%;}
+  .head-actions .btn{width:100%;justify-content:center;}
+  .of-form,.of-sucesso{padding:22px 18px;}
 }

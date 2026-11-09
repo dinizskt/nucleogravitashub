@@ -1,4 +1,5 @@
 import { normalizeEmail } from "./email.js";
+import { apiOfertas } from "./ofertas.js";
 
 const SESSION_COOKIE = "gh_session";
 const OAUTH_COOKIE = "gh_oauth";
@@ -356,6 +357,13 @@ export default {
           return redirect(`/hub/entrar?next=${encodeURIComponent(safeNext(path + url.search))}`);
         }
         return new Response("Unauthorized", { status: 401, headers: { "Cache-Control": "no-store" } });
+      }
+
+      if (path === "/hub/api/ofertas" || path.startsWith("/hub/api/ofertas/")) {
+        if (!(await isAllowed(env, session.e))) {
+          return new Response("Forbidden", { status: 403, headers: { "Cache-Control": "no-store" } });
+        }
+        return await apiOfertas(request, url, env, session);
       }
 
       // A lista é conferida de novo a cada navegação, então remover um aluno vale já no próximo carregamento.

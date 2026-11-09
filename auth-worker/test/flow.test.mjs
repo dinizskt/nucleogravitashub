@@ -1,5 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { DatabaseSync } from "node:sqlite";
+import { readFileSync } from "node:fs";
 import worker from "../src/index.js";
 import { normalizeEmail } from "../src/email.js";
 
@@ -257,4 +259,172 @@ test("sair limpa a sessão", async () => {
   const r = await worker.fetch(req("/hub/sair"), makeEnv());
   assert.equal(r.headers.get("location"), "/hub/entrar");
   assert.match(r.headers.getSetCookie()[0], /gh_session=;.*Max-Age=0/);
+});
+
+/* ---------- ofertas enviadas pelos alunos ---------- */
+function makeD1() {
+  const db = new DatabaseSync(":memory:");
+  db.exec(readFileSync(new URL("../schema.sql", import.meta.url), "utf8"));
+  return {
+    prepare(sql) {
+      const st = db.prepare(sql);
+      let args = [];
+      const api = {
+        bind: (...a) => ((args = a), api),
+        all: async () => ({ results: st.all(...args) }),
+        first: async () => st.get(...args) ?? null,
+        run: async () => ({ meta: { changes: Number(st.run(...args).changes) } }),
+      };
+      return api;
+    },
+  };
+}
+
+const ADMIN = "admin@gmail.com";
+const ofertaValida = (over = {}) => ({
+  link: "https://www.exemplo.com.br/oferta/?utm_source=fb",
+  titulo: "Oferta Teste",
+  nicho: "Educação",
+  produto: "Apostila em PDF",
+  publico: "Professoras",
+  promessa: "Planejar a semana em 10 minutos",
+  preco: "R$ 27,90",
+  observacao: "12 anúncios ativos",
+  ...over,
+});
+
+async function sessaoDe(env, email, nome = "Aluno Teste") {
+  tokenResponse = { ok: true, body: { id_token: idToken(googleClaims({ email, name: nome })) } };
+  const { cb } = await loginFlow(env);
+  return cookieHeader(cb);
+}
+
+function envOfertas() {
+  const env = makeEnv(["aluno@gmail.com", "outro@gmail.com"]);
+  return { ...env, ADMIN_EMAILS: ADMIN, DB: makeD1() };
+}
+
+const api = (path, { cookie, method = "GET", body, origin = ORIGIN } = {}) =>
+  new Request(ORIGIN + path, {
+    method,
+    headers: { accept: "*/*", ...(cookie ? { cookie } : {}), ...(body !== undefined ? { "content-type": "application/json", origin } : {}) },
+    ...(body !== undefined ? { body: typeof body === "string" ? body : JSON.stringify(body) } : {}),
+  });
+
+const enviar = (env, cookie, oferta = ofertaValida(), origin) =>
+  worker.fetch(api("/hub/api/ofertas", { cookie, method: "POST", body: oferta, origin }), env);
+const listar = async (env, cookie) => (await worker.fetch(api("/hub/api/ofertas", { cookie }), env)).json();
+const moderar = (env, cookie, id, acao, origin) =>
+  worker.fetch(api(`/hub/api/ofertas/${id}/${acao}`, { cookie, method: "POST", body: {}, origin }), env);
+
+test("ofertas: sem login não lê nem envia", async () => {
+  const env = envOfertas();
+  assert.equal((await worker.fetch(api("/hub/api/ofertas"), env)).status, 401);
+  assert.equal((await enviar(env)).status, 401);
+});
+
+test("ofertas: enviada fica pendente, só o admin vê, e quem enviou não vaza depois de aprovada", async () => {
+  const env = envOfertas();
+  const aluno = await sessaoDe(env, "aluno@gmail.com");
+  const admin = await sessaoDe(env, ADMIN, "Admin");
+  assert.equal((await enviar(env, aluno)).status, 201);
+
+  const vistaAluno = await listar(env, aluno);
+  assert.equal(vistaAluno.admin, false);
+  assert.deepEqual(vistaAluno.ofertas, []);
+  assert.equal(vistaAluno.pendentes, undefined);
+
+  const { pendentes } = await listar(env, admin);
+  assert.equal(pendentes.length, 1);
+  assert.equal(pendentes[0].enviadoPor.email, "aluno@gmail.com");
+
+  assert.equal((await moderar(env, admin, pendentes[0].id, "aprovar")).status, 200);
+  const depois = await listar(env, aluno);
+  assert.equal(depois.ofertas.length, 1);
+  assert.equal(depois.ofertas[0].titulo, "Oferta Teste");
+  assert.match(depois.ofertas[0].dataMineracao, /^\d{2}\/\d{2}\/\d{4}$/);
+  const bruto = JSON.stringify(depois);
+  assert.ok(!bruto.includes("aluno@gmail.com") && !bruto.includes("Aluno Teste"));
+  assert.equal((await listar(env, admin)).pendentes.length, 0);
+});
+
+test("ofertas: aluno não aprova, recusa nem remove", async () => {
+  const env = envOfertas();
+  const aluno = await sessaoDe(env, "aluno@gmail.com");
+  const admin = await sessaoDe(env, ADMIN, "Admin");
+  await enviar(env, aluno);
+  const id = (await listar(env, admin)).pendentes[0].id;
+  for (const acao of ["aprovar", "recusar", "remover"]) assert.equal((await moderar(env, aluno, id, acao)).status, 403);
+  assert.equal((await listar(env, admin)).pendentes.length, 1);
+});
+
+test("ofertas: recusar apaga e remover tira a aprovada do banco", async () => {
+  const env = envOfertas();
+  const aluno = await sessaoDe(env, "aluno@gmail.com");
+  const admin = await sessaoDe(env, ADMIN, "Admin");
+  await enviar(env, aluno);
+  const a = (await listar(env, admin)).pendentes[0].id;
+  assert.equal((await moderar(env, admin, a, "recusar")).status, 200);
+  assert.equal((await listar(env, admin)).pendentes.length, 0);
+  assert.equal((await moderar(env, admin, a, "aprovar")).status, 404);
+
+  await enviar(env, aluno);
+  const b = (await listar(env, admin)).pendentes[0].id;
+  await moderar(env, admin, b, "aprovar");
+  assert.equal((await moderar(env, admin, b, "remover")).status, 200);
+  assert.deepEqual((await listar(env, aluno)).ofertas, []);
+});
+
+test("ofertas: rejeita link perigoso e campo faltando", async () => {
+  const env = envOfertas();
+  const aluno = await sessaoDe(env, "aluno@gmail.com");
+  for (const link of ["javascript:alert(1)", "data:text/html,oi", "nao e link", ""]) {
+    assert.equal((await enviar(env, aluno, ofertaValida({ link }))).status, 400, link);
+  }
+  assert.equal((await enviar(env, aluno, ofertaValida({ titulo: "   " }))).status, 400);
+  assert.equal((await enviar(env, aluno, ofertaValida({ promessa: { a: 1 } }))).status, 400);
+  assert.equal((await enviar(env, aluno, ofertaValida({ titulo: "x".repeat(121) }))).status, 400);
+  assert.equal((await enviar(env, aluno, "{nao-e-json")).status, 400);
+});
+
+test("ofertas: mesmo link com www, barra ou utm conta como repetido; anúncios diferentes não", async () => {
+  const env = envOfertas();
+  const aluno = await sessaoDe(env, "aluno@gmail.com");
+  const outro = await sessaoDe(env, "outro@gmail.com");
+  assert.equal((await enviar(env, aluno)).status, 201);
+  assert.equal((await enviar(env, outro, ofertaValida({ link: "http://exemplo.com.br/oferta" }))).status, 409);
+  const ad = (id) => ofertaValida({ link: `https://www.facebook.com/ads/library/?id=${id}` });
+  assert.equal((await enviar(env, aluno, ad(1))).status, 201);
+  assert.equal((await enviar(env, aluno, ad(2))).status, 201);
+});
+
+test("ofertas: limite de 5 envios por dia por aluno", async () => {
+  const env = envOfertas();
+  const aluno = await sessaoDe(env, "aluno@gmail.com");
+  for (let i = 0; i < 5; i++) assert.equal((await enviar(env, aluno, ofertaValida({ link: `https://a.com/${i}` }))).status, 201);
+  assert.equal((await enviar(env, aluno, ofertaValida({ link: "https://a.com/6" }))).status, 429);
+});
+
+test("ofertas: envio vindo de outro site é bloqueado", async () => {
+  const env = envOfertas();
+  const aluno = await sessaoDe(env, "aluno@gmail.com");
+  const admin = await sessaoDe(env, ADMIN, "Admin");
+  assert.equal((await enviar(env, aluno, ofertaValida(), "https://malicioso.com")).status, 403);
+  await enviar(env, aluno);
+  const id = (await listar(env, admin)).pendentes[0].id;
+  assert.equal((await moderar(env, admin, id, "aprovar", "https://malicioso.com")).status, 403);
+});
+
+test("ofertas: aluno removido da lista perde o acesso na hora", async () => {
+  const env = envOfertas();
+  const aluno = await sessaoDe(env, "aluno@gmail.com");
+  env._set.delete("aluno@gmail.com");
+  assert.equal((await worker.fetch(api("/hub/api/ofertas", { cookie: aluno }), env)).status, 403);
+});
+
+test("ofertas: sem o banco configurado responde 503 e o Hub segue no ar", async () => {
+  const env = { ...envOfertas(), DB: undefined };
+  const aluno = await sessaoDe(env, "aluno@gmail.com");
+  assert.equal((await worker.fetch(api("/hub/api/ofertas", { cookie: aluno }), env)).status, 503);
+  assert.equal(await (await worker.fetch(req("/hub", { cookie: aluno }), env)).text(), "conteudo-do-origin");
 });

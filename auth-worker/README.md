@@ -96,6 +96,20 @@ O hub também existe em `*.vercel.app`, fora do Worker. Em Vercel > Project > Se
 ative **Vercel Authentication** (Standard Protection). Os domínios `*.vercel.app` passam a exigir login da Vercel
 e o domínio próprio continua público para a Cloudflare buscar.
 
+## 6. Ofertas enviadas pelos alunos
+
+O aluno envia pelo botão "Enviar oferta" no Banco de Ofertas. A oferta fica pendente num banco D1 (grátis na
+Cloudflare) e só aparece para todos depois que um e-mail de `ADMIN_EMAILS` aprova na tela "Aprovar ofertas" do Hub.
+Recusar apaga. Limite de 5 envios por aluno por dia. O nome e o e-mail de quem enviou nunca aparecem na oferta aprovada.
+
+Primeira instalação:
+
+```bash
+npx wrangler d1 create gravitas-hub-ofertas      # cole o id em wrangler.toml e descomente o bloco d1_databases
+npx wrangler d1 execute gravitas-hub-ofertas --remote --file schema.sql
+npx wrangler deploy
+```
+
 ## Como o login funciona
 
 - `/hub/entrar`: tela de login. `/hub/login`: vai ao Google (código de autorização + PKCE + `state`).

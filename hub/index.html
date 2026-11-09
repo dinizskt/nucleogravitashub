@@ -32,6 +32,7 @@
       <div class="sidenav__group">
         <span class="sidenav__label">Ofertas</span>
         <button class="sidenav__link" data-section="ofertas" data-icon="tag" title="Ofertas validadas e mineradas"><span class="sidenav__title">Banco de Ofertas</span></button>
+        <button class="sidenav__link" id="nav-curadoria" data-section="curadoria" data-icon="check" title="Ofertas enviadas pelos alunos" hidden><span class="sidenav__title">Aprovar ofertas</span><span class="sidenav__count" id="curadoria-count" hidden>0</span></button>
         <button class="sidenav__link sidenav__link--soon" data-section="gerador" data-icon="star" title="Monte novas combinações"><span class="sidenav__title">Gerador de Ofertas</span></button>
         <button class="sidenav__link sidenav__link--soon" data-section="copie-modelo" data-icon="copy" title="Modele o padrão, não o produto"><span class="sidenav__title">Copie o Modelo</span></button>
         <button class="sidenav__link sidenav__link--soon" data-section="radar" data-icon="target" title="Nichos em alta"><span class="sidenav__title">Radar de Oportunidades</span></button>
@@ -150,9 +151,12 @@
           <h1 class="page-head__title">Banco de <span>Ofertas</span></h1>
           <p class="page-head__sub">O ouro das operações de infoproduto lowticket escaladas</p>
         </div>
-        <div class="stats">
-          <div class="stats__item"><span class="stats__num" id="stat-total">0</span><span class="stats__label">ofertas</span></div>
-          <div class="stats__item"><span class="stats__num" id="stat-ativas">0</span><span class="stats__label">ativas</span></div>
+        <div class="head-actions">
+          <div class="stats">
+            <div class="stats__item"><span class="stats__num" id="stat-total">0</span><span class="stats__label">ofertas</span></div>
+            <div class="stats__item"><span class="stats__num" id="stat-ativas">0</span><span class="stats__label">ativas</span></div>
+          </div>
+          <button class="btn btn--primary" id="btn-enviar-oferta" type="button" hidden>Enviar oferta</button>
         </div>
       </header>
       <div class="controls">
@@ -163,6 +167,15 @@
         <div class="filters" id="filters"></div>
       </div>
       <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- ============ APROVAR OFERTAS (só administrador) ============ -->
+    <section class="panel" id="panel-curadoria" hidden>
+      <header class="page-head">
+        <h1 class="page-head__title">Aprovar <span>ofertas</span></h1>
+        <p class="page-head__sub">Ofertas enviadas pelos alunos. Só você vê esta tela. O que você aprovar entra no Banco de Ofertas.</p>
+      </header>
+      <div class="nicho-group__grid" id="curadoria-lista"></div>
     </section>
 
     <!-- ============ FRAMEWORKS ============ -->
@@ -336,6 +349,63 @@
         <p id="fw-modal-desc"></p>
       </div>
       <a class="btn btn--primary" id="fw-modal-download" href="#" download>Baixar framework <span class="arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="fw-modal" id="of-modal" hidden>
+  <div class="fw-modal__backdrop" data-close></div>
+  <div class="fw-modal__dialog of-dialog" role="dialog" aria-modal="true" aria-labelledby="of-titulo">
+    <button class="fw-modal__close" type="button" data-close aria-label="Fechar">&times;</button>
+    <form class="of-form" id="of-form">
+      <h2 class="of-form__title" id="of-titulo">Enviar oferta</h2>
+      <p class="of-form__sub">Encontrou uma oferta boa? Mande para o banco. Depois de aprovada, ela fica disponível para os alunos. Seu nome não aparece.</p>
+
+      <label class="of-campo">
+        <span>Link da oferta</span>
+        <input name="link" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="1000" required placeholder="Página de vendas ou Biblioteca de Anúncios">
+      </label>
+      <label class="of-campo">
+        <span>Nome da oferta</span>
+        <input name="titulo" type="text" autocomplete="off" maxlength="120" required placeholder="Ex.: Kit Bíblico Infantil">
+      </label>
+      <label class="of-campo">
+        <span>Nicho</span>
+        <select name="nicho" id="of-nicho" required></select>
+        <input name="nichoOutro" id="of-nicho-outro" type="text" autocomplete="off" maxlength="60" placeholder="Qual nicho?" hidden>
+      </label>
+      <label class="of-campo">
+        <span>O que é vendido</span>
+        <input name="produto" type="text" autocomplete="off" maxlength="300" required placeholder="Ex.: 200 atividades em PDF">
+      </label>
+      <label class="of-campo">
+        <span>Para quem é</span>
+        <input name="publico" type="text" autocomplete="off" maxlength="300" required placeholder="Ex.: Professoras de catequese">
+      </label>
+      <label class="of-campo">
+        <span>Promessa</span>
+        <textarea name="promessa" rows="2" maxlength="400" required placeholder="O que a oferta promete para quem compra"></textarea>
+      </label>
+      <label class="of-campo">
+        <span>Preço</span>
+        <input name="preco" type="text" autocomplete="off" maxlength="60" required placeholder="Ex.: R$ 27,90">
+      </label>
+      <label class="of-campo">
+        <span>Por que vale olhar <em>(opcional)</em></span>
+        <textarea name="observacao" rows="2" maxlength="600" placeholder="Ex.: 15 anúncios ativos, no ar há 3 meses"></textarea>
+      </label>
+
+      <div class="of-erro" id="of-erro" role="alert" hidden></div>
+      <button class="btn btn--primary of-form__enviar" id="of-enviar" type="submit">Enviar para análise</button>
+    </form>
+
+    <div class="of-sucesso" id="of-sucesso" hidden>
+      <h2 class="of-form__title">Oferta enviada</h2>
+      <p class="of-form__sub">Assim que for aprovada, ela aparece no Banco de Ofertas. Obrigado por contribuir.</p>
+      <div class="of-sucesso__botoes">
+        <button class="btn btn--primary" type="button" data-close>Fechar</button>
+        <button class="btn btn--ghost" type="button" id="of-outra">Enviar outra</button>
+      </div>
     </div>
   </div>
 </div>

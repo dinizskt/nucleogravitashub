@@ -7,6 +7,7 @@
 
 const STATUS_LABEL = { ativa: "Ativa", testando: "Em teste", pausada: "Pausada" };
 const STARS = (n) => "★".repeat(n) + "☆".repeat(5 - n);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 /* ============================== NAVEGAÇÃO ============================== */
 const links = document.querySelectorAll(".sidenav__link");
@@ -98,8 +99,8 @@ function renderFiltros() {
   filtersEl.innerHTML = nichos()
     .map(
       (n) =>
-        `<button class="filter${n === activeFiltro ? " active" : ""}" data-filtro="${n}">${
-          n === "todas" ? "Todas" : n
+        `<button class="filter${n === activeFiltro ? " active" : ""}" data-filtro="${esc(n)}">${
+          n === "todas" ? "Todas" : esc(n)
         }</button>`
     )
     .join("");
@@ -111,6 +112,7 @@ function renderStats() {
 }
 
 function cardHTML(o) {
+  if (o.origem === "aluno") return cardAlunoHTML(o);
   return `
     <article class="card">
       <div class="card__top">
@@ -202,7 +204,7 @@ function renderOfertas() {
     .map(
       (nicho) => `
         <div class="nicho-group">
-          <h2 class="nicho-group__title">${nicho} <span class="nicho-group__count">${grupos[nicho].length}</span></h2>
+          <h2 class="nicho-group__title">${esc(nicho)} <span class="nicho-group__count">${grupos[nicho].length}</span></h2>
           <div class="nicho-group__grid">${grupos[nicho].map(cardHTML).join("")}</div>
         </div>
       `
@@ -300,7 +302,6 @@ if (fwModal) {
 }
 
 /* ============================== VISÃO GERAL ============================== */
-const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
 const parseData = (s) => {
   const [d, m, y] = s.split("/").map(Number);
@@ -331,14 +332,18 @@ function renderHomeStats() {
 function renderNiches() {
   const map = {};
   OFERTAS.forEach((o) => {
-    const n = map[o.nicho] || (map[o.nicho] = { nome: o.nicho, total: 0, ativas: 0, pot: 0 });
+    const n = map[o.nicho] || (map[o.nicho] = { nome: o.nicho, total: 0, ativas: 0, pot: 0, comNota: 0 });
     n.total++;
     if (o.status === "ativa") n.ativas++;
-    n.pot += o.nota.potencial;
+    // Ofertas enviadas por alunos não têm nota, então ficam fora da média de potencial.
+    if (o.nota) {
+      n.pot += o.nota.potencial;
+      n.comNota++;
+    }
   });
-  let lista = Object.values(map).map((n) => ({ ...n, potMedio: n.pot / n.total }));
+  let lista = Object.values(map).map((n) => ({ ...n, potMedio: n.comNota ? n.pot / n.comNota : 0 }));
   if (nicheSort === "ativas") lista.sort((a, b) => b.ativas - a.ativas || b.total - a.total);
-  else if (nicheSort === "potencial") lista = lista.filter((n) => n.total >= 2).sort((a, b) => b.potMedio - a.potMedio || b.total - a.total);
+  else if (nicheSort === "potencial") lista = lista.filter((n) => n.comNota >= 2).sort((a, b) => b.potMedio - a.potMedio || b.total - a.total);
   else lista.sort((a, b) => b.total - a.total || b.ativas - a.ativas);
   document.getElementById("niche-rows").innerHTML = lista
     .slice(0, 5)
@@ -534,3 +539,254 @@ renderRecent();
 
 const secaoInicial = location.hash.replace("#", "");
 showSection(secaoInicial && document.getElementById(`panel-${secaoInicial}`) ? secaoInicial : "home");
+
+/* ============================== OFERTAS ENVIADAS PELOS ALUNOS ============================== */
+const API_OFERTAS = "/hub/api/ofertas";
+const ofModal = document.getElementById("of-modal");
+const ofForm = document.getElementById("of-form");
+const ofErro = document.getElementById("of-erro");
+const ofSucesso = document.getElementById("of-sucesso");
+const ofNicho = document.getElementById("of-nicho");
+const ofNichoOutro = document.getElementById("of-nicho-outro");
+const ofEnviar = document.getElementById("of-enviar");
+const NICHO_OUTRO = "__outro";
+
+let souAdmin = false;
+let ofertasPendentes = [];
+
+function linkSeguro(valor) {
+  try {
+    const u = new URL(valor);
+    return u.protocol === "https:" || u.protocol === "http:" ? u.href : "#";
+  } catch {
+    return "#";
+  }
+}
+
+// Mesma regra do servidor: www, barra final e parâmetros de rastreio não fazem o link ser outro.
+function chaveLink(valor) {
+  try {
+    const u = new URL(valor);
+    const host = u.hostname.replace(/^www\./, "");
+    return `${host}${u.pathname.replace(/\/+$/, "")}${/(^|\.)facebook\.com$/.test(host) ? u.search : ""}`.toLowerCase();
+  } catch {
+    return "";
+  }
+}
+
+const linhaOferta = (rotulo, valor) =>
+  `<div class="card__row"><span class="card__label">${rotulo}</span><span class="card__value">${esc(valor)}</span></div>`;
+
+function corpoOfertaAluno(o) {
+  return `
+    <h3 class="card__title">${esc(o.titulo)}</h3>
+    ${linhaOferta("Produto", o.produto)}
+    ${linhaOferta("Público-alvo", o.publico)}
+    ${linhaOferta("Promessa", o.promessa)}
+    <div class="card__meta">
+      <div class="card__meta-item"><span class="card__label">Preço</span><span class="card__value">${esc(o.preco)}</span></div>
+      <div class="card__meta-item"><span class="card__label">Enviada em</span><span class="card__value">${esc(o.dataMineracao)}</span></div>
+    </div>
+    ${o.observacao ? `<p class="card__pesquisa"><span class="card__label">Por que vale olhar</span> ${esc(o.observacao)}</p>` : ""}
+  `;
+}
+
+function cardAlunoHTML(o) {
+  return `
+    <article class="card">
+      <div class="card__top">
+        <span class="card__niche">${esc(o.nicho)}</span>
+        <span class="card__origem">Enviada por aluno</span>
+      </div>
+      ${corpoOfertaAluno(o)}
+      <div class="card__footer">
+        <a class="btn btn--primary btn--sm" href="${esc(linkSeguro(o.link))}" target="_blank" rel="noopener noreferrer">Ver oferta <span class="arrow">→</span></a>
+        ${souAdmin ? `<button class="btn btn--ghost btn--sm card__acao-menor" type="button" data-acao="remover" data-id="${esc(o.id)}">Remover</button>` : ""}
+      </div>
+    </article>
+  `;
+}
+
+function pendenteHTML(o) {
+  const quem = o.enviadoPor.nome ? `${o.enviadoPor.nome} (${o.enviadoPor.email})` : o.enviadoPor.email;
+  return `
+    <article class="card">
+      <div class="card__top">
+        <span class="card__niche">${esc(o.nicho)}</span>
+        <span class="card__origem">Aguardando você</span>
+      </div>
+      ${corpoOfertaAluno(o)}
+      <p class="card__enviado"><span class="card__label">Enviada por</span> ${esc(quem)}</p>
+      <a class="card__link-pendente" href="${esc(linkSeguro(o.link))}" target="_blank" rel="noopener noreferrer">Conferir a oferta <span class="arrow">→</span></a>
+      <div class="card__footer">
+        <button class="btn btn--primary btn--sm" type="button" data-acao="aprovar" data-id="${esc(o.id)}">Aprovar</button>
+        <button class="btn btn--ghost btn--sm" type="button" data-acao="recusar" data-id="${esc(o.id)}">Recusar</button>
+      </div>
+    </article>
+  `;
+}
+
+function renderCuradoria() {
+  document.getElementById("nav-curadoria").hidden = !souAdmin;
+  const contagem = document.getElementById("curadoria-count");
+  contagem.textContent = ofertasPendentes.length;
+  contagem.hidden = !ofertasPendentes.length;
+  document.getElementById("curadoria-lista").innerHTML = ofertasPendentes.length
+    ? ofertasPendentes.map(pendenteHTML).join("")
+    : `<div class="empty"><strong>Nenhuma oferta esperando</strong>Quando um aluno enviar uma oferta, ela aparece aqui.</div>`;
+}
+
+function atualizarBanco() {
+  renderFiltros();
+  renderStats();
+  renderOfertas();
+  renderHomeStats();
+  renderNiches();
+  renderRecent();
+  renderChart();
+  renderCuradoria();
+}
+
+async function carregarOfertasAlunos() {
+  const r = await fetch(API_OFERTAS, { credentials: "same-origin" });
+  if (!r.ok) return;
+  const dados = await r.json();
+  souAdmin = dados.admin === true;
+  ofertasPendentes = dados.pendentes || [];
+  for (let i = OFERTAS.length - 1; i >= 0; i--) if (OFERTAS[i].origem === "aluno") OFERTAS.splice(i, 1);
+  OFERTAS.push(...dados.ofertas);
+  atualizarBanco();
+  document.getElementById("btn-enviar-oferta").hidden = false;
+}
+
+/* ---- Formulário de envio ---- */
+function preencherNichos() {
+  const lista = [...new Set(OFERTAS.map((o) => o.nicho))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+  ofNicho.innerHTML =
+    `<option value="" disabled selected>Escolha o nicho</option>` +
+    lista.map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join("") +
+    `<option value="${NICHO_OUTRO}">Outro</option>`;
+}
+
+function mostrarNichoOutro() {
+  const outro = ofNicho.value === NICHO_OUTRO;
+  ofNichoOutro.hidden = !outro;
+  ofNichoOutro.required = outro;
+  if (!outro) ofNichoOutro.value = "";
+}
+
+function mostrarErroEnvio(texto) {
+  ofErro.textContent = texto;
+  ofErro.hidden = !texto;
+  if (texto) ofErro.scrollIntoView({ block: "nearest" });
+}
+
+function abrirFormulario() {
+  ofForm.reset();
+  preencherNichos();
+  mostrarNichoOutro();
+  mostrarErroEnvio("");
+  ofForm.hidden = false;
+  ofSucesso.hidden = true;
+  ofModal.hidden = false;
+  document.body.classList.add("no-scroll");
+}
+
+function fecharFormulario() {
+  ofModal.hidden = true;
+  document.body.classList.remove("no-scroll");
+}
+
+function comProtocolo(link) {
+  const texto = link.trim();
+  return !texto || /^[a-z][a-z0-9+.-]*:/i.test(texto) ? texto : `https://${texto}`;
+}
+
+ofNicho.addEventListener("change", mostrarNichoOutro);
+document.getElementById("btn-enviar-oferta").addEventListener("click", abrirFormulario);
+document.getElementById("of-outra").addEventListener("click", abrirFormulario);
+ofModal.addEventListener("click", (e) => {
+  if (e.target.closest("[data-close]")) fecharFormulario();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !ofModal.hidden) fecharFormulario();
+});
+
+ofForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  mostrarErroEnvio("");
+  const campos = Object.fromEntries(new FormData(ofForm));
+  const oferta = {
+    ...campos,
+    link: comProtocolo(campos.link),
+    nicho: campos.nicho === NICHO_OUTRO ? campos.nichoOutro : campos.nicho,
+  };
+  delete oferta.nichoOutro;
+
+  const chave = chaveLink(oferta.link);
+  if (!chave) return mostrarErroEnvio("Confira o link: ele precisa ser um endereço completo, começando com https://.");
+  if (OFERTAS.some((o) => chaveLink(o.link) === chave)) return mostrarErroEnvio("Essa oferta já está no banco.");
+
+  ofEnviar.disabled = true;
+  ofEnviar.textContent = "Enviando...";
+  try {
+    const r = await fetch(API_OFERTAS, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(oferta),
+    });
+    if (r.status === 401) return mostrarErroEnvio("Sua sessão expirou. Atualize a página e entre de novo.");
+    if (!r.ok) {
+      const resposta = await r.json().catch(() => ({}));
+      return mostrarErroEnvio(resposta.erro || "Não foi possível enviar agora. Tente de novo em instantes.");
+    }
+    ofForm.hidden = true;
+    ofSucesso.hidden = false;
+    if (souAdmin) carregarOfertasAlunos().catch(() => {});
+  } catch {
+    mostrarErroEnvio("Sem conexão. Confira sua internet e tente de novo.");
+  } finally {
+    ofEnviar.disabled = false;
+    ofEnviar.textContent = "Enviar para análise";
+  }
+});
+
+/* ---- Aprovar, recusar e remover (só o administrador vê os botões; o servidor confere de novo) ---- */
+const ACOES_COM_CONFIRMACAO = { recusar: "Confirmar recusa", remover: "Confirmar remoção" };
+
+document.addEventListener("click", async (e) => {
+  const botao = e.target.closest("[data-acao]");
+  if (!botao || botao.disabled) return;
+  const { acao, id } = botao.dataset;
+  const textoOriginal = botao.textContent;
+
+  if (ACOES_COM_CONFIRMACAO[acao] && !botao.dataset.armado) {
+    botao.dataset.armado = "1";
+    botao.textContent = ACOES_COM_CONFIRMACAO[acao];
+    setTimeout(() => {
+      if (!botao.isConnected) return;
+      delete botao.dataset.armado;
+      botao.textContent = textoOriginal;
+    }, 4000);
+    return;
+  }
+
+  botao.disabled = true;
+  try {
+    const r = await fetch(`${API_OFERTAS}/${encodeURIComponent(id)}/${acao}`, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    });
+    if (!r.ok) throw new Error();
+    await carregarOfertasAlunos();
+  } catch {
+    botao.disabled = false;
+    delete botao.dataset.armado;
+    botao.textContent = "Erro, tente de novo";
+  }
+});
+
+carregarOfertasAlunos().catch(() => {});
