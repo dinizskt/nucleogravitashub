@@ -398,11 +398,10 @@ test("ofertas: mesmo link com www, barra ou utm conta como repetido; anúncios d
   assert.equal((await enviar(env, aluno, ad(2))).status, 201);
 });
 
-test("ofertas: limite de 5 envios por dia por aluno", async () => {
+test("ofertas: aluno pode enviar quantas quiser no mesmo dia", async () => {
   const env = envOfertas();
   const aluno = await sessaoDe(env, "aluno@gmail.com");
-  for (let i = 0; i < 5; i++) assert.equal((await enviar(env, aluno, ofertaValida({ link: `https://a.com/${i}` }))).status, 201);
-  assert.equal((await enviar(env, aluno, ofertaValida({ link: "https://a.com/6" }))).status, 429);
+  for (let i = 0; i < 12; i++) assert.equal((await enviar(env, aluno, ofertaValida({ link: `https://a.com/${i}` }))).status, 201);
 });
 
 test("ofertas: envio vindo de outro site é bloqueado", async () => {

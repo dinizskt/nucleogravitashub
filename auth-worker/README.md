@@ -100,7 +100,7 @@ e o domínio próprio continua público para a Cloudflare buscar.
 
 O aluno envia pelo botão "Enviar oferta" no Banco de Ofertas. A oferta fica pendente num banco D1 (grátis na
 Cloudflare) e só aparece para todos depois que um e-mail de `ADMIN_EMAILS` aprova na tela "Aprovar ofertas" do Hub.
-Recusar apaga. Limite de 5 envios por aluno por dia. O nome e o e-mail de quem enviou nunca aparecem na oferta aprovada.
+Recusar apaga. Não há limite de envios por aluno. O nome e o e-mail de quem enviou nunca aparecem na oferta aprovada.
 
 Primeira instalação:
 

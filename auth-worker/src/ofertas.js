@@ -3,7 +3,6 @@ import { normalizeEmail } from "./email.js";
 // Ofertas enviadas pelos alunos: ficam pendentes até o admin aprovar.
 // Quem chega aqui já passou pelo login e pela lista de alunos (ver index.js).
 
-const ENVIOS_POR_DIA = 5;
 const CORPO_MAX = 8 * 1024;
 const PENDENTES_NA_TELA = 100;
 const LINK_MAX = 1000;
@@ -87,18 +86,11 @@ async function enviar(request, url, env, session) {
   const { dados, chave, mensagem } = validar(corpo);
   if (mensagem) return erro(mensagem, 400);
 
-  const email = normalizeEmail(session.e);
-  const agora = Date.now();
-  const recentes = await env.DB.prepare("SELECT COUNT(*) AS n FROM ofertas_alunos WHERE email = ? AND criado_em > ?")
-    .bind(email, agora - 86400000)
-    .first();
-  if (recentes.n >= ENVIOS_POR_DIA) return erro(`Você chegou ao limite de ${ENVIOS_POR_DIA} ofertas por dia. Tente de novo amanhã.`, 429);
-
   const resultado = await env.DB.prepare(
     `INSERT INTO ofertas_alunos (id, status, dados, link_chave, email, nome, data_envio, criado_em)
      VALUES (?, 'pendente', ?, ?, ?, ?, ?, ?) ON CONFLICT(link_chave) DO NOTHING`
   )
-    .bind(novoId(), JSON.stringify(dados), chave, email, limpar(session.n).slice(0, 120), hojeBrasilia(), agora)
+    .bind(novoId(), JSON.stringify(dados), chave, normalizeEmail(session.e), limpar(session.n).slice(0, 120), hojeBrasilia(), Date.now())
     .run();
   if (!resultado.meta.changes) return erro("Essa oferta já foi enviada por outro aluno.", 409);
   return json({ ok: true }, 201);
