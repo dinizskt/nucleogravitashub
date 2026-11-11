@@ -1075,7 +1075,7 @@ h1{
   .section__desc,.section__desc--center{text-align:center;margin-left:auto;margin-right:auto;text-wrap:pretty;}
 }
 
-/* ---------- Cupom Black (some sozinho depois de 10/11/2026 via JS) ---------- */
+/* ---------- Cupom Black (some sozinho depois de 12/11/2026 via JS) ---------- */
 .promo-bar{
   display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 16px;
   background:linear-gradient(90deg,#4d1590,#8a3bdb 50%,#4d1590);background-size:200% 100%;animation:promo-shine 6s linear infinite;

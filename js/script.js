@@ -344,10 +344,10 @@ document.addEventListener('DOMContentLoaded', () => {
   update();
 })();
 
-// Cupom Black: esconde depois do prazo (10/11/2026 23:59, horário de Brasília) e copia o código no toque
+// Cupom Black: esconde depois do prazo (12/11/2026 23:59, horário de Brasília) e copia o código no toque
 (() => {
   const els = document.querySelectorAll('[data-promo]');
-  if (Date.now() > new Date('2026-11-10T23:59:59-03:00').getTime()) { els.forEach(el => el.remove()); return; }
+  if (Date.now() > new Date('2026-11-12T23:59:59-03:00').getTime()) { els.forEach(el => el.remove()); return; }
   document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
     const code = btn.dataset.copy, label = btn.querySelector('i');
     try { await navigator.clipboard.writeText(code); } catch (e) {
